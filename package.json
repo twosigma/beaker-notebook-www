@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "ship": "^0.1.1",
+    "roots": "^3.0.0-rc.9"
+  },
+  "scripts": {
+    "deploy": "roots compile && ship public/ --to gh-pages",
+    "watch": "roots watch"
+  },
+  "dependencies": {
+    "stylus": "^0.48.1",
+    "jade": "^1.5.0",
+    "axis": "0.2.x",
+    "autoprefixer-stylus": "0.2.x"
+  }
+}

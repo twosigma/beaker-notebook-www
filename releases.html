@@ -1,0 +1,34 @@
+---
+layout: default-container
+title: Releases
+---
+
+<script>
+    $(document).ready(function() {
+        $("#nav-releases").addClass("active");
+    })
+</script>
+
+<div class="row">
+  
+
+<h3>0.55</h3>
+2014.07.17
+<ul>
+<li> Major upgrade of the security model: backends are now protected even on multi-user systems.
+<li> Add public server option so that you can access Beaker over the internet, not just locally.  Includes HTTPS encryption.
+<li> Refactor the Javascript to conform to Angular guidelines.
+<li> Improve file load/save dialogs to be easier to use and handle errors.
+<li> Shared notebooks can be downloaded from the resulting share page, and the sharing viewer can open a notebook file hosted anywhere.
+<li> On Mac, add a native application to wrap and launch the web app.  The native app includes the JRE, eliminating an external dependency for users.
+<li> On Windows, include the JRE, nginx, and python in our distribution.
+<li> On Ubuntu, include a script to install all dependencies and language plugins.
+
+</ul>
+<h3>0.52.4</h3>
+2014.05.03 Security fix: close ports to external access.
+<h3>0.52.1</h3>
+2014.05.02. Fix loading nginx dynamic libraries on Mac.
+<h3>0.52</h3>
+2014.04.29: First public release.
+</div>

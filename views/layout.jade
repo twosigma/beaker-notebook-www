@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta(charset='utf8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name='description', content='javascript integraion tests')
+    meta(name='author', content= "MojoTech")
+    meta(name="viewport", content="width=device-width")
+    title= path
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='css/main.css')
+    include ./partials/_links
+    include ./partials/_block
+  body
+    include ./partials/_header
+    .header-nav
+      .contain
+        block header
+    .primary-content
+      .contain
+        block content
+
+    include ./partials/_footer

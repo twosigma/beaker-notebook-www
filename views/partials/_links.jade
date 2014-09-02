@@ -1,0 +1,7 @@
+- links = [{name: "overview", path: "index.html"}, {name: "features", path: "features.html"}, {name: "getting started", path: "getting-started.html"}, {name: "community", path:"community.html"}, {name: "about beaker", path:"about.html"}]
+
+mixin linkList(active, listClass)
+  ul(class=listClass || "")
+    each link in links
+      li(class= active == link.name ? "active" : "")
+        a(href=link.path, class= active == link.name ? "active" : "")= link.name

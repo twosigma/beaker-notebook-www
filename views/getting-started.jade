@@ -1,0 +1,99 @@
+extends layout
+
+block header
+  +linkList('getting started')
+
+block content
+  +section(
+    "",
+    "Modular and Flexible",
+    "Beaker is a notebook style development environment which supports multiple languages. The Beaker shell itself doesn’t have a native language and so in order to use Beaker,  you need to install at least one programming language. To get you started, Beaker will be installed with JavaScript support. Once you’ve successfully installed Beaker, you can then install any of the languages you wish to use, from the list below. Full install instructions are provided for each language."
+  )
+
+  +section(
+    "section-split",
+    "Supported Platforms",
+    "Beaker currently supports Windows, Mac and Linux platforms. Browser support consists of Chrome, Safari and Internet Explorer 7+. "
+  )
+
+  ul.block.platforms.getting-started
+    li
+      img(src="img/linux@2x.png")
+      .label Linux
+    li
+      img(src="img/mac@2x.png")
+      .label Mac OS
+    li
+      img(src="img/windows@2x.png")
+      .label Windows
+
+  p.block
+    .graph-headline optional components
+    p.block-half
+      | The following are additional optional components you can install to get support for additional languages.
+
+  ul.block.components
+    li
+      .left
+        .language.python
+          .lang-block Py
+      .left.language-details
+        b.language-headline Python Installation
+        p Install&nbsp;
+          a.ui-link(href="#") Anaconda
+      .cl
+    li
+      .left
+        .language.r
+          .lang-block R
+      .left.language-details
+        b.language-headline R Installation
+        p 1. Install&nbsp;
+          a.ui-link(href="#") R
+        p 2. Install&nbsp;
+          a.ui-link(href="#") XQuartz
+        p.block-half after install, open an R cell in Beaker and run these commands:
+        pre.code.
+          install.packages('Rserve')
+          install.packages('ggplot2')
+      .cl
+    li
+      .left
+        .language.julia
+          .lang-block Ju
+      .left.language-details
+        b.language-headline Julia Installation
+        p 1. Install&nbsp;
+          a.ui-link(href="#") Anaconda
+        p 2. Install Julia
+
+        p.block-half After installing both packages, open a Julia cell in Beaker and run this command:
+        pre.code.
+          Pkg.add(“IJulia”)
+      .cl
+    li
+      .left
+        .language.node
+          .lang-block N
+      .left.language-details
+        b.language-headline Node Installation
+        p 1. Install&nbsp;
+          a.ui-link(href="#") Node.js
+      .cl
+    li
+      .left
+        .language.ruby
+          .lang-block Ru
+      .left.language-details
+        b.language-headline Ruby Installation
+        p 1. Install&nbsp;
+          a.ui-link(href="#") IRuby
+      .cl
+
+  p.block
+    .graph-headline Current Version
+    .current-version 0.XX
+    p.block-half
+      | these are some notes
+    p.block-half
+      a.ui-link(href="#") Previous versions

@@ -1,0 +1,33 @@
+.header-nav
+  background: $green
+  .contain
+    padding: 0
+
+  ul li
+    font-size: 14px
+    color: #FFF
+    text-transform: uppercase
+    width: 20%
+    display: inline-block
+    text-align: center
+    font-family: $font-family-primary-bold
+    position: relative
+    padding: 21px 0
+
+    a, a:visited
+      text-decoration: none
+      color: #FFF
+
+    &.active
+      &:before
+        content: ""
+        position: absolute
+        top: 100%
+        left: 50%
+        width: 0
+        height: 0
+        border-left: 30px solid transparent
+        border-right: 30px solid transparent
+        border-top: 15px solid $green
+        transform: translateX(-50%)
+
