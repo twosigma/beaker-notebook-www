@@ -5,3 +5,5 @@ mixin linkList(active, listClass)
     each link in links
       li(class= active == link.name ? "active" : "")
         a(href=link.path, class= active == link.name ? "active" : "")= link.name
+
+    block
