@@ -11,6 +11,7 @@
     "stylus": "^0.48.1",
     "jade": "^1.5.0",
     "axis": "0.2.x",
-    "autoprefixer-stylus": "0.2.x"
+    "autoprefixer-stylus": "0.2.x",
+    "marked": "^0.3.2"
   }
 }
