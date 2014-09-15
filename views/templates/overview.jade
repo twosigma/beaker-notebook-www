@@ -1,0 +1,43 @@
+mixin section(klass, headline, graph)
+  h2.block(class=klass || '')= headline
+  p.block= graph
+
++section(
+  "",
+  "Perfect tool for iterative exploration",
+  "Notebook-style development provides a more interactive way to write code than with traditional IDEs, because notebook interfaces are comprised of a series of code blocks, called cells, which can stand alone or act in unison. The process is one of discovery, where a developer experiments in one cell, then can continue to write code in a subsequent cell depending on discoveries made in the first. Particularly when analyzing large datasets, this conversational approach allows researchers to quickly discover patterns or other artifacts of the data."
+)
+
+img.notebook-image(src="img/notebook@2x.png")
+
++section(
+  "section-split",
+  "One notebook many languages",
+  "Since scientists predict we’re still a century from perfecting the Universal Translator, a language agnostic code notebook will have to suffice. Beaker’s individual cells support different languages within the same notebook. Think of a Python cell and a Groovy cell communicating data back and forth between them without issue. This auto-translate functionality lets researches use the program best suited to the problem by applying those unique strengths of individual languages collaboratively. It’s nice when elegance and logic coincide."
+)
+
+!= templates.language_blocks()
+
++section(
+  "section-split",
+  "Designed for Data Scientists and Researchers",
+  "The interactive development style of Beaker’s cell structure fits well with data science applications and research. And it’s no accident that from this domain, within Two Sigma, Beaker was born. Yet we also don’t believe in limiting the imagination. Thus Beaker can be used in a wide variety of software development which various languages and their specific abilities, support."
+)
+
+img.atom-image(src="img/science@2x.png")
+
++section(
+  "section-split",
+  "Multiple platforms and browser support",
+  "Beaker supports a range of platforms that include Windows, Mac, and Linux operating systems as well as Chrome, Firefox, and Internet Explorer web browsers. Refer to our Getting Started page for the current list of supported releases and version numbers."
+)
+
+!= templates.platforms()
+
++section(
+  "section-split",
+  "Open Source Reciprocity",
+  "Beaker arrives as the culmination of a company wide push at Two Sigma to give back to the Open Source development community. We use open source software. We believe in that ethos. Numerous developers contribute, or in several instances have created their own open source projects. We want to release part of our core technology as open source. Beaker is that return."
+)
+
+img.os-image(src="img/opensource@2x.png")

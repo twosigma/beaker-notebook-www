@@ -2,6 +2,7 @@
   BK.Router = Backbone.Router.extend({
     routes: {
       "": "overview",
+      "index": "overview",
       "features": "features",
       "getting-started": "getting-started",
       "community": "community",
@@ -9,23 +10,28 @@
     },
 
     overview: function() {
-      console.log("o");
+      BK.regions.get("content")
+      .show(new BK.Views.Overview())
     },
 
     features: function() {
-      console.log("f");
+      BK.regions.get("content")
+      .show(new BK.Views.Features())
     },
 
     "getting-started": function() {
-      console.log("g");
+      BK.regions.get("content")
+      .show(new BK.Views.GettingStarted())
     },
 
     community: function() {
-      console.log("c");
+      BK.regions.get("content")
+      .show(new BK.Views.Community())
     },
 
     about: function() {
-      console.log("a");
+      BK.regions.get("content")
+      .show(new BK.Views.About())
     }
   });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);

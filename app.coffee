@@ -1,5 +1,6 @@
-axis         = require 'axis'
-autoprefixer = require 'autoprefixer-stylus'
+axis            = require 'axis'
+autoprefixer    = require 'autoprefixer-stylus'
+ClientTemplates = require('client-templates')
 
 module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore']
@@ -9,3 +10,9 @@ module.exports =
 
   server:
     "clean_urls": true
+
+  extensions: [ClientTemplates(
+    base: "views/templates/",
+    pattern: "*.jade",
+    out: "js/templates.js"
+  )]
