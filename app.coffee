@@ -6,3 +6,6 @@ module.exports =
 
   stylus:
     use: [axis(), autoprefixer()]
+
+  server:
+    "clean_urls": true
