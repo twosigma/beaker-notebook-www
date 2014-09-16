@@ -19,84 +19,18 @@ ul.getting-started-features
 )
 
 ul.block.platforms.getting-started
-  li
-    img(src="img/linux@2x.png")
+  li(class= OS == 'linux' ? 'active' : '', data-platform='linux')
+    img(src='img/linux@2x.png')
     .label Linux
-  li
-    img(src="img/mac@2x.png")
+  li(class= OS == 'osx' ? 'active' : '', data-platform='osx')
+    img(src='img/mac@2x.png')
     .label Mac OS
-  li
-    img(src="img/windows@2x.png")
+  li(class= OS == 'windows' ? 'active' : '', data-platform='windows')
+    img(src='img/windows@2x.png')
     .label Windows
 
-p.block
-  .graph-headline optional components
-  p.block-half
-    | The following are additional optional components you can install to get support for additional languages.
-
-ul.block.components
-  li
-    .left
-      .language.python
-        .lang-block Py
-    .left.language-details
-      b.language-headline Python Installation
-      p Install&nbsp;
-        a.ui-link(href="#") Anaconda
-    .cl
-  li
-    .left
-      .language.r
-        .lang-block R
-    .left.language-details
-      b.language-headline R Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") R
-      p 2. Install&nbsp;
-        a.ui-link(href="#") XQuartz
-      p 3. Install&nbsp;
-        a.ui-link(href="#") RCurl
-      p 4. Install&nbsp;
-        a.ui-link(href="#") RJSONIO
-      p 5. Install&nbsp;
-        a.ui-link(href="#") devtools
-      p.block-half after install, open an R cell in Beaker and run these commands:
-      pre.code.
-        install.packages('Rserve')
-        install.packages('ggplot2')
-    .cl
-  li
-    .left
-      .language.julia
-        .lang-block Jl
-    .left.language-details
-      b.language-headline Julia Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") Anaconda
-      p 2. Install Julia
-
-      p.block-half After installing both packages, open a Julia cell in Beaker and run this command:
-      pre.code.
-        Pkg.add(“IJulia”)
-    .cl
-  li
-    .left
-      .language.node
-        .lang-block N
-    .left.language-details
-      b.language-headline Node Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") Node.js
-    .cl
-  li
-    .left
-      .language.ruby
-        .lang-block Rb
-    .left.language-details
-      b.language-headline Ruby Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") IRuby
-    .cl
+.install-instructions
+  != templates[OS+"-install"]()
 
 p.block
   .graph-headline Current Version
