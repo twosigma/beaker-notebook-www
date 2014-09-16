@@ -19,14 +19,11 @@ ul.getting-started-features
 )
 
 ul.block.platforms.getting-started
-  li(class= OS == 'linux' ? 'active' : '', data-platform='linux')
-    img(src='img/linux@2x.png')
+  li.linux(class= OS == 'linux' ? 'active' : '', data-platform='linux')
     .label Linux
-  li(class= OS == 'osx' ? 'active' : '', data-platform='osx')
-    img(src='img/mac@2x.png')
+  li.mac(class= OS == 'osx' ? 'active' : '', data-platform='osx')
     .label Mac OS
-  li(class= OS == 'windows' ? 'active' : '', data-platform='windows')
-    img(src='img/windows@2x.png')
+  li.windows(class= OS == 'windows' ? 'active' : '', data-platform='windows')
     .label Windows
 
 .install-instructions

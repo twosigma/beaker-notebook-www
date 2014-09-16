@@ -3,7 +3,26 @@
   text-transform: uppercase
 
 .platforms.getting-started li
-  margin: 0 5%
+  margin:      0 5%
+  padding-top: 43px
+
+  &.linux
+    background: url('../img/linux@2x.png') no-repeat center top
+    background-size: 44px
+    &.active, &:hover
+      background-image: url('../img/linux-active@2x.png')
+
+  &.mac
+    background: url('../img/mac@2x.png') no-repeat center top
+    background-size: 35px
+    &.active, &:hover
+      background-image: url('../img/mac-active@2x.png')
+
+  &.windows
+    background: url('../img/windows@2x.png') no-repeat center top
+    background-size: 45px
+    &.active, &:hover
+      background-image: url('../img/windows-active@2x.png')
 
 .components
   .lang-block
