@@ -13,6 +13,10 @@
     font-family: $font-family-primary-bold
     position: relative
     padding: 21px 0
+    cursor: pointer
+
+    &:hover
+      background: darken($green, 5%)
 
     a, a:visited
       text-decoration: none
@@ -32,3 +36,6 @@
         border-top: 15px solid $green
         transform: translateX(-50%)
 
+      &:hover
+        &:before
+          border-top: 15px solid darken($green, 5%)

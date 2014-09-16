@@ -2,7 +2,7 @@
   BK.Header = Mn.ItemView.extend({
     template: false,
     events: {
-      "click li a": "navTo"
+      "click li": "navTo"
     },
 
     removeActive: function() {
@@ -16,11 +16,11 @@
       this.removeActive();
 
       Backbone.history.navigate(
-        $t.attr('href'),
+        $t.find('a').attr('href'),
         {trigger: true}
       )
 
-      $t.parent().addClass('active');
+      $t.addClass('active');
       return false;
     }
   })
