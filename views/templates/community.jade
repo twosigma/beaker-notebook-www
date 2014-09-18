@@ -17,12 +17,29 @@ mixin section(klass, headline, graph)
 p.block
   a(href="cla.zip") Download
 
-
 +section(
   "section-split",
   "Feature Requests",
   "If inspirations strikes, we are fielding ideas through our Feature Requests."
 )
+
+
++section(
+  "section-split",
+  "Stay in Touch",
+  ""
+)
+
+.block
+  p Sign up for our newsletter.
+
+  form#mc-embedded-subscribe-form.validate(action='//beakernotebook.us3.list-manage.com/subscribe/post?u=d05838b85c905bc618b25e5a9&id=6b3010163c', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='novalidate')
+    .mc-field-group
+      input#mce-EMAIL.required.email(type='email', value='', name='EMAIL', placeholder="enter your email address")
+    div(style='position: absolute; left: -5000px;')
+      input(type='text', name='b_d05838b85c905bc618b25e5a9_6b3010163c', tabindex='-1', value='')
+    .clear
+      input#mc-embedded-subscribe.btn.mid(type='submit', value='Subscribe', name='subscribe')
 
 +section(
   "section-split",
