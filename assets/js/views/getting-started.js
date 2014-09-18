@@ -11,6 +11,15 @@
       'install': '.install-instructions'
     },
 
+    regions: {
+      "releaseHistory": ".release-history"
+    },
+
+    onShow: function() {
+      this.getRegion("releaseHistory")
+      .show(new BK.Views.Releases());
+    },
+
     getTemplate: function() {
       return templates['getting-started'];
     },
