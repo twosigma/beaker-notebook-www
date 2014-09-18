@@ -7,7 +7,8 @@
       "getting-started(.html)": "getting-started",
       "community(.html)": "community",
       "about(.html)": "about",
-      "faq(.html)": "faq"
+      "faq(.html)": "faq",
+      "releases(.html)": "releases",
     },
 
     overview: function() {
@@ -38,6 +39,12 @@
     faq: function() {
       BK.regions.get("content")
       .show(new BK.Views.Faq())
+    },
+
+    releases: function() {
+      BK.regions.get("content")
+      .show(new BK.Views.Releases())
     }
+
   });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);
