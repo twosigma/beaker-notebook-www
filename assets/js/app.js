@@ -16,8 +16,12 @@
       root: 'beaker-notebook-www/'
     });
 
-    new BK.Header({
+    new BK.HeaderNav({
       el: $('.header-nav')[0]
+    }).bindUIElements()
+
+    new BK.Header({
+      el: $('.header')[0]
     }).bindUIElements()
   }
 
