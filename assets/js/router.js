@@ -2,11 +2,11 @@
   BK.Router = Backbone.Router.extend({
     routes: {
       "": "overview",
-      "index": "overview",
-      "features": "features",
-      "getting-started": "getting-started",
-      "community": "community",
-      "about": "about"
+      "index(.html)": "overview",
+      "features(.html)": "features",
+      "getting-started(.html)": "getting-started",
+      "community(.html)": "community",
+      "about(.html)": "about"
     },
 
     overview: function() {
