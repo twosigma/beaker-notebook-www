@@ -25,10 +25,10 @@ ul.block.components
     .left.language-details
       b.language-headline R Installation
       p 1. Install&nbsp;
-        a.ui-link(href="#") R
+        a.ui-link(href="http://cran.r-project.org/bin/macosx/") R
       p 2. Install&nbsp;
-        a.ui-link(href="#") XQuartz
-      p.block-half after install, open an R cell in Beaker and run these commands:
+        a.ui-link(href="http://xquartz.macosforge.org/landing/") XQuartz
+      p.block-half after install, open R and run these commands:
       pre.code.
         install.packages('Rserve')
         install.packages('ggplot2')
@@ -42,13 +42,15 @@ ul.block.components
         .lang-block Jl
     .left.language-details
       b.language-headline Julia Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") Anaconda
-      p 2. Install Julia
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p 2. Install&nbsp;
+        a.ui-link(href="http://julialang.org/downloads/") Julia
 
       p.block-half After installing both packages, open a Julia cell in Beaker and run this command:
       pre.code.
         Pkg.add(“IJulia”)
+        Pkg.add(“Gadfly”)
     .cl
   li
     .left
@@ -57,7 +59,7 @@ ul.block.components
     .left.language-details
       b.language-headline Node Installation
       p 1. Install&nbsp;
-        a.ui-link(href="#") Node.js
+        a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js
     .cl
   li
     .left
@@ -65,6 +67,11 @@ ul.block.components
         .lang-block Rb
     .left.language-details
       b.language-headline Ruby Installation
-      p 1. Install&nbsp;
-        a.ui-link(href="#") IRuby
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p 2. Install IRuby by running the following in a terminal:
+      pre.code.
+        sudo gem install iruby
+        conda install pyzmq
+        brew install zeromq
     .cl
