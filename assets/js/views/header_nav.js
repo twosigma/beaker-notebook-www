@@ -23,6 +23,11 @@
       .addClass('active');
     },
 
+    onShow: function() {
+      this.$el.headroom({
+        offset : 527
+      });
+    },
 
     navTo: function(e) {
       e.preventDefault();

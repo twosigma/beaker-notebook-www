@@ -18,7 +18,7 @@
 
     new BK.HeaderNav({
       el: $('.header-nav')[0]
-    }).bindUIElements()
+    }).triggerMethod('show')
 
     new BK.Header({
       el: $('.header')[0]
