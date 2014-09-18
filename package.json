@@ -1,10 +1,10 @@
 {
   "devDependencies": {
-    "ship": "samccone/ship",
     "roots": "^3.0.0-rc.9"
   },
   "scripts": {
-    "deploy": "roots compile && ship public/ --to gh-pages",
+    "deploy": "./ship.sh",
+    "compile": "roots compile",
     "watch": "roots watch"
   },
   "dependencies": {
