@@ -1,14 +1,16 @@
 Beaker website
 ===============
 
-### Deploying
+### Setup
+
+    bower i
 
     npm i
+
+### Deploying
 
     npm run deploy
 
 ### Deving
-
-    npm i
 
     npm run watch
