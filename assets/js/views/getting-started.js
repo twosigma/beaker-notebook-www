@@ -26,17 +26,11 @@
 
     getOS: function() {
       var param   = Backbone.history.location.search || "";
-      var browser = navigator.appVersion;
 
       if (param = param.match(/osx|windows|linux/))
         return param[0];
 
-      if (~browser.indexOf("Win"))
-        return "windows";
-      if (~browser.indexOf("Mac"))
-        return "osx";
-      if (~browser.indexOf("X11") || ~browser.indexOf("Linux"))
-        return "linux";
+      return BK.getPlatform();
     },
 
     switchOSTab: function(e) {
