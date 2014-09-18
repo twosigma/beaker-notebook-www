@@ -6,7 +6,8 @@
       "features(.html)": "features",
       "getting-started(.html)": "getting-started",
       "community(.html)": "community",
-      "about(.html)": "about"
+      "about(.html)": "about",
+      "faq(.html)": "faq"
     },
 
     overview: function() {
@@ -32,6 +33,11 @@
     about: function() {
       BK.regions.get("content")
       .show(new BK.Views.About())
+    },
+
+    faq: function() {
+      BK.regions.get("content")
+      .show(new BK.Views.Faq())
     }
   });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);

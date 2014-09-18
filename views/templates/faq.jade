@@ -1,0 +1,74 @@
+.faq.markdown
+  :markdown
+    ## General
+
+    **Can I customize my default notebook?**
+
+    Yes, create a notebook you like and save it to
+                  ~/.beaker/v1/config/default.bkr. This will be loaded
+                  whenever you click 'new notebook.'
+
+    **What other customization or init files are there?**
+
+    ~/.beaker/v1/config/beaker.pref.json is read at
+                  startup and can modify the UI in many ways.  See
+                  [its
+                  documentation](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
+
+    **Why are you asking for my email address?**
+
+    The primary purpose of the beta is to get user
+                  feedback on what needs to be improved before our full
+                  launch. We may ask you to complete a short
+                  questionnaire about your experience. We may also
+                  notify you when we make a major new release, or in
+                  case of an important security update.
+
+    You can unsubscribe from our email list at any time and continue using Beaker.
+
+    **How does Beaker relate to the IPython Notebook?**
+
+    If you only work in Python, you can consider Beaker
+                  an alternative UI to IPython. Our Python plugin runs
+                  an IPython kernel on the backend, so all of your code
+                  should work the way you expect it to. We have some UI
+                  features that we find compelling, so check it out!
+
+    If you work with multiple languages, or one
+                  language that isn't Python, we think you'll find
+                  Beaker much more pleasant. Beaker's core was built to
+                  be language agnostic, so all languages are treated
+                  equally within Beaker.
+
+    Since several of our plugins (Python, Julia, Ruby)
+                  are based on IPython kernels, we've been able to spend
+                  our time working on Beaker's UI and our other
+                  plugins. Many thanks to IPython for their great kernel
+                  architecture!
+
+    ## Installing and launching Beaker
+
+    **Can I change the heap size for Groovy?**
+
+    Yes. To customize the heap size, launch Beaker like this:
+
+    `beaker.command  --plugin-option Groovy:-Xmx8g`
+
+    **Can I make the server accessible across the net?**
+
+    Yes.  Start it like this:
+
+    `beaker.command --public-server`
+
+    The server will generate a password for you, and
+                  print it on the console.  Connect to the printed URL
+                  (note that it will be HTTPS, meaning encryption is
+                  used to prevent snooping) and enter the password.
+
+    **How do I give command-line options on the Mac?**
+
+    Using the terminal, the contents of the app are
+                  visible.  Assuming you have it installed in the normal
+                  location you can run it like this:
+
+    `/Applications/Beaker.app/Contents/Resources/dist/beaker.command --help`
