@@ -2,11 +2,18 @@
   BK.Header = Mn.ItemView.extend({
     template: false,
     events: {
-      "click .cta .btn": "getBeaker"
+      "click a": "navTo"
     },
 
-    getBeaker: function() {
-      Backbone.history.navigate("getting-started", {trigger: true})
+    navTo: function(e) {
+      e.preventDefault();
+
+      Backbone.history.navigate(
+        $(e.currentTarget).attr('href'),
+        {trigger: true}
+      );
+
+      return false;
     }
   })
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);

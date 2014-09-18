@@ -25,11 +25,17 @@
     },
 
     getOS: function() {
-      if (~navigator.appVersion.indexOf("Win"))
+      var param   = Backbone.history.location.search || "";
+      var browser = navigator.appVersion;
+
+      if (param = param.match(/osx|windows|linux/))
+        return param[0];
+
+      if (~browser.indexOf("Win"))
         return "windows";
-      if (~navigator.appVersion.indexOf("Mac"))
+      if (~browser.indexOf("Mac"))
         return "osx";
-      if (~navigator.appVersion.indexOf("X11") || ~navigator.appVersion.indexOf("Linux"))
+      if (~browser.indexOf("X11") || ~browser.indexOf("Linux"))
         return "linux";
     },
 
