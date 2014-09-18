@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "ship": "^0.1.1",
+    "ship": "samccone/ship",
     "roots": "^3.0.0-rc.9"
   },
   "scripts": {
