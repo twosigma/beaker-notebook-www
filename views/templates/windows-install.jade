@@ -3,3 +3,70 @@ p.block
   p.block-half Base install is always required and comes with support for JavaScript, HTML, Markdown, Groovy and LaTex.
   a.btn.base-install(href="http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-windows.zip", target="_blank") Download Base Installation
 
+p.block
+  .graph-headline optional components
+  p.block-half
+    | The following are additional optional components you can install to get support for additional languages.
+
+ul.block.components
+  li
+    .left
+      .language.python
+        .lang-block Py
+    .left.language-details
+      b.language-headline Python Installation
+      p Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+    .cl
+  li
+    .left
+      .language.r
+        .lang-block R
+    .left.language-details
+      b.language-headline R Installation
+      p 1. Install&nbsp;
+        a.ui-link(href="http://cran.r-project.org/bin/windows/base") R
+      p 2. 
+        a.ui-link(href="http://www.computerhope.com/issues/ch000549.htm") Add the install directory to your PATH
+      p.block-half Then open R and run these commands:
+      pre.code.
+        install.packages('Rserve')
+        install.packages('ggplot2')
+        install.packages('devtools')
+        install.packages('RCurl')
+        install.packages('RJSONIO')
+    .cl
+  li
+    .left
+      .language.julia
+        .lang-block Jl
+    .left.language-details
+      b.language-headline Julia Installation
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p 2. Install&nbsp;
+        a.ui-link(href="http://julialang.org/downloads/") Julia
+
+      p.block-half Then open Julia and run these commands:
+      pre.code.
+        Pkg.add(“IJulia”)
+        Pkg.add(“Gadfly”)
+    .cl
+  li
+    .left
+      .language.node
+        .lang-block N
+    .left.language-details
+      b.language-headline Node Installation
+      p 1. Install&nbsp;
+        a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js
+    .cl
+  li
+    .left
+      .language.ruby
+        .lang-block Rb
+    .left.language-details
+      b.language-headline Ruby Installation
+      p 1. 
+        a.ui-link(href="https://github.com/domitry/nyaplot/") Follow the instructions found here
+    .cl
