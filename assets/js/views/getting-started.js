@@ -8,17 +8,20 @@
 
     ui: {
       'platforms': '.block.platforms li',
-      'install': '.install-instructions',
       'download': '#getting-started'
     },
 
     regions: {
-      "releaseHistory": ".release-history"
+      'releaseHistory': '.release-history',
+      'install': '.install-instructions'
     },
 
     onShow: function() {
       this.getRegion("releaseHistory")
       .show(new BK.Views.Releases());
+
+      this.getRegion('install')
+      .show(new BK.Views[this.getOS()+'-install']);
 
       this.scrollToDownload();
     },
@@ -50,10 +53,10 @@
 
     switchOSTab: function(e) {
       var $t       = $(e.currentTarget);
-      var template = templates[$t.data('platform')+"-install"];
-
       this.ui.platforms.removeClass('active');
-      this.ui.install.html(template())
+
+      this.getRegion('install')
+      .show(new BK.Views[$t.data('platform')+'-install']);
 
       $t.addClass('active');
     },

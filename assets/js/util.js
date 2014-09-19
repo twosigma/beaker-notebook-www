@@ -1,6 +1,6 @@
 ;(function(BK, Backbone, Mn) {
-  BK.getDownloadLink = function() {
-    switch (BK.getPlatform()) {
+  BK.getDownloadLink = function(platform) {
+    switch (platform || BK.getPlatform()) {
       case 'windows':
         return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-windows.zip";
       break
