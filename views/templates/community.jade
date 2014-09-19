@@ -4,28 +4,34 @@ mixin section(klass, headline, graph)
 
 +section(
   "",
-  "Help and Discussion",
-  "Not sure about how a specific feature works? Or have an idea for a new one? We’d really like to hear from you. Check out our Help and Tutorial pages or our FAQ, as you might be able to find your answer there. If you have a great idea for a new feature, some questions or just a comment, drop us a line on social media, or at beaker-dev@twosigma.com."
+  "Help, Discussion, and Feedback",
+  ""
 )
+
+p.block.
+  Not sure about how a specific feature works? Or have an idea for a new one? Got a complaint or comment? We’d like to hear from you.  Engage with us and other users via your favorite social media: <a href='https://twitter.com/beakernotebook'>Twitter</a>,
+  <a href='https://github.com/twosigma/beaker-notebook'>Github</a>, 
+  <a href='https://www.facebook.com/beakernotebook'>Facebook</a>, 
+  <a href='https://plus.google.com/b/103696694815824084077/103696694815824084077/'>Google+</a>
+  or just email 
+  <a href='mailto:beaker-feedback@twosigma.com'>beaker-feedback@twosigma.com</a>.
 
 +section(
   "",
   "Contributing",
-  "Beaker is an Open Source product under the Apache 2.0 license. As such, we welcome developers to extend this platform in ways that can benefit the data science community. If you want to directly help us develop BeakerNotebook (we’d love it if you did), just download the Contributor License Agreement and head on over to Github.",
   ""
 )
 
-p.block
-  a(href="cla.zip") Download
+p.block.
+
+  Beaker is an Open Source tool available under the Apache 2.0
+  license. As such, we welcome developers to extend and improve it in
+  ways that can benefit everyone. In order for us to accept your code
+  or pull request, we need a signed <a href="cla.zip">Contributor
+  License Agreement</a>.
 
 p.block.
   We’re also looking to expand our team, so if you’re a rock solid full stack web developer or a razor sharp front end dev and you’re interested in working on Beaker full time, check out the job descriptions < link > and let us know.
-
-+section(
-  "section-split",
-  "Feature Requests",
-  "If inspirations strikes, we are fielding ideas through our Feature Requests."
-)
 
 +section(
   "section-split",
@@ -34,7 +40,7 @@ p.block.
 )
 
 .block
-  p Sign up for our newsletter.
+  p Sign up to be informed of future releases:
 
   form#mc-embedded-subscribe-form.validate(action='//beakernotebook.us3.list-manage.com/subscribe/post?u=d05838b85c905bc618b25e5a9&id=6b3010163c', method='post', name='mc-embedded-subscribe-form', target='_blank', novalidate='novalidate')
     .mc-field-group
@@ -44,5 +50,12 @@ p.block.
     .clear
       input#mc-embedded-subscribe.btn.mid(type='submit', value='Subscribe', name='subscribe')
 
++section(
+  "section-split",
+  "The Shoulders of Giants",
+  ""
+)
 p.block.
-  Beaker in turn utilizes many fantastic open source projects, such as Ipython, Rserve, IJulia, Angular, Bootstrap and others for which we are very thankful.
+  Beaker is built with and utilizes many fantastic open source
+  projects including IPython, Rserve, Angular, Bootstrap,
+  Gradle, Jetty, Guice, Jackson, and others for which we are very grateful.
