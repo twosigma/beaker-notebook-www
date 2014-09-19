@@ -2,7 +2,12 @@ mixin section(klass, headline, graph)
   h2.block(class=klass || '')= headline
   p.block= graph
 
++section(
+  "section-split",
+  "Example Notebooks",
+  ""
+)
 
 p.block.
-  Example notebooks. Lots of them....  :)
+  The following links are to static copies of notebooks on our sharing server.  On each page, you can view the contents of the notebook and interact with it, but you can't change the contents of the cells or run any code.  You can also download the notebook, load it into Beaker, and then get full access.
 
