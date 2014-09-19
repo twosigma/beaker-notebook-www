@@ -1,5 +1,7 @@
 ;(function(BK, Backbone, Mn) {
-  BK.HeaderNav = Mn.ItemView.extend({
+  BK.Views = BK.Views || {};
+
+  BK.Views.HeaderNav = Mn.ItemView.extend({
     template: false,
     events: {
       "click li": "navTo"

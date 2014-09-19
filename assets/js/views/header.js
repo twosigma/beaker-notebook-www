@@ -1,5 +1,7 @@
 ;(function(BK, Backbone, Mn) {
-  BK.Header = Mn.ItemView.extend({
+  BK.Views = BK.Views || {};
+
+  BK.Views.Header = Mn.ItemView.extend({
     template: false,
     events: {
       "click a": "navTo",

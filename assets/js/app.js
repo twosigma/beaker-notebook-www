@@ -16,13 +16,13 @@
       root: 'beaker-notebook-www/'
     });
 
-    new BK.HeaderNav({
+    new BK.Views.HeaderNav({
       el: $('.header-nav')[0]
-    }).triggerMethod('show')
+    }).triggerMethod('show');
 
-    new BK.Header({
+    new BK.Views.Header({
       el: $('.header')[0]
-    }).bindUIElements()
+    }).bindUIElements();
   }
 
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);
