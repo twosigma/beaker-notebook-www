@@ -6,7 +6,7 @@
       "features(.html)": "features",
       "getting-started(.html)": "getting-started",
       "community(.html)": "community",
-      "about(.html)": "about",
+      "examples(.html)": "examples",
       "faq(.html)": "faq",
       "releases(.html)": "releases",
     },
