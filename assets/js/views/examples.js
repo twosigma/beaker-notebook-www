@@ -1,9 +1,9 @@
 ;(function(BK, Backbone, Mn) {
   BK.Views = BK.Views || {};
 
-  BK.Views.About = Mn.LayoutView.extend({
+  BK.Views.Examples = Mn.LayoutView.extend({
     getTemplate: function() {
-      return templates.about;
+      return templates.examples;
     }
   });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);

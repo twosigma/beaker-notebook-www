@@ -31,9 +31,9 @@
       .show(new BK.Views.Community())
     },
 
-    about: function() {
+    examples: function() {
       BK.regions.get("content")
-      .show(new BK.Views.About())
+      .show(new BK.Views.Examples())
     },
 
     faq: function() {
