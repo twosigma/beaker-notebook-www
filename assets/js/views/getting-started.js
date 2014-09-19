@@ -8,7 +8,8 @@
 
     ui: {
       'platforms': '.block.platforms li',
-      'install': '.install-instructions'
+      'install': '.install-instructions',
+      'download': '#getting-started'
     },
 
     regions: {
@@ -18,6 +19,20 @@
     onShow: function() {
       this.getRegion("releaseHistory")
       .show(new BK.Views.Releases());
+
+      this.scrollToDownload();
+    },
+
+    scrollToDownload: function() {
+      var param   = Backbone.history.location.search || "";
+
+      if(param.match(/scroll/)) {
+        window.scrollTo(0,
+          this.ui.download[0].getBoundingClientRect().top -
+          $('.header-nav').height() -
+          50
+        );
+      }
     },
 
     getTemplate: function() {
