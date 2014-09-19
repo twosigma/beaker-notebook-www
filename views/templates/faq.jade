@@ -5,46 +5,48 @@
     **Can I customize my default notebook?**
 
     Yes, create a notebook you like and save it to
-                  ~/.beaker/v1/config/default.bkr. This will be loaded
-                  whenever you click 'new notebook.'
+    ~/.beaker/v1/config/default.bkr. This will be loaded whenever you
+    click 'new notebook.'
 
     **What other customization or init files are there?**
 
-    ~/.beaker/v1/config/beaker.pref.json is read at
-                  startup and can modify the UI in many ways.  See
-                  [its
-                  documentation](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
+    ~/.beaker/v1/config/beaker.pref.json is read at startup and can
+    modify the UI in many ways.  See [its
+    documentation](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
 
     **Why are you asking for my email address?**
 
-    The primary purpose of the beta is to get user
-                  feedback on what needs to be improved before our full
-                  launch. We may ask you to complete a short
-                  questionnaire about your experience. We may also
-                  notify you when we make a major new release, or in
-                  case of an important security update.
+    So that we can notify you of future relases, including in case of
+    an important security update.
 
-    You can unsubscribe from our email list at any time and continue using Beaker.
+    You can unsubscribe from our email list at any time and continue
+    using Beaker.
 
     **How does Beaker relate to the IPython Notebook?**
 
-    If you only work in Python, you can consider Beaker
-                  an alternative UI to IPython. Our Python plugin runs
-                  an IPython kernel on the backend, so all of your code
-                  should work the way you expect it to. We have some UI
-                  features that we find compelling, so check it out!
+    Beaker uses an IPython kernel for the backend of its Python
+    plugin.  Many thanks to the IPython team for their great kernel
+    architecture, and for working in the open.  IPython is one of the
+    giants on whose shoulders Beaker stands.
 
-    If you work with multiple languages, or one
-                  language that isn't Python, we think you'll find
-                  Beaker much more pleasant. Beaker's core was built to
-                  be language agnostic, so all languages are treated
-                  equally within Beaker.
+    Because the backend is shared, and Beaker can open IPython
+    notebooks and convert them to its own notebook format, you will
+    find Beaker is mostly compatible with IPython (widgets are not
+    supported).
 
-    Since several of our plugins (Python, Julia, Ruby)
-                  are based on IPython kernels, we've been able to spend
-                  our time working on Beaker's UI and our other
-                  plugins. Many thanks to IPython for their great kernel
-                  architecture!
+    **How do I run Ruby?**
+
+    Our Ruby plugin has a bug that makes it insecure in a multi-user
+    environment.  That means if someone else can log into the machine
+    where you are running Beaker and you run Ruby, then they could
+    connect to your Ruby backend and execute code as you.  On a
+    typical single-user laptop or desktop this isn't a problem, and
+    the plugin is perfectly safe.
+
+    If you choose to, you can still add Ruby to your notebook.  In the
+    plugin manager, click "From URL..." and enter
+    "./plugins/eval/ipythonPlugins/iruby/iruby.js" then click "Add
+    Plugin from URL".
 
     ## Installing and launching Beaker
 
