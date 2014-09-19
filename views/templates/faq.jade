@@ -6,8 +6,20 @@
 
     Yes, create a notebook you like and save it to
     ~/.beaker/v1/config/default.bkr. This will be loaded when you
-    click the 'New default notebook' button, or use the
+    click the 'New Default Notebook' button, or use the
     Control-Shift-N keyboard equivalent.
+
+    The default notebook that comes with Beaker has Python and R and
+    some tips for beginners.  It would be normal for advanced users to
+    customize the included languages (for example, adding a standard
+    JAR to their Groovy classpath), remove the tips, and add a
+    signature cell with their contact information.
+
+    **How do I remove a language from a notebook?**
+
+    In the plugin manager, click the button for the language you want
+    to remove.  The buttons are actually toggles.  Make sure you first
+    have removed all cells from the notebook that use that language.
 
     **What other customization or init files are there?**
 
@@ -21,19 +33,19 @@
     an important security update.
 
     You can unsubscribe from our email list at any time and continue
-    using Beaker.
+    using Beaker.  We use MailChimp to manage the list so you can
+    trust the controls will work.
 
     **How does Beaker relate to the IPython Notebook?**
 
     Beaker uses an IPython kernel for the backend of its Python
-    plugin.  Many thanks to the IPython team for their great kernel
+    plugin.  Many thanks to the IPython team for their great
     architecture, and for working in the open.  IPython is one of the
     giants on whose shoulders Beaker stands.
 
     Because the backend is shared, and Beaker can open IPython
-    notebooks and convert them to its own notebook format, you will
-    find Beaker is mostly compatible with IPython (widgets are not
-    supported).
+    notebooks and convert them to its own format, you will find Beaker
+    is mostly compatible with IPython (widgets are not supported).
 
     **How do I run Ruby?**
 
