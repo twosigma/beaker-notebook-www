@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "roots": "^3.0.0-rc.9"
+    "roots": "jenius/roots#be579023ed670d0afd9c25b771ce2b6a3d12ee3f"
   },
   "scripts": {
     "deploy": "./ship.sh",
