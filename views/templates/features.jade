@@ -5,8 +5,18 @@ mixin section(klass, headline, graph)
 +section(
   "",
   "Multi-Language Support",
-  "Great languages breed great ideas. This is why Beaker is architected to support multiple languages that can be plugged into its platform. Currently supported languages include Python, R, Julia, Groovy, JavaScript, Node, Ruby, Scala, HTML, Markdown, and Latex. We encourage and welcome the addition of new language plugins. If you’re interested, please see our <a href="https://github.com/twosigma/beaker-notebook/wiki/Eval-plugin-spec" target="_blank">Evaluator Plugin</a> documentation."
+  ""
 )
+
+p.block.
+  Great languages breed great ideas. This is why Beaker is architected
+  to support multiple languages that can be plugged into its
+  platform. Currently supported languages include Python, R, Julia,
+  Groovy, JavaScript, Node, Ruby, HTML, Markdown, and LaTeX. We
+  encourage and welcome the addition of new language plugins. If
+  you’re interested, please see our <a
+  href="https://github.com/twosigma/beaker-notebook/wiki/Eval-plugin-spec"
+  target="_blank">Evaluator Plugin</a> documentation.
 
 != templates.language_blocks()
 
@@ -29,8 +39,25 @@ img.translation-image(src="img/translation@2x.png")
 +section(
   "section-split",
   "Rich Visualizations",
-  "In addition to those extensive charting libraries native to supported languages, Beaker offers a rich charting API for Groovy, which can also be leveraged by other languages through a simple JSON interface. Not only does it produce beautiful, interactive charts but it also handles large datasets that would normally bring your browser to a halt. This level-of-detail feature dynamically resamples the data based on the zoom level and window size, to keep the frame rate high. Further support for D3 permits the visualization-savvy developer (perhaps not unlike yourself) to view data in unlimited ways. For those of you interested in writing your own visualization frameworks, Beaker comes with an Output Display API that allows developers to write unique charting APIs or incorporate other, existing third party visualization libraries. Options abound. For more information on writing your own Output Display, check out our <a href="https://github.com/twosigma/beaker-notebook/wiki/Create-an-OutputDisplay" target="_blank">Output Display Plugin</a> documentation."
+  ""
 )
+
+p.block.
+  In addition to those extensive charting libraries native to
+  supported languages, Beaker offers a rich charting API for Groovy,
+  which can also be leveraged by other languages through a simple JSON
+  interface. Not only does it produce beautiful, interactive charts
+  but it also handles large datasets that would normally bring your
+  browser to a halt. This level-of-detail feature dynamically
+  resamples the data based on the zoom level and window size, to keep
+  the frame rate high. Further support for D3 permits the
+  visualization-savvy developer (perhaps not unlike yourself) to view
+  data in unlimited ways. For those of you interested in writing your
+  own visualization frameworks, Beaker comes with an Output Display
+  API that allows developers to write unique charting APIs or
+  incorporate other, existing third party visualization
+  libraries. Options abound. For more information on writing your own
+  Output Display, check out our <a href="https://github.com/twosigma/beaker-notebook/wiki/Create-an-OutputDisplay" target="_blank">Output Display Plugin</a> documentation.
 
 img.rich-viz-image(src="img/rich_viz@2x.png")
 
