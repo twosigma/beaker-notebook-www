@@ -24,8 +24,8 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/c2849dc2cb9d4a20171b')
           h4.graph-headline NYC Recycling Data
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          This notebook explores NYC recycling using basic statistics and a recycling dataset made publicly available by the city of New York. The language of choice here is Ipython, with pandas.
+
         ul.languages
           li.python.language
             .lang-block Py
@@ -37,8 +37,8 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/f4fd503dc5e3f64986b0')
           h4.graph-headline Main Tutorial
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          This tutorial covers the basics of interacting with code cells and notebooks.  There are also more tutorials on a variety of languages and topics, linked to from within this tutorial. This tutorial and others are also included as part of the Beaker base install.
+
         ul.languages
           li.html5.language
             .lang-block Ht
@@ -50,11 +50,11 @@ p.block
       .col-1-3
         img(src='img/ipython-demo-tut.png')
       .col-2-3
-        a(href='http://sharing.beakernotebook.com/gist/anonymous/f4fd503dc5e3f64986b0')
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/47a0e193c3d01895f873')
           h4.graph-headline Python Demo
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          IPython is the Python language with extensions for interactivity.  It can be installed along with Beaker by following the instructions on the Getting Started page of this website. This example notebook provides a brief tour of some the great thigns you can do with Ipython. 
+
 
         ul.languages
           li.python.language
@@ -68,8 +68,8 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/a119ba0126f280b2d041')
           h4.graph-headline R Demo
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          The R Project for Statistical Computing publishes GNU R. It can be installed along with Beaker by following the instructions on the Getting Started page of this website. This example notebook provides a brief tour of some the great thigns you can do with R. 
+
 
         ul.languages
           li.r.language
@@ -83,8 +83,7 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/5fcd0e4ec4e514429bb7')
           h4.graph-headline Autotranslation
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          Beaker can autotranslate variables in one language to another.  You can access this feature with the notebook namespace: a collection of variables and their values stored in the notebook.  You can use this to produce data in one language, and consume or process it in another.
 
         ul.languages
           li.r.language
@@ -104,8 +103,9 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/3fcbb2e8c0d67079d313')
           h4.graph-headline Interactive Charts
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing  .col.example
+          Beaker comes with its own charting library for creating interactive plots.  It is implemented in JavaScript and takes the specification for the plot to make and the data to plot in JSON.  You can access it from any language, but it's easiest with Groovy, and this tutorial will show you how.  See the Levels of Detail tutorial for how to handle charts with many points.
+
+
 
         ul.languages
           li.groovy.language
@@ -119,8 +119,7 @@ p.block
         a(href='http://sharing.beakernotebook.com/gist/anonymous/4855d54bba77ff51e5cc')
           h4.graph-headline Charts with Level of Detail
         p.
-          The following links are to static copies of notebooks on our sharing
-          The following links are to static copies of notebooks on our sharing
+          Although the interactivity and high resolution you get from Beaker's charting library are great, creating DOM elements for every single data point is memory and CPU intensive.  If implemented naively, your web browser would become sluggish or freeze if you tried to chart too much data.  Fortunately, Beaker recognizes this situation and has a solution: Levels of Detail.  If there are more than 1500 points, then instead of drawing them all, Beaker combines points into groups, and represents each group with its average, a box, or a river (min, max, and average).  But then, as you zoom into the data, it is resampled as appropriate for the current view, so the closer you look, the more there is to see, but you can still pull out and get the big picture while keeping the frame rate high.
 
         ul.languages
           li.groovy.language
