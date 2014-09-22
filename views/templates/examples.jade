@@ -8,47 +8,122 @@ mixin section(klass, headline, graph)
   ""
 )
 
-p.block.
-  The following links are to static copies of notebooks on our sharing
-  server.  On each page, you can view the contents of the notebook and
-  interact with it, but you can't change the contents of the cells or
-  run any code.  If you would like to change the content, you can
-  download the notebook from the sharing server and open it in Beaker.
+p.block
+  | The following links are to static copies of notebooks on our sharing
+  | server.  On each page, you can view the contents of the notebook and
+  | interact with it, but you can't change the contents of the col-1-2s or
+  | run any code.  If you would like to change the content, you can
+  | download the notebook from the sharing server and open it in Beaker.
 
-p.block.
-  <table>
-    <tr>
-      <td><a href="http://sharing.beakernotebook.com/gist/anonymous/c2849dc2cb9d4a20171b">
-        NYC Recycling Data<br>
-        <img src="img/nyc-recycling.png">
-      </a></td>
-      <td><a href="http://sharing.beakernotebook.com/gist/anonymous/f4fd503dc5e3f64986b0">
-        Main Tutorial<br>
-        <img src="img/tutorial.png">
-      </a></td>
-      <td><a href=http://sharing.beakernotebook.com/gist/anonymous/47a0e193c3d01895f873>
-        Python Demo<br>
-        <img src="img/ipython-demo-tut.png">
-      </a></td>
-    </tr>
-    <tr>
-      <td><a href=http://sharing.beakernotebook.com/gist/anonymous/a119ba0126f280b2d041>
-        R Demo</a><br>
-        <img src="img/r-demo-tut.png">
-      </a></td>
-      <td><a href=http://sharing.beakernotebook.com/gist/anonymous/5fcd0e4ec4e514429bb7>
-        Autotranslation<br>
-        <img src="img/autotranslation-tut.png">
-      </a></td>
-      <td><a href=http://sharing.beakernotebook.com/gist/anonymous/3fcbb2e8c0d67079d313>
-        Interactive Charts<br>
-        <img src="img/charting-tut.png">
-      </a></td>
-    </tr>
-    <tr>
-      <td><a href=http://sharing.beakernotebook.com/gist/anonymous/4855d54bba77ff51e5cc>
-        Charts with Level of Detail<br>
-        <img src="img/charting-lod-tut.png">
-      </a></td>
-    </tr>
-  </table>
+.examples.padded
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/nyc-recycling.jpg')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/c2849dc2cb9d4a20171b')
+          h4.graph-headline NYC Recycling Data
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+        ul.languages
+          li.python.language
+            .lang-block Py
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/tutorial.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/f4fd503dc5e3f64986b0')
+          h4.graph-headline Main Tutorial
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+        ul.languages
+          li.html5.language
+            .lang-block Ht
+          li.python.language
+            .lang-block Py
+
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/ipython-demo-tut.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/f4fd503dc5e3f64986b0')
+          h4.graph-headline Python Demo
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+
+        ul.languages
+          li.python.language
+            .lang-block Py
+
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/r-demo-tut.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/a119ba0126f280b2d041')
+          h4.graph-headline R Demo
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+
+        ul.languages
+          li.r.language
+            .lang-block R
+
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/autotranslation-tut.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/5fcd0e4ec4e514429bb7')
+          h4.graph-headline Autotranslation
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+
+        ul.languages
+          li.r.language
+            .lang-block R
+          li.javascript.language
+            .lang-block Js
+          li.groovy.language
+            .lang-block Gr
+          li.python.language
+            .lang-block Py
+
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/charting-tut.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/3fcbb2e8c0d67079d313')
+          h4.graph-headline Interactive Charts
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing  .col.example
+
+        ul.languages
+          li.groovy.language
+            .lang-block Gr
+
+  .col.example
+    .contents
+      .col-1-3
+        img(src='img/charting-lod-tut.png')
+      .col-2-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/4855d54bba77ff51e5cc')
+          h4.graph-headline Charts with Level of Detail
+        p.
+          The following links are to static copies of notebooks on our sharing
+          The following links are to static copies of notebooks on our sharing
+
+        ul.languages
+          li.groovy.language
+            .lang-block Gr
+
+  .cl
