@@ -39,7 +39,9 @@
       Backbone.history.navigate(
         $t.find('a').attr('href'),
         {trigger: true}
-      )
+      );
+
+      window.scrollTo(0, 526);
 
       return false;
     }
