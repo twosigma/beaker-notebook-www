@@ -27,6 +27,16 @@
     modify the UI in many ways.  See its
     [documentation](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
 
+    **If something crashes or I get disconnected, can I recover my work?**
+
+    Yes, Beaker saves your notebooks as you edit them automatically
+    every 60 seconds.  Look in ~/.beaker/v1/var/sessionBackups to find
+    your work.
+
+    Also, if the client becomes disconnected from the server, it tries
+    for 5 seconds to reconnect, but if it cannot, Beaker gives you a
+    chance to save a copy of your notebook locally.
+
     **Why are you asking for my email address?**
 
     So that we can notify you of future releases, including in case of
