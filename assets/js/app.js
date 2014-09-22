@@ -13,7 +13,7 @@
 
     Backbone.history.start({
       pushState: true,
-      root: 'beaker-notebook-www/'
+      //root: 'beaker-notebook-www/'
     });
 
     new BK.Views.HeaderNav({
