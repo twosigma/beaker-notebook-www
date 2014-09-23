@@ -12,8 +12,7 @@
     });
 
     Backbone.history.start({
-      pushState: true,
-      root: 'beaker-notebook-www/'
+      pushState: true
     });
 
     new BK.Views.HeaderNav({
