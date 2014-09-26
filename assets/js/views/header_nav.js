@@ -41,8 +41,6 @@
         {trigger: true}
       );
 
-      window.scrollTo(0, 526);
-
       return false;
     }
   })
