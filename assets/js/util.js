@@ -8,7 +8,7 @@
         return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-mac.dmg";
       break
       default:
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-ubuntu.zip";
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-1-g5644b78-ubuntu.zip";
     }
   }
 
