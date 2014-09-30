@@ -12,9 +12,6 @@ html
     link(href='http://fonts.googleapis.com/css?family=Open+Sans:300', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='css/main.css')
     link(rel='shortcut icon', href='img/favicon.png')
-
-    meta(property="og:url", content="http://beakernotebook.com")
-    meta(property="og:title", content="Beaker Notebook")
     meta(property="og:image", content="http://beakernotebook.com/img/social_image.png")
     meta(property="og:description", content="Beaker is a notebook-style development environment for working interactively with large and complex datasets. Its plugin-based architecture allows you to switch between languages or add new ones with ease, ensuring that you always have the right tool for any of your analysis and visualization needs.")
     meta(name="twitter:card", content="summary")
@@ -24,6 +21,7 @@ html
     include ./partials/_links
     include ./partials/_block
     include ./partials/_google
+    block header-meta
   body
     include ./partials/_header
     .header-nav
