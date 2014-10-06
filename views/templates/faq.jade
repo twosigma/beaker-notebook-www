@@ -56,20 +56,6 @@
     notebooks and convert them to its own format, you will find Beaker
     is mostly compatible with IPython (widgets are not supported).
 
-    **How do I run Ruby?**
-
-    Our Ruby plugin has a bug that makes it insecure in a multi-user
-    environment.  That means if someone else can log into the machine
-    where you are running Beaker and you run Ruby, then they could
-    connect to your Ruby backend and execute code as you.  On a
-    typical single-user laptop or desktop this isn't a problem, and
-    the plugin is perfectly safe.
-
-    If you choose to, you can still add Ruby to your notebook.  In the
-    plugin manager, click "From URL..." and enter
-    "./plugins/eval/ipythonPlugins/iruby/iruby.js" then click "Add
-    Plugin from URL".
-
     ## Installing and launching Beaker
 
     **Can I change the heap size for Groovy?**
@@ -94,9 +80,9 @@
 
     **How do I give command-line options on the Mac?**
 
-    Using the terminal, the contents of the app are
-                  visible.  Assuming you have it installed in the normal
-                  location you can run it like this:
+    Using the terminal, the contents of the app are visible.  Assuming
+    you have it installed in the normal location you can run it like
+    this:
 
     `/Applications/Beaker.app/Contents/Resources/dist/beaker.command --help`
 
@@ -104,3 +90,34 @@
  
     Run the Console application to see the debug output from the
     Beaker server.  It should be in the Applications/Utilities folder.
+
+    **On the Mac, IPython fails to start, or runs the wrong version of python. What's wrong?**
+
+    Beaker finds your IPython via the PATH.  Anaconda sets up the PATH
+    in your .bash_profile.  However, the Mac GUI does not read the
+    .bash_profile when an application is started.  To solve this,
+    Beaker creates a login shell for itself when it starts, and this
+    process reads the .bash_profile.  That's all fine unless you have
+    a special setup that doesn't use .bash_profile (eg you use a
+    different shell), or you use a terminal to change your PATH (eg
+    using 'source activate' to switch to python3) and then you start
+    Beaker from that same terminal.  In these cases Beaker will not
+    find python, or find the wrong one.  Until we solve this problem
+    (see [Issue #703](https://github.com/twosigma/beaker-notebook/issues/703)),
+    you can workaround it by putting your python PATH setup into your
+    .bash_profile.
+
+    **How do I run Ruby?**
+
+    Our Ruby plugin has a bug that makes it insecure in a multi-user
+    environment.  That means if someone else can log into the machine
+    where you are running Beaker and you run Ruby, then they could
+    connect to your Ruby backend and execute code as you.  On a
+    typical single-user laptop or desktop this isn't a problem, and
+    the plugin is perfectly safe.
+
+    If you choose to, you can still add Ruby to your notebook.  In the
+    plugin manager, click "From URL..." and enter
+    "./plugins/eval/ipythonPlugins/iruby/iruby.js" then click "Add
+    Plugin from URL".
+
