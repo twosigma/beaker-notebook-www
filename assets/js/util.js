@@ -2,7 +2,7 @@
   BK.getDownloadLink = function(platform) {
     switch (platform || BK.getPlatform()) {
       case 'windows':
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-windows.zip";
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-2-gb1a7d5f-windows.zip";
       case 'osx':
         return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-mac.dmg";
       default:
