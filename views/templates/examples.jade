@@ -19,6 +19,24 @@ p.block
   .col.example
     .contents
       .col-1-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/089a3ffe84cdfa3087d2', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'd3'])")
+          img(src='img/example-d3.jpg')
+      .col-2-3
+        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/089a3ffe84cdfa3087d2', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'd3'])")
+          h4 Python, HTML, Javascript, and d3
+        p.author Scott Draves
+        p.tagline Beaker Development Team
+        p.
+          This notebook creates a random network with Python, and then visualizes it with an interactive forced-directed graph by using the d3 library.
+
+        ul.languages
+          li.python.language
+            .lang-block Py
+          li.javascript.language
+            .lang-block Js
+  .col.example
+    .contents
+      .col-1-3
         a(href='http://sharing.beakernotebook.com/gist/anonymous/ee2a39c529e07ae3c2ca', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'ParkingTix'])")
           img(src='img/example-parkingtickets.jpg')
       .col-2-3
@@ -32,7 +50,7 @@ p.block
         ul.languages
           li.python.language
             .lang-block Py
-.col.example
+  .col.example
     .contents
       .col-1-3
         a(href='http://sharing.beakernotebook.com/gist/anonymous/cc8c05f56c10fdff4002', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'Recycling'])")
@@ -150,8 +168,8 @@ p.block
       .col-2-3
         a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/4855d54bba77ff51e5cc', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'LevelOfDetail'])")
           h4 Charts with Level of Detail
-        p.author Bowen Yu
-        p.tagline NYU
+        p.author Scott Draves
+        p.tagline Beaker Development Team
         p.
           Although the interactivity and high resolution you get from Beaker's charting library are great, creating DOM elements for every single data point is memory and CPU intensive.  If implemented naively, your web browser would become sluggish or freeze if you tried to chart too much data.  Fortunately, Beaker recognizes this situation and has a solution: Levels of Detail.  If there are more than 1500 points, then instead of drawing them all, Beaker combines points into groups, and represents each group with its average, a box, or a river (min, max, and average).  But then, as you zoom into the data, it is resampled as appropriate for the current view, so the closer you look, the more there is to see, but you can still pull out and get the big picture while keeping the frame rate high.
 
