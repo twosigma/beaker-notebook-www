@@ -9,6 +9,7 @@
       "examples(.html)": "examples",
       "faq(.html)": "faq",
       "releases(.html)": "releases",
+      "careers(.html)": "careers",
     },
 
     overview: function() {
@@ -44,6 +45,11 @@
     releases: function() {
       BK.regions.get("content")
       .show(new BK.Views.Releases())
+    },
+
+    careers: function() {
+      BK.regions.get("content")
+      .show(new BK.Views.Careers())
     }
 
   });

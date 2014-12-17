@@ -1,0 +1,56 @@
+mixin section(klass, headline, graph)
+  h2.block(class=klass || '')= headline
+  p.block= graph
+
++section(
+  "",
+  "We're Hiring!",
+  ""
+)
+
+.block
+  :markdown
+    Two Sigma is a career destination for the intellectually curious who want to learn, invent, and create. The people of Two Sigma – a dynamic and diverse group of scientists, engineers, and business professionals – are accomplished analytical thinkers and passionate problem solvers.
+
+    We are a technology company that applies a rigorous, scientific method-based approach to investment management. Since our founding in 2001, Two Sigma’s vision has been to develop technological innovations that intelligently analyze the world’s data to consistently deliver value for our clients.
+
+.list-container.padded
+  .col.career.list-container-item
+    .contents
+      .col-3-4
+        h4.headline Beaker Full Stack Web Developer
+        p.description.
+          We are seeking an enthusiastic and experienced software engineer to build a next-generation, web based, distributed, research platform. Working closely with other talented software engineers and researchers across the company, you will be part of a new team responsible for architecting and developing the next generation research platform, upon which all of Two Sigma’s research and modeling will be performed. The scope of this project is quite large and as such, relies on experts in multiple domains including:
+        .markdown
+          :markdown
+            * Distributed computing systems
+            * Big data manipulation and visualization
+            * Large scale, web 2.0 full stack development.
+
+        a.full-link(href="http://www.twosigma.com/careers/position/936.html", onClick="_gaq.push(['_trackEvent', 'Careers', 'Link', 'backendDev more info']);") Read the full description &#xbb;
+      .col-1-4
+        .location.detail
+          span.label Location:
+          span.value.right New York
+        .job-code.detail
+          span.label Job code:
+          span.value 1030
+        a.btn.mid.apply(href="http://www.twosigma.com/careers/position/936.html", onClick="_gaq.push(['_trackEvent', 'Careers', 'Link', 'backendDev apply']);") Apply
+  .col.career.list-container-item
+    .contents
+      .col-3-4
+        h4.headline Beaker Front End Web Developer
+        p.description.
+          We are seeking an enthusiastic and experienced front end web developer to build the next-generation of the Beaker development platform. Working closely with other talented software engineers and researchers across the company, you will be part of a new team responsible for architecting and developing future versions of Beaker Notebook – a notebook style development environment designed for big data research. The scope of this project is quite large, as it is both internally consumed and is released externally as an open source project. As such, it relies on expertise in multiple technical domains as well as a high degree of customer empathy, ability to distill feedback and prioritize tasks.
+
+        a.full-link(href="http://www.twosigma.com/careers/position/935.html", onClick="_gaq.push(['_trackEvent', 'Careers', 'Link', 'frontEnd more info']);") Read the full description &#xbb;
+      .col-1-4
+        .location.detail
+          span.label Location:
+          span.value.right New York
+        .job-code.detail
+          span.label Job code:
+          span.value 1028
+        a.btn.mid.apply(href="http://www.twosigma.com/careers/position/935.html", onClick="_gaq.push(['_trackEvent', 'Careers', 'Link', 'frontEnd apply']);") Apply
+
+  .cl
