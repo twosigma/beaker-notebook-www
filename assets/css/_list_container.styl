@@ -1,0 +1,35 @@
+.list-container
+  a h4
+    padding-bottom: 20px
+
+  a.headline
+    text-decoration: none
+    color: #333b3b
+    font-family: 'pt_sansbold'
+
+    &:hover
+      color: $blue
+
+.list-container-item
+  border: solid 1px rgb(224, 224, 224)
+  padding: 34px
+  margin-bottom: 34px
+  position: relative
+
+  p
+    font-size: 15px
+
+  .col-2-3
+    padding: 0 34px
+
+  &:before
+    content: ' '
+    width: 0
+    height: 0
+    border-top: 0px solid transparent
+    border-bottom: 20px solid transparent
+    border-left: 20px solid $green
+    position: absolute
+    left: 10px
+    top: 10px
+
