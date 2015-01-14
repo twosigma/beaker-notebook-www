@@ -8,11 +8,11 @@
     "watch": "roots watch"
   },
   "dependencies": {
-    "stylus": "^0.48.1",
-    "jade": "^1.5.0",
-    "axis": "0.2.x",
-    "autoprefixer-stylus": "0.2.x",
-    "marked": "^0.3.2",
+    "stylus": "0.48.1",
+    "jade": "1.5.0",
+    "axis": "0.2.2",
+    "autoprefixer-stylus": "0.2.0",
+    "marked": "0.3.2",
     "client-templates": "0.1.2"
   }
 }
