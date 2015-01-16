@@ -4,7 +4,7 @@
       case 'windows':
         return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-2-gb1a7d5f-windows.zip";
       case 'osx':
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-mac.dmg";
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-1-g9161b57-mac.dmg";
       default:
         return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-ubuntu.zip";
     }
