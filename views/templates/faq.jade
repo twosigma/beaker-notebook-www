@@ -9,17 +9,39 @@
     click the 'New Default Notebook' button, or use the
     Control-Shift-N keyboard equivalent.
 
-    The default notebook that comes with Beaker has Python and R cells as well as
-    some tips for beginners.  It would be normal for advanced users to
-    customize the included languages (for example, adding a standard
-    JAR to their Groovy classpath), remove the tips, and add a
-    signature cell with their contact information.
+    The default notebook that comes with Beaker has Python and R cells
+    as well as some tips for beginners.  It would be normal for
+    advanced users to customize the included languages (for example,
+    adding a standard JAR to their Groovy classpath), remove the tips,
+    and add a signature cell with their contact information.
+
+    **How do I add a language to a notebook?**
+
+    Use the Notebook menu to open the Plugin Manager (aka the Language
+    Manager).  There are buttons for each possible language. Each
+    button has a status indicator: gray means inactive, green means
+    active, and yellow means it is in progress of starting up. Click on
+    the language you want to add (one that is gray). It should turn
+    yellow, and after a while, depending on how fast your computer is,
+    it should go green. Close the manager, and then when you open the
+    language menu on any cell, you can set it to the new language and
+    run it.
+
+    **Why doesn't language X work?**
+
+    Most of the languages require a backend that must be installed
+    separately.  On the "Getting Started" tab of this web site,
+    beneath the download button are the instructions for how to
+    install them so they work well with Beaker.
 
     **How do I remove a language from a notebook?**
 
-    In the plugin manager, click the button for the language you want
-    to remove.  The buttons are actually toggles.  Make sure you have first
-    removed all cells from the notebook that use that language.
+    Start with the Notebook menu, and open the plugin manager and
+    click the button for the language you want to remove.  The
+    indicator would be green before you click it.  The buttons are
+    actually toggles.  Make sure you have first removed all cells from
+    the notebook that use that language.  When the language is
+    successfully remove, the indicator will go gray.
 
     **What other customization or init files are there?**
 
