@@ -6,6 +6,7 @@
       "features(.html)": "features",
       "getting-started(.html)": "getting-started",
       "community(.html)": "community",
+      "videos(.html)": "videos",
       "examples(.html)": "examples",
       "faq(.html)": "faq",
       "releases(.html)": "releases",
@@ -30,6 +31,11 @@
     community: function() {
       BK.regions.get("content")
       .show(new BK.Views.Community())
+    },
+
+    videos: function() {
+      BK.regions.get("content")
+      .show(new BK.Views.Videos())
     },
 
     examples: function() {
