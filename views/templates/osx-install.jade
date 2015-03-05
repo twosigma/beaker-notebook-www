@@ -8,6 +8,7 @@ p.block
     | There is a problem running Beaker on Mac laptops from 2008 or earlier.  Please see <a href="https://github.com/twosigma/beaker-notebook/issues/982">Issue #982</a> for the workaround if you need it.
 p.block
   .graph-headline optional components
+  a(name="IPython")
   p.block-half
     | The following are additional, optional components you can install to get support for more languages.
 
@@ -17,9 +18,22 @@ ul.block.components
       .language.python
         .lang-block Py
     .left.language-details
+      a(name="Python3")
       b.language-headline Python Installation
       p Install the free version of&nbsp;
         a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+    .cl
+  li
+    .left
+      .language.python
+        .lang-block Py
+    .left.language-details
+      a(name="R")
+      b.language-headline Python3 Installation
+      p 1. Install Python as above
+      p 2. Install&nbsp;
+        a.ui-link(href="http://continuum.io/blog/anaconda-python-3") Python3
+      p 3. Set your beaker.pref.json file to the directory where you put it.
     .cl
   li
     .left
@@ -32,6 +46,7 @@ ul.block.components
       p 2. Install&nbsp;
         a.ui-link(href="http://xquartz.macosforge.org/landing/") XQuartz
       p.block-half Then open R and run these commands:
+      a(name="Julia")
       pre.code.
         install.packages('Rserve')
         install.packages('ggplot2')
@@ -50,6 +65,7 @@ ul.block.components
       p 2. Install&nbsp;
         a.ui-link(href="http://julialang.org/downloads/") Julia
 
+      a(name="Node")
       p.block-half Then open Julia and run these commands:
       pre.code.
         Pkg.add(“IJulia”)
@@ -60,6 +76,7 @@ ul.block.components
       .language.node
         .lang-block N
     .left.language-details
+      a(name="Ruby")
       b.language-headline Node Installation
       p 1. Install&nbsp;
         a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js

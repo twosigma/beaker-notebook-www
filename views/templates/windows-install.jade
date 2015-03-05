@@ -6,6 +6,7 @@ p.block
     | Use the beaker.command script to launch the application.  You can double click it or use a command interpreter.  It starts the server and opens your web browser with a connection to it.
 p.block
   .graph-headline optional components
+  a(name="IPython")
   p.block-half
     | The following are additional, optional components you can install to get support for more languages.
 
@@ -15,9 +16,22 @@ ul.block.components
       .language.python
         .lang-block Py
     .left.language-details
+      a(name="Python3")
       b.language-headline Python Installation
       p Install the free version of&nbsp;
         a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+    .cl
+  li
+    .left
+      .language.python
+        .lang-block Py
+    .left.language-details
+      b.language-headline Python3 Installation
+      p 1. Install Python as above
+      a(name="R")
+      p 2. Install&nbsp;
+        a.ui-link(href="http://continuum.io/blog/anaconda-python-3") Python3
+      p 3. Set your beaker.pref.json file to the directory where you put it.
     .cl
   li
     .left
@@ -31,6 +45,7 @@ ul.block.components
         a.ui-link(href="http://www.computerhope.com/issues/ch000549.htm") Add the install directory to your PATH 
         span (eg "c:\Program Files\R\R-3.1.2\bin")
       p.block-half Then open R and run these commands:
+      a(name="Julia")
       pre.code.
         install.packages('Rserve')
         install.packages('ggplot2')
@@ -50,6 +65,7 @@ ul.block.components
         a.ui-link(href="http://julialang.org/downloads/") Julia
 
       p.block-half Then open Julia and run these commands:
+      a(name="Node")
       pre.code.
         Pkg.add(“IJulia”)
         Pkg.add(“Gadfly”)
@@ -59,6 +75,7 @@ ul.block.components
       .language.node
         .lang-block N
     .left.language-details
+      a(name="Ruby")
       b.language-headline Node Installation
       p 1. Install&nbsp;
         a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js
