@@ -31,7 +31,14 @@
     Most of the languages require a backend that must be installed
     separately.  On the "Getting Started" tab of this web site,
     beneath the download button are the instructions for how to
-    install them so they work well with Beaker.
+    install them so they work well with Beaker.  You may need to add
+    the location of the implementation of the language to your
+    [`beaker.pref.json`](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences).
+
+    **IRuby fails to load?**
+
+    [Ruby does not work with IPython3](https://github.com/SciRuby/iruby/issues/1).
+    Try backing up to version 2.x.
 
     **How do I remove a language from a notebook?**
 
@@ -157,12 +164,6 @@
     wrong one.  Until we solve this problem (see 
     [Issue #703](https://github.com/twosigma/beaker-notebook/issues/703)),
     you can workaround it the the language preferences.
-
-    **IRuby fails to load?**
-
-    [Ruby does not work with IPython3](https://github.com/SciRuby/iruby/issues/1).
-    Try backing up to version 2.x.
-
 
     **After upgrading to Yosemite (Mac OS X 10.10), R fails**
 
