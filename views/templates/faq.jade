@@ -52,14 +52,15 @@
 
     **What other customization or init files are there?**
 
-    ~/.beaker/v1/config/beaker.pref.json is read at startup and can
+    `~/.beaker/v1/config/beaker.pref.json` is read at startup and can
     modify the UI in many ways.  See its
-    [documentation](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
+    [documentation](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences), including how to
+    [manipulate the menus](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
 
     **If something crashes or I get disconnected, can I recover my work?**
 
     Yes, Beaker saves your notebooks as you edit them automatically
-    every 60 seconds.  Look in ~/.beaker/v1/var/sessionBackups to find
+    every 60 seconds.  Look in `~/.beaker/v1/var/sessionBackups` to find
     your work.
 
     Also, if the client becomes disconnected from the server, it tries
@@ -77,12 +78,12 @@
 
     **How does Beaker relate to the IPython Notebook?**
 
-    Beaker uses an IPython kernel for the backend of its Python
-    plugin.  Many thanks to the IPython team for their great
+    Beaker uses an [IPython](http://ipython.org) kernel for the backend of its Python
+    plugins.  Many thanks to the IPython team for their great
     architecture, and for making their work available to all.
 
     Because the backend is shared, and Beaker can open IPython
-    notebooks and convert them to its own format, you will find Beaker
+    notebooks and convert them to its own format, you may find Beaker
     is mostly compatible with IPython (widgets are not supported).
 
     **How do I report a bug?**
@@ -107,6 +108,8 @@
     Yes. To customize the heap size, launch Beaker like this:
 
     `beaker.command  --plugin-option Groovy:-Xmx8g`
+
+    Or you can edit your [beaker.pref.json](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences) file, and get that configuration every time you run Beaker.
 
     **Can I make the server accessible across the net?**
 
@@ -133,37 +136,32 @@
     **Where do the server logs and error messages show up on Mac?**
  
     Run the Console application to see the debug output from the
-    Beaker server.  It should be in the Applications/Utilities folder.
+    Beaker server.  The Console application should be in the Applications/Utilities folder.
 
-    **On the Mac, IPython fails to start, or runs the wrong version of python. What's wrong?**
+    **On the Mac, IPython fails to start, or runs the wrong version of python.**
 
-    Beaker finds your IPython via the PATH.  Anaconda sets up the PATH
-    in your .bash_profile.  However, the Mac GUI does not read the
-    .bash_profile when an application is started.  To solve this,
-    Beaker creates a login shell for itself when it starts, and this
-    process reads the .bash_profile.  That's all fine unless you have
-    a special setup that doesn't use .bash_profile (eg you use a
-    different shell), or you use a terminal to change your PATH (eg
-    using 'source activate' to switch to python3) and then you start
-    Beaker from that same terminal.  In these cases Beaker will not
-    find python, or find the wrong one.  Until we solve this problem
-    (see [Issue #703](https://github.com/twosigma/beaker-notebook/issues/703)),
-    you can workaround it by putting your python PATH setup into your
-    .bash_profile.
+    Edit the [language
+    preferences](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences)
+    to tell Beaker where to find the right `ipython` binary.
 
-    **How do I run Ruby?**
+    Sometimes this problem happens because Beaker finds IPython via
+    the PATH.  Anaconda sets up the PATH in your .bash_profile.
+    However, the Mac GUI does not read the .bash_profile when an
+    application is started.  To solve this, Beaker creates a login
+    shell for itself when it starts, and this process reads the
+    .bash_profile.  That's all fine unless you have a special setup
+    that doesn't use .bash_profile (eg you use a different shell), or
+    you use a terminal to change your PATH (eg using 'source activate'
+    to switch to python3) and then you start Beaker from that same
+    terminal.  In these cases Beaker will not find python, or find the
+    wrong one.  Until we solve this problem (see 
+    [Issue #703](https://github.com/twosigma/beaker-notebook/issues/703)),
+    you can workaround it the the language preferences.
 
-    Our Ruby plugin has a bug that makes it insecure in a multi-user
-    environment.  That means if someone else can log into the machine
-    where you are running Beaker and you run Ruby, then they could
-    connect to your Ruby backend and execute code as you.  On a
-    typical single-user laptop or desktop this isn't a problem, and
-    the plugin is perfectly safe.
+    **IRuby fails to load?**
 
-    If you choose to, you can still add Ruby to your notebook.  In the
-    plugin manager, click "From URL..." and enter
-    "./plugins/eval/ipythonPlugins/iruby/iruby.js" then click "Add
-    Plugin from URL".
+    [Ruby does not work with IPython3](https://github.com/SciRuby/iruby/issues/1).
+    Try backing up to version 2.x.
 
 
     **After upgrading to Yosemite (Mac OS X 10.10), R fails**
@@ -176,10 +174,6 @@
     UI should be available soon, but in the meantime follow the
     instructions and example in [Issue #421](https://github.com/twosigma/beaker-notebook/issues/421).
 
-    **Is there a more recent version available for download?**
+    **Is there a more recent version available?**
 
-    Yes we have a prerelease of v1.2 available for
-    [mac](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2pre2-0-g43fd5cc-mac.dmg),
-    [windows](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2pre2-1-g0f80877-windows.zip),
-    [ubuntu](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2pre2-0-g0f80877-ubuntu.zip), and on
-    [docker hub](https://registry.hub.docker.com/u/beakernotebook/beaker-prerelease/).
+    See the [prerelease Docker container](https://registry.hub.docker.com/u/beakernotebook/beaker-prerelease/).
