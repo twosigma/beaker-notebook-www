@@ -108,6 +108,21 @@
     operating system, and web browser, and include their versions as
     well.  Thank you for your feedback.
 
+    **Where can I put an image or other static file so that my HTML can find it?**
+
+    Inside the Beaker application itself is a folder accessible to the
+    web server that's part of Beaker.  On the Mac, if you install
+    Beaker in the usual location, that would be
+    `/Applications/Beaker.app/Contents/Resources/dist/src/main/web`.
+    Create a folder in there called "images", copy your files to it,
+    and then in an HTML cell you can refer to `<img src="images/foo.jpg">`.  
+    On Windows and Linux, `src/main/web` is located in the same folder
+    as the `beaker.command` script.
+
+    Note that if you do this, the images will not work if you share
+    the notebook with someone else.  We are planning on a better solution
+    for this, see [Issue #430](https://github.com/twosigma/beaker-notebook/issues/430).
+
     ## Installing and launching Beaker
 
     **Can I change the heap size for Groovy?**
