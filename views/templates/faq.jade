@@ -191,6 +191,11 @@
     apt-get, as that gets you really old versions.  Instead, use
     pip, as recommended by the [install-dependencies.sh](https://github.com/twosigma/beaker-notebook/blob/master/launcher/ubuntu/install-dependencies.sh) script.
 
+    Another possible problem is on Windows, if you installed Cygwin
+    before installing Anaconda, then Beaker will be confused.  The fix
+    is to move Cygwin to the end of the PATH.  For more information, see the
+    [wiki](https://github.com/twosigma/beaker-notebook/wiki/Cygwin-Compatibility).
+
     **What's the difference between IPython and Python3?**
 
     We apologize for the confusing names.  IPython in Beaker runs the
