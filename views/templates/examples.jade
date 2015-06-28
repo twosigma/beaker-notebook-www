@@ -24,7 +24,6 @@ p.block
       .col-2-3
         a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/9aa6a92b59770ba5421f', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'd3'])")
           h4 Python, HTML, Javascript, and d3
-        p.author Scott Draves
         p.tagline Beaker Development Team
         p.
           This notebook creates a random network with Python, and then visualizes it with an interactive forced-directed graph by using the d3 library.
@@ -102,17 +101,14 @@ p.block
   .col.example.list-container-item
     .contents
       .col-1-3
-        a(href='http://sharing.beakernotebook.com/gist/anonymous/47a0e193c3d01895f873', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'PythonDemo'])")
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/6b7ed3d9c5f120193fa9', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'PythonDemo'])")
           img(src='img/example-python.jpg')
       .col-2-3
-        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/47a0e193c3d01895f873', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'PythonDemo'])")
+        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/6b7ed3d9c5f120193fa9', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'PythonDemo'])")
           h4 Python Demo
-        p.author Scott Draves
         p.tagline Beaker Development Team
         p.
-          IPython is the Python language with extensions for interactivity.  It can be installed along with Beaker by following the instructions on the Getting Started page of this website. This example notebook provides a brief tour of some of the great things you can do with IPython.
-
-
+          IPython is the Python language with extensions for interactivity.  This notebook graphs a math function, Then downloads data from the internet, processes, and charts it. The data is saved in the notebook in addition to this text, the code, and the charts. That way later you can rerun the charts without depending on the internet query to be available and give the same results. This ability to easily save data in the notebook makes your work more reproducible.
         ul.languages
           li.python.language
             .lang-block Py
@@ -120,12 +116,11 @@ p.block
   .col.example.list-container-item
     .contents
       .col-1-3
-        a(href='http://sharing.beakernotebook.com/gist/anonymous/d58b526f0597f7c03605', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'RDemo'])")
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/682f08abdf5374828b0b', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'RDemo'])")
           img(src='img/example-r.jpg')
       .col-2-3
-        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/d58b526f0597f7c03605', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'RDemo'])")
+        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/682f08abdf5374828b0b', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'RDemo'])")
           h4 R Demo
-        p.author Scott Draves
         p.tagline Beaker Development Team
         p.
           The R Project for Statistical Computing publishes GNU R. It can be installed along with Beaker by following the instructions on the Getting Started page of this website. This example notebook provides a brief tour of some of the great things you can do with R.
@@ -142,7 +137,6 @@ p.block
       .col-2-3
         a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/5fcd0e4ec4e514429bb7', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'Autotranslation'])")
           h4 Autotranslation
-        p.author Scott Draves
         p.tagline Beaker Development Team
         p.
           Beaker can autotranslate variables in one language to another.  You can access this feature with the notebook namespace: a collection of variables and their values stored in the notebook.  You can use this to produce data in one language, and consume or process it in another.
@@ -203,7 +197,6 @@ p.block
       .col-2-3
         a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/4855d54bba77ff51e5cc', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'LevelOfDetail'])")
           h4 Charts with Level of Detail
-        p.author Scott Draves
         p.tagline Beaker Development Team
         p.
           Although the interactivity and high resolution you get from Beaker's charting library are great, creating DOM elements for every single data point is memory and CPU intensive.  If implemented naively, your web browser would become sluggish or freeze if you tried to chart too much data.  Fortunately, Beaker recognizes this situation and has a solution: Levels of Detail.  If there are more than 1500 points, then instead of drawing them all, Beaker combines points into groups, and represents each group with its average, a box, or a river (min, max, and average).  But then, as you zoom into the data, it is resampled as appropriate for the current view, so the closer you look, the more there is to see, but you can still pull out and get the big picture while keeping the frame rate high.
