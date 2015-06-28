@@ -338,5 +338,41 @@ p.block
         ul.languages
           li.r.language
             .lang-block R
+  .col.example.list-container-item
+    .contents
+      .col-1-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/61b6ab1cdbc967be4afa', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'progress'])")
+          img(src='img/example-progress.jpg')
+      .col-2-3
+        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/61b6ab1cdbc967be4afa', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'progress'])")
+          h4 Progress and Status API
+        p.tagline Beaker Development Team
+        p.
+          Beaker supports sending asynchronous status updates from code cells to keep the user informed about the computation progress. These updates can contain a text message and/or a completion percentage and/or a partial output object, such as a plot or a table. The language that support this feature so far are JavaScript and all JVM based languages.
+
+        ul.languages
+          li.javascript.language
+            .lang-block Js
+          li.groovy.language
+            .lang-block Gv
+          li.java.language
+            .lang-block Jv
+  .col.example.list-container-item
+    .contents
+      .col-1-3
+        a(href='http://sharing.beakernotebook.com/gist/anonymous/22256c15739b49046a47', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'control'])")
+          img(src='img/example-control.jpg')
+      .col-2-3
+        a.headline(href='http://sharing.beakernotebook.com/gist/anonymous/22256c15739b49046a47', target="_blank", onClick="_gaq.push(['_trackEvent', 'Examples', 'Click', 'control'])")
+          h4 Control and Scripting API
+        p.tagline Beaker Development Team
+        p.
+          You can control other notebook cells from a JavaScript code cell by using the beaker object. Key operations include: evaluating tagged cells, and evaluating dynamically generated code in any language and receiving the output result. These operations work with promises and deferred objects so they are fully asynchronous with error handling.
+
+        ul.languages
+          li.javascript.language
+            .lang-block Js
+          li.groovy.language
+            .lang-block Gv
 
   .cl
