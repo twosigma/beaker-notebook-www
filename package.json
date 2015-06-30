@@ -1,6 +1,9 @@
 {
+  "engines": {
+    "node": "~0.12.0"
+  },
   "devDependencies": {
-    "roots": "jenius/roots#be579023ed670d0afd9c25b771ce2b6a3d12ee3f"
+    "roots": "3.1.0"
   },
   "scripts": {
     "deploy": "./ship.sh",
@@ -13,6 +16,6 @@
     "axis": "0.2.2",
     "autoprefixer-stylus": "0.2.0",
     "marked": "0.3.2",
-    "client-templates": "0.1.2"
+    "client-templates": "0.2.0"
   }
 }
