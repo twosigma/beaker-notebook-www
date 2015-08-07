@@ -1,0 +1,14 @@
+extends layout
+
+block header-meta
+  meta(property="og:url", content="http://beakernotebook.com/tou")
+  meta(property="og:title", content="Beaker Notebook Downloads Archive")
+
+block header
+  +linkList('')
+
+block content
+  .downloads.markdown
+    :markdown
+      ## Downloads Archive
+      Here is a list of all versions of Beaker that have been released with simple download links.
