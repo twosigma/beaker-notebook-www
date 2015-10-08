@@ -30,8 +30,18 @@ img.notebook-image(src="img/notebook@2x.png")
 +section(
   "section-split",
   "Translate Data Between Languages",
-  "We want you to be able to use the right tool for the job, knowing all your tools will work in concert. This is why Beaker provides native auto-translation that lets a developer declare specific variables in a cell in one language, then access these seamlessly in a different cell and language. Such capability frees developers to utilize those inherent strengths of the individual languages in pursuit of their research, without spending time dealing with intermediary files."
+  ""
 )
+
+p.block.
+  We want you to be able to use the right tool for the job, knowing
+  all your tools will work in concert. This is why Beaker provides
+  native <a href="https://pub.beakernotebook.com/#/publications/560b5722-f287-43a3-b48d-f6ab06befc8f?fullscreen=true">autotranslation</a>
+  that lets a developer declare specific variables in a cell in one
+  language, then access these seamlessly in a different cell and
+  language. Such capability frees developers to utilize those inherent
+  strengths of the individual languages in pursuit of their research,
+  without spending time dealing with intermediary files.
 
 img.translation-image(src="img/translation@2x.png")
 
@@ -43,20 +53,16 @@ img.translation-image(src="img/translation@2x.png")
 
 p.block.
   In addition to those extensive charting libraries native to
-  supported languages, Beaker offers a rich charting API for Groovy,
+  supported languages, Beaker offers a <a href="https://pub.beakernotebook.com/#/publications/560c510c-16a8-4a22-9bed-93071e9f88e8?fullscreen=true">rich charting API for Groovy</a>,
   which can also be leveraged by other languages through a simple JSON
   interface. Not only does it produce beautiful, interactive charts
   but it also handles large datasets that would normally bring your
   browser to a halt. This level-of-detail feature dynamically
   resamples the data based on the zoom level and window size, to keep
-  the frame rate high. Further support for D3 permits the
+  the frame rate high. Further support for <a href="https://pub.beakernotebook.com/#/publications/560c9f9b-14e6-4d95-8e78-cc0a60bf4e5a?fullscreen=true">D3</a> permits the
   visualization-savvy developer (perhaps not unlike yourself) to view
-  data in unlimited ways. For those of you interested in writing your
-  own visualization frameworks, Beaker comes with an Output Display
-  API that allows developers to write unique charting APIs or
-  incorporate other, existing third party visualization
-  libraries. Options abound. For more information on writing your own
-  Output Display, check out our <a href="https://github.com/twosigma/beaker-notebook/wiki/Create-an-OutputDisplay" target="_blank">Output Display Plugin</a> documentation.
+  data in unlimited ways.  Beaker also works with <a href="https://pub.beakernotebook.com/#/publications/560ca047-eccd-4585-9b96-0d0708c49781?fullscreen=true">p5.js</a>, <a href="https://pub.beakernotebook.com/#/publications/560ca254-071b-4647-8073-c4f941ca02e8?fullscreen=true">ggvis</a>, <a href="https://pub.beakernotebook.com/#/publications/560ca17d-b941-4607-8f8e-dd2d5820a131?fullscreen=true">Bokeh</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/560b47df-6c8a-493a-bf7c-1152723221cd?fullscreen=true">matplotlib</a>, ggplot, and many more.
 
 img.rich-viz-image(src="img/rich_viz@2x.png")
 
@@ -90,12 +96,32 @@ img.publish-image(src="img/publish@2x.png")
   "We strive to accommodate the diverse range of operating systems and browsers. Beaker runs on Windows, Mac, and Linux operating systems and with Chrome, Firefox and Safari browsers. Head over to our Getting Started page for more details and specific installation instructions for each supported platform."
 )
 
+p.block.
+  You can also run Beaker with a <a href="">Docker Container</a>.  Or
+  even more radical, try our experimental native <a
+  href="https://github.com/twosigma/beaker-notebook/wiki/Electron-Beaker">Electron Beaker</a>.
+
 .overview
   != templates.platforms()
 
 +section(
   "section-split",
   "Advanced Markup and Hierarchical Organization",
-  "The ability to add descriptive text and other informative markup to code is of particular importance to researchers and data scientists alike. Beaker offers a variety of cells allowing for just that. These include LaTeX for typeset mathematics, Markdown for easy formatting, and HTML for complete control. With this capability researchers could, for example, add inline notes and images describing their methodology, complex equations to help explain functionality, and rich formatting in the service of making their work more intelligible. Furthermore, Beaker provides the ability to organize a notebook into hierarchical sections, each of which can be viewed, shared or evaluated individually or as a whole. All in all, a very presentable package."
+  ""
 )
 
+p.block.
+  The ability to add descriptive text and other informative markup to
+  code is of particular importance to researchers and data scientists
+  alike. With Beaker you can use LaTeX for typeset mathematics,
+  Markdown for easy formatting, and HTML for complete control.  You
+  can even mix all of these formats in the <a href="https://pub.beakernotebook.com/#/publications/560b54da-3c14-4890-8b64-b204bc798320?fullscreen=true">same paragraph</a>.
+
+p.block.
+  With this capability researchers can, for example, add inline
+  notes and images describing their methodology, complex equations to
+  help explain functionality, and rich formatting in the service of
+  making their work more intelligible. Furthermore, Beaker provides
+  the ability to organize a notebook into hierarchical sections, each
+  of which can be viewed, shared or evaluated individually or as a
+  whole. All in all, a very presentable package.
