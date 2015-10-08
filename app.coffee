@@ -1,6 +1,6 @@
-axis            = require 'axis'
-autoprefixer    = require 'autoprefixer-stylus'
-ClientTemplates = require('client-templates')
+axis = require 'axis'
+autoprefixer = require 'autoprefixer-stylus'
+ClientTemplates = require 'client-templates'
 
 module.exports =
   ignores: ['readme.md', '**/layout.*', '**/_*', '.gitignore', '**/*.swp']
