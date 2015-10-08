@@ -3,4 +3,5 @@ node_modules
 public
 bower_components
 *.swp
+*~
 ship.conf
