@@ -1,0 +1,1865 @@
+<h3 id="v2-3-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-2-2-v2-3-0-">v2.3.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.2.2...v2.3.0">view commit logs</a></h3>
+<h4 id="2-3-0-in-overview-">2.3.0 in overview:</h4>
+<p>This release of Marionette contains a significant amount of code optimizations and refactors. These changes will not be visible to you as end user however as they improve the underlying base of Marionette and speed up your app to improve consistency across the base classes. Such speed ups are most visible in the great work @megawac has been doing in both <a href="https://github.com/marionettejs/backbone.marionette/commit/62f15dc7ec880631a0bb79b18470c94b0a0ad086">serializeData</a> and <a href="https://github.com/marionettejs/backbone.marionette/commit/e5957dde9a9a48eeb8097a0ce2f628d795668e64">triggerMethod</a></p>
+<p>As always you can come chat with us in the main chatroom at <a href="https://gitter.im/marionettejs/backbone.marionette/">https://gitter.im/marionettejs/backbone.marionette/</a></p>
+<p>Work has been continuing on improving the documentation of Marionette, via an external custom JSDOC tool that @ChetHarrison has been spear heading via <a href="https://github.com/ChetHarrison/jsdoccer">https://github.com/ChetHarrison/jsdoccer</a></p>
+<p>If you have not already checked out Marionette Inspector, it is a great tool that Jason Laster has been working on to make debugging and working with marionette much easier. <a href="https://github.com/MarionetteLabs/marionette.inspector">https://github.com/MarionetteLabs/marionette.inspector</a></p>
+<h5 id="features">Features</h5>
+<ul>
+<li>Marionette.isNodeAttached<ul>
+<li>Determines whether the passed-in node is a child of the <code>document</code> or not.</li>
+</ul>
+</li>
+<li>View &quot;attach&quot; / onAttach event<ul>
+<li>Triggered anytime that showing the view in a Region causes it to be attached to the <code>document</code>. Like other Marionette events, it also executes a callback method, <code>onAttach</code>, if you&#39;ve specified one.</li>
+</ul>
+</li>
+<li>View &quot;before:attach&quot; / onBeforeAttach<ul>
+<li>This is just like the &quot;attach&quot; event described above, but it&#39;s triggered right before the view is attached to the <code>document</code>.</li>
+</ul>
+</li>
+<li>AppRouter Enhancements<ul>
+<li><code>triggerMethod</code>, <code>bindEntityEvents</code>, and <code>unbindEntityEvents</code> are now available on AppRouter</li>
+</ul>
+</li>
+<li>Marionette.Application is now a subclass of Marionette.Object</li>
+<li>Marionette.Behavior is now a subclass of Marionette.Object</li>
+<li>Marionette.Region is now a subclass of Marionette.Object</li>
+<li>CompositeView’s <code>getChildViewContainer</code> now receives <code>childView</code> as a second argument.</li>
+<li>Region Triggers now pass the view, region instance, and trigger options to all handler methods</li>
+<li>CollectionView <code>emptyViewOption</code> method now receives the model and index as options.</li>
+<li>Allow non-DOM-backed regions with <code>allowMissingEl</code><ul>
+<li><code>allowMissingEl</code> option is respected by <code>_ensureElement</code></li>
+<li><code>_ensureElement</code> returns a boolean, indicating whether or not element is available</li>
+<li>Region#show early-terminates on missing element</li>
+</ul>
+</li>
+<li>Regions now ensure the view being shown is valid<ul>
+<li>Allowing you to handle the error of a region.show without the region killing the currentView and breaking without recourse.</li>
+<li>Appending isDestroyed to a Backbone.View on region empty now adds the same safety for not re-showing a removed Backbone view.</li>
+</ul>
+</li>
+<li>Marionette is now aliased as Mn on the <code>window</code>.</li>
+<li>Collection/Composite Views now support passing in &#39;sort&#39; as both a class property and as an option.</li>
+<li>RegionManager will now auto instantiate regions that are attached to the regionManager instance.</li>
+</ul>
+<pre><code class="lang-js">new Marionette.RegionManager({
+  regions: {
+    &quot;aRegion&quot;: &quot;#bar&quot;
+  }
+});
+</code></pre>
+<h5 id="fixes">Fixes</h5>
+<ul>
+<li>Region now uses <code>$.el.html(‘’)</code> instead of <code>.innerHTML</code> to clear contents.<ul>
+<li>We can not use <code>.innerHTML</code> due to the fact that IE will not let us clear the html of tables and selects. We also do not want to use the more declarative <code>empty</code> method that jquery exposes since <code>.empty</code> loops over all of the children DOM nodes and unsets the listeners on each node. While this seems like a desirable thing, it comes at quite a high performance cost. For that reason we are simply clearing the html contents of the node.</li>
+</ul>
+</li>
+<li>Destroying an old view kept alive by <code>{preventDestroy: true}</code> no longer empties its former region.<ul>
+<li>Now the destroy listener from previous view is removed on region show</li>
+</ul>
+</li>
+<li>AppRouter <code>this.options</code> now assigned prior to <code>initialize</code> being called.</li>
+</ul>
+<h5 id="deprecation-warnings">Deprecation Warnings</h5>
+<ul>
+<li>Marionette.Application.addInitializer</li>
+<li>Marionette.Application Channel</li>
+<li>Marionette.Application Regions</li>
+<li>Marionette.Callbacks</li>
+<li>Marionette.Deferred</li>
+<li>Marionette.Module.addInitializer</li>
+<li>Marionette.Module.addFinalizer</li>
+</ul>
+<h3 id="v2-2-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-2-1-v2-2-2-">v2.2.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.2.1...v2.2.2">view commit logs</a></h3>
+<ul>
+<li><p>Fixes</p>
+<ul>
+<li>Remove duplicate call to region.empty on view destroy.</li>
+<li>Fix call time of <code>swapOut</code>.</li>
+<li>Fix broken link in Marionette Error messages</li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-2-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-2-0-v2-2-1-">v2.2.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.2.0...v2.2.1">view commit logs</a></h3>
+<ul>
+<li><p>Fixes</p>
+<ul>
+<li>Revert collection type checking for <code>collectionView</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-2-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-1-0-v2-2-0-">v2.2.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.1.0...v2.2.0">view commit logs</a></h3>
+<ul>
+<li><p>Features</p>
+<ul>
+<li>Normalize region selectors hash to allow a user to use the <code>@ui.</code> syntax</li>
+<li><code>Marionette.triggerMethodOn</code><ul>
+<li><code>triggerMethodOn</code> invokes <code>triggerMethod</code> on a specific context</li>
+</ul>
+</li>
+<li>Marionette.Error<ul>
+<li><code>captureStackTrace</code> cleans up stack traces</li>
+</ul>
+</li>
+<li>add view _behaviors reference to associated behaviors<ul>
+<li>enabling you to easily test and spy on your behaviors</li>
+</ul>
+</li>
+<li>CollectionViews now receive events from emptyViews in the childEvents hash</li>
+<li>Regions now receive <code>swapOut</code> and <code>beforeSwapOut</code> events.</li>
+<li>Application has <code>this.options</code></li>
+<li>Application has <code>initialize</code> method</li>
+<li>Behaviors no longer wrap view methods</li>
+</ul>
+</li>
+<li><p>Bug Fixes</p>
+<ul>
+<li>LayoutView’s regions are scoped inside its <code>el</code></li>
+<li>Fix inconsistent Marionette.Object constructor implementation.</li>
+<li>emptyView instances now proxy their events up to the collection / compositeView</li>
+<li>collection / compositeView does not listen to collection add/remove/reset events until after render.</li>
+<li>Marionette.normalizeUIKeys no longer mutates UI hash</li>
+</ul>
+</li>
+<li><p>Better Errors</p>
+<ul>
+<li>View destroyed error now includes the view cid in the error message.</li>
+<li>Throw an error when Marionette.bindEntityEvents is not an object or function</li>
+<li>Throw a descriptive error for <code>collectionViews</code><ul>
+<li>If you do not pass a valid <code>collectionView</code> instance you are now given a logical error.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Documentation Improvements</p>
+<ul>
+<li>New API docs are in progress</li>
+<li>Examples have been cleaned up</li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-2-0-pre-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-1-0-v2-2-0-pre-2-">v2.2.0-pre.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.1.0...v2.2.0-pre.2">view commit logs</a></h3>
+<h3 id="v2-2-0-pre-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-1-0-v2-2-0-pre-">v2.2.0-pre <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.1.0...v2.2.0-pre">view commit logs</a></h3>
+<h3 id="v2-1-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-3-v2-1-0-">v2.1.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.3...v2.1.0">view commit logs</a></h3>
+<ul>
+<li><p>Features</p>
+<ul>
+<li><p>Marionette.Object</p>
+<ul>
+<li>A base class which other classes can extend from. Marionette.Object incorporates many Backbone conventions and utilities like <code>initialize</code> and <code>Backbone.Events</code>. It is a user friendly class to base your classes on to get Backbone conventions on any generic class.</li>
+</ul>
+</li>
+<li><p>Add a <code>el</code> reference to the views <code>el</code> from within a <code>behavior</code> instance.</p>
+</li>
+<li><p><code>ItemView</code>s can now have no template by setting <code>template: false</code></p>
+</li>
+<li><p>Application objects can now configure their default message channel.</p>
+<ul>
+<li>This will allow you to configure multiple applications to exist at the same time within an app without their event bus colliding.</li>
+</ul>
+</li>
+<li><p>Application objects now have the <code>getOption</code> method.</p>
+</li>
+<li><p>Regions now have a <code>hasView</code> method to determine if there is a view within a given region.</p>
+</li>
+<li><p>Views no longer use toJSON directly on models. Instead they call into the new overridable methods <code>serializeModel</code> and <code>serializeCollection</code> via <code>serializeData</code></p>
+</li>
+<li><p>Return chainable objects from more methods to be consistent</p>
+<ul>
+<li>Application: emptyRegions</li>
+<li>Application: removeRegion</li>
+<li><p>CollectionView renderChildView</p>
+</li>
+<li><p>Controller new</p>
+</li>
+<li><p>LayoutView destroy</p>
+</li>
+<li><p>Region reset</p>
+</li>
+<li>Region attachView</li>
+<li><p>Region empty</p>
+</li>
+<li><p>RegionManager destroy</p>
+</li>
+<li>RegionManager emptyRegions (now returns regions)</li>
+<li>RegionManager removeRegions (now returns regions)</li>
+<li>RegionManager removeRegion (now returns region)</li>
+<li>View destroy</li>
+<li>View undelegateEvents</li>
+<li>View delegateEvents</li>
+</ul>
+</li>
+<li><p>RegionManager <code>addRegions</code> now accepts a function that returns a region definition in addition to a region definition object</p>
+<ul>
+<li>This extends to Marionette.Application’s and CompositeView’s <code>regions</code> properties</li>
+</ul>
+</li>
+<li><p>Added CollectionView <code>resortView</code></p>
+<ul>
+<li>Override this method on a subclass of CollectionView to provide custom logic for rendering after sorting the collection.</li>
+</ul>
+</li>
+<li><p>View instance is now passed as a third argument to <code>Marionette.Renderer.render</code></p>
+</li>
+<li><p>Add <code>getRegionManager</code> to Application</p>
+</li>
+</ul>
+</li>
+<li><p>Fixes</p>
+<ul>
+<li>CollectionView now maintains proper order when adding a mode</li>
+<li>Fix component.js path</li>
+<li>Prevent AppRouter from erroring when appRoutes are passed into the router constructor as an option.</li>
+<li>UI hash keys now only allow documented syntax, enforcing <code>@ui.stuff</code> instead of <code>@ui&lt;ANY_CHAR&gt;stuff</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-1-0-pre-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-3-v2-1-0-pre-">v2.1.0-pre <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.3...v2.1.0-pre">view commit logs</a></h3>
+<h3 id="v2-0-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-2-v2-0-3-">v2.0.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.2...v2.0.3">view commit logs</a></h3>
+<ul>
+<li><p>Bug Fixes</p>
+<ul>
+<li><p>Fixed an issue where <code>before:show</code> was not triggered on a view&#39;s behavior when shown within a region.</p>
+</li>
+<li><p>Destroying a view outside of its region will now cause the region to remove its reference to that view.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-0-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-1-v2-0-2-">v2.0.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.1...v2.0.2">view commit logs</a></h3>
+<ul>
+<li><p>Bug Fixes</p>
+<ul>
+<li>Fixed issue where <code>render:collection</code> called before the entire collection and children had been rendered.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>Remove bundled main entry point for bower.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v2-0-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-0-v2-0-1-">v2.0.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.0...v2.0.1">view commit logs</a></h3>
+<ul>
+<li>Fix missing Wreqr and Babysitter in Core AMD definition.</li>
+</ul>
+<h3 id="v2-0-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-8-v2-0-0-">v2.0.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.8...v2.0.0">view commit logs</a></h3>
+<ul>
+<li>This is a breaking release and contains many API updates and changes, thus changelog is quite large for this release, please refer to the <a href="https://docs.google.com/document/d/1fuXb9N5LwmdPn-teMwAo3c8JTx6ifUowbqFY1NNSdp8/edit#">google doc</a> for the full details of what is new and what has changed.</li>
+</ul>
+<h3 id="v2-0-0-pre-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v2-0-0-pre-1-v2-0-0-pre-2-">v2.0.0-pre.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v2.0.0-pre.1...v2.0.0-pre.2">view commit logs</a></h3>
+<ul>
+<li>The changelog is quite large for this release, please refer to the <a href="https://docs.google.com/document/d/1fuXb9N5LwmdPn-teMwAo3c8JTx6ifUowbqFY1NNSdp8/edit#">google doc</a></li>
+</ul>
+<h3 id="v2-0-0-pre-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-5-v2-0-0-pre-1-">v2.0.0-pre.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.5...v2.0.0-pre.1">view commit logs</a></h3>
+<ul>
+<li>The changelog is quite large for this release, please refer to the <a href="https://docs.google.com/document/d/1fuXb9N5LwmdPn-teMwAo3c8JTx6ifUowbqFY1NNSdp8/edit#">google doc</a></li>
+</ul>
+<h3 id="v1-8-8-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-7-v1-8-8-">v1.8.8 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.7...v1.8.8">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Fixed the case where <code>onShow</code> was not called on child view behaviors when inside a <code>Collection</code> or <code>Composite</code> view.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-7-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-6-v1-8-7-">v1.8.7 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.6...v1.8.7">view commit logs</a></h3>
+<ul>
+<li><p>Fixes</p>
+<ul>
+<li>Fixed nasty ui interpolation bug with behaviors.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>Minor Doc cleanup</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-6-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-5-v1-8-6-">v1.8.6 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.5...v1.8.6">view commit logs</a></h3>
+<ul>
+<li><p>Regions</p>
+<ul>
+<li><code>Region.show</code> now returns the region instance to allow for region operation chaining.</li>
+<li><code>Region.show</code> triggers the view&#39;s native <code>triggerMethod</code> if it exists. This is to handle the case that triggerMethod is wrapped by a <code>Marionette.Behavior</code>.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>Update jquery 2.x upper bound dependency restrictions.</li>
+<li>The grunt test command will now complain if you do not have bower components installed.</li>
+<li>Readme cleanups.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-5-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-4-v1-8-5-">v1.8.5 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.4...v1.8.5">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Update the UMD build to be inline with the 2.x branch UMD implementation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-3-v1-8-4-">v1.8.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.3...v1.8.4">view commit logs</a></h3>
+<ul>
+<li>General<ul>
+<li>Update bundled build to use the latest version of babysitter and wreqr.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-2-v1-8-3-">v1.8.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.2...v1.8.3">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Behaviors now have access to the views options and events during their initialize.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-8-0-v1-8-2-">v1.8.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.8.0...v1.8.2">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Behaviors now calls <code>stopListening</code> on close.</li>
+<li>Behaviors now undelegate <code>modelEvents</code> and <code>collectionEvents</code> when the parent view calls <code>undelegateEvents</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-8-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-7-4-v1-8-0-">v1.8.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.7.4...v1.8.0">view commit logs</a></h3>
+<ul>
+<li><p>General</p>
+<ul>
+<li>Update Gruntfile.</li>
+<li>The default task (<code>grunt</code>) now runs tests.</li>
+<li><code>$ grunt dev</code> watch for watching.</li>
+<li><code>$ grunt build</code> runs the tests and compiles.</li>
+<li>Add better inline documentation for module implementation.</li>
+<li>Add better inline behavior documentation.</li>
+</ul>
+</li>
+<li><p>Fixes</p>
+<ul>
+<li>Behaviors now correctly lookup methods for <code>modelEvents</code> and <code>collectionEvents</code>.</li>
+<li>The <code>CollectionView</code> now triggers close on its children in the correct order.</li>
+</ul>
+</li>
+<li><p>Features</p>
+<ul>
+<li>Add <code>onRoute</code> to the <code>appRouter</code>.<pre><code class="lang-js">Backbone.Marionette.AppRouter.extend({
+  onRoute: function(route, params) {
+  }
+})
+</code></pre>
+</li>
+<li><code>Region.show</code> now takes an option to prevent closing the previous view in the region. By default a region will automatically close the previous view, however you can prevent this behavior by passing <code>{preventDestroy: true}</code> in the options parameter.<pre><code class="lang-js">myRegion.show(view2, { preventDestroy: true })
+</code></pre>
+</li>
+<li>Add a <code>getRegion</code> method to <code>Layout</code>. This is in line with the eventual goal of not attaching regions to the root layout object.</li>
+<li><p>Behavior instances now extend from Backbone.Events, allowing you to use <code>.listenTo</code> and <code>.on</code>.</p>
+</li>
+<li><p>Allow Behaviors to have a functional hash lookup.</p>
+<pre><code class="lang-js">Marionette.ItemView.extend({
+  behaviors: function() {
+    // “this” will refer to the view instance
+    return : {
+      BehaviorA: {}
+    }
+  }
+})
+</code></pre>
+</li>
+<li>RegionManagers now calls <code>stopListening</code> on a regions on removal.</li>
+</ul>
+</li>
+<li><p>Refactors</p>
+<ul>
+<li>Abstract underscore collection method mixin into a generic helper.</li>
+<li>Use built in marionette extend for behaviors.</li>
+</ul>
+</li>
+<li><p>Tests</p>
+<ul>
+<li>Add a whitespace linter to the text coverage. Trailing whitespace now causes travis.ci to fail.</li>
+<li>Add test coverage for <code>bindEntitiyEvents</code> and <code>unbindEntityEvents</code>.</li>
+<li>Test public API for the <code>regionManager</code>.</li>
+<li>Improve view trigger tests for better control when testing.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-7-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-7-3-v1-7-4-">v1.7.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.7.3...v1.7.4">view commit logs</a></h3>
+<ul>
+<li><p>General</p>
+<ul>
+<li>Update bower dependencies to take advantage of the fact that marionette repos follow semver.</li>
+</ul>
+</li>
+<li><p>Fixes</p>
+<ul>
+<li>Behaviors events no longer collide with each other.</li>
+<li>Revert <code>stopListening</code> call on <code>stop</code> for modules. While this was a &quot;fix&quot;, the docs were quite vague leading to breaking changes for many people.</li>
+<li><code>startWithParent</code> is now respected when using a <code>moduleClass</code> property.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-7-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-7-2-v1-7-3-">v1.7.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.7.2...v1.7.3">view commit logs</a></h3>
+<ul>
+<li><p>Behaviors</p>
+<ul>
+<li>Adds the ability to use <code>@ui</code> interpolation within the events hash on a behavior.</li>
+</ul>
+</li>
+<li><p>Fixes</p>
+<ul>
+<li>Corrects broken view $el proxy in behaviors.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-7-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-7-1-v1-7-2-">v1.7.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.7.1...v1.7.2">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Binds behavior events to the behavior instance, as compared to the view.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-7-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-7-v1-7-1-">v1.7.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.7...v1.7.1">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Enables the use of string based behavior event methods.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-7-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-6-4-v1-7-">v1.7.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.6.4...v1.7">view commit logs</a></h3>
+<p>Version 1.7 represents a significant step in formalizing the ways to improve your <code>view</code> code though reusable <code>behaviors</code>. Say goodbye to custom mixin strategies and welcome <code>behaviors</code> into town.</p>
+<ul>
+<li><p>Behaviors</p>
+<p>  A <code>Behavior</code> is an isolated set of DOM / user interactions that can be mixed into any <code>View</code>. <code>Behaviors</code> allow you to blackbox <code>View</code> specific interactions into portable logical chunks, keeping your <code>views</code> simple and your code DRY. <strong><a href="https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.behavior.md">Read the docs here.</a></strong></p>
+</li>
+<li><p>Modules</p>
+<ul>
+<li>Call stop listening on module stop.</li>
+</ul>
+</li>
+<li><p>Events</p>
+<ul>
+<li>add a before:show event for views and regions</li>
+</ul>
+</li>
+<li><p>Docs</p>
+<ul>
+<li>Entire refactor of application docs.</li>
+</ul>
+</li>
+<li><p>Tests</p>
+<ul>
+<li>Rework the module tests to improve readability and consistency.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>switch from <code>~</code> to <code>^</code> for <em>trusted</em> dependencies.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-6-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-6-3-v1-6-4-">v1.6.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.6.3...v1.6.4">view commit logs</a></h3>
+<ul>
+<li>Fixes<ul>
+<li>Patches a bug that would cause modules to be initialized twice when a custom module class is passed</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-6-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-6-2-v1-6-3-">v1.6.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.6.2...v1.6.3">view commit logs</a></h3>
+<ul>
+<li><p>Improvements</p>
+<ul>
+<li><p>Enable more direct module instantiation on <code>Marionette.App</code>.</p>
+<pre><code class="lang-js">  var ItemModule = Marionette.Module.extend({
+    startWithParent: false,
+    initialize: function(options) {},
+    onStart: function() {}
+  });
+
+  // ...
+
+  this.app.module(&#39;Items&#39;, ItemModule);
+</code></pre>
+</li>
+<li><p><code>ui</code> hash interpolation now supports a functional <code>ui</code> hash.</p>
+<pre><code class="lang-js">  ui: function() {
+    return {
+      &quot;foo&quot;: &quot;.foo&quot;
+    }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Fixes</p>
+<ul>
+<li><p>Fix <code>@ui</code> interpolation for handling complex selectors.</p>
+<pre><code class="lang-js">  {
+    &quot;click div:not(@ui.bar)&quot;: &quot;tapper&quot;
+  }
+</code></pre>
+</li>
+<li>Bump <code>backbone.babysitter</code> and <code>backbone.wreqr</code> versions.</li>
+</ul>
+</li>
+<li>General<ul>
+<li>Improve readme docs for <code>CollectionView</code>, <code>AppRouter</code> and <code>ItemView</code>.</li>
+<li>Handle THE <a href="http://blog.npmjs.org/post/78085451721/npms-self-signed-certificate-is-no-more">npm self sign cert problem</a></li>
+<li>Replace unneeded argument slicing.</li>
+<li>Normalize error throwing to use internal <code>throwError</code> helper method.</li>
+<li>Use <code>_</code> type checks for non performant code to improve readability and consistency.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-6-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-6-1-v1-6-2-">v1.6.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.6.1...v1.6.2">view commit logs</a></h3>
+<ul>
+<li>CollectionView/CompositeView<ul>
+<li>allow <code>itemEvents</code> to use string based method names <a href="https://github.com/marionettejs/backbone.marionette/pull/875">PR 875</a></li>
+</ul>
+</li>
+<li>Modules<ul>
+<li>update module initialize to include moduleName and app <a href="https://github.com/marionettejs/backbone.marionette/pull/898">PR 898</a></li>
+</ul>
+</li>
+<li>General<ul>
+<li>significantly improve module documentation <a href="https://github.com/marionettejs/backbone.marionette/pull/897">PR 897</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-6-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-6-0-v1-6-1-">v1.6.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.6.0...v1.6.1">view commit logs</a></h3>
+<ul>
+<li>Modules<ul>
+<li>Fix a bug where a module would not start by default when defined as an object literal</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-6-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-5-1-v1-6-0-">v1.6.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.5.1...v1.6.0">view commit logs</a></h3>
+<ul>
+<li><p>CompositeView</p>
+<ul>
+<li>add a <code>composite:collection:before:render</code> event</li>
+</ul>
+</li>
+<li><p>CollectionView</p>
+<ul>
+<li><code>checkEmpty</code> can now be overridden</li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li><code>Modules</code> can now be created using the extend method, and then attached to an <a href="https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.application.module.md#extending-modules">Application</a>.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>add a component.json file</li>
+<li>update bower.json</li>
+<li>add AMD build in bower.json</li>
+</ul>
+</li>
+<li><p>Tests</p>
+<ul>
+<li>general clean up</li>
+<li>add sinon.js for test spys</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-5-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-5-0-v1-5-1-">v1.5.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.5.0...v1.5.1">view commit logs</a></h3>
+<ul>
+<li>CollectionView/CompositeView<ul>
+<li>Fix bug where <code>show</code> and <code>onDomRefresh</code> was not called on <code>itemViews</code> in certain <a href="https://github.com/marionettejs/backbone.marionette/pull/866">conditions</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-5-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-4-1-v1-5-0-">v1.5.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.4.1...v1.5.0">view commit logs</a></h3>
+<ul>
+<li><p>Views</p>
+<ul>
+<li>View <code>options</code> can now be a <a href="https://github.com/marionettejs/backbone.marionette/pull/819">function</a></li>
+<li><code>onDomRefresh</code> is now only called when said <code>view</code> is in the <a href="https://github.com/marionettejs/backbone.marionette/pull/855">DOM</a></li>
+</ul>
+</li>
+<li><p>CollectionView/CompositeView</p>
+<ul>
+<li><code>itemViewContainer</code> is now called with the correct <a href="https://github.com/marionettejs/backbone.marionette/pull/841">context</a></li>
+<li>Fix bug where reseting a <code>collection</code> within a <code>collectionView</code> would cause <code>onShow</code> and <code>onDomRefresh</code> to be called <a href="https://github.com/marionettejs/backbone.marionette/pull/849">incorrectly</a> on the itemViews.</li>
+<li><code>addItemView</code> now returns the <code>view</code> that was <a href="https://github.com/marionettejs/backbone.marionette/pull/851">added</a></li>
+<li>You can now specify an <code>itemEvents</code> hash or method which allows you to capture all bubbling itemEvents without having to <a href="https://github.com/marionettejs/backbone.marionette/pull/861">manually set bindings</a>.</li>
+</ul>
+<pre><code class="lang-js">itemEvents: {
+  &quot;render&quot;: function() {
+    console.log(&quot;an itemView has been rendered&quot;);
+  }
+}
+</code></pre>
+</li>
+<li><p>Regions</p>
+<ul>
+<li>Region <code>close</code> event now passes the <code>view</code> being closed with the <a href="https://github.com/marionettejs/backbone.marionette/pull/834">event</a>.</li>
+</ul>
+</li>
+<li><p>General</p>
+<ul>
+<li>Updated bower ignore folder</li>
+<li>Added an editor config file</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-4-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-4-0-v1-4-1-">v1.4.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.4.0...v1.4.1">view commit logs</a></h3>
+<ul>
+<li>Views<ul>
+<li>fix for inital view class options. Now retains set options at class instantiation</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-4-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-3-0-v1-4-0-">v1.4.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.3.0...v1.4.0">view commit logs</a></h3>
+<ul>
+<li>Views<ul>
+<li>adds the ability to use the new <code>@ui.</code> syntax within the events and triggers hash to prevent selector duplication</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-3-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-2-3-v1-3-0-">v1.3.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.2.3...v1.3.0">view commit logs</a></h3>
+<ul>
+<li>CompositeView / CollectionView<ul>
+<li>Massive perf boost in rendering collection and composite views by using document fragments <a href="http://jsperf.com/marionette-documentfragment-collectionview/5">jsPerf</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-2-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-2-2-v1-2-3-">v1.2.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.2.2...v1.2.3">view commit logs</a></h3>
+<ul>
+<li>CompositeView<ul>
+<li>Fixed bug where <code>child views</code> were being added before the initial render, thus raising errors.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-2-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-2-1-v1-2-2-">v1.2.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.2.1...v1.2.2">view commit logs</a></h3>
+<ul>
+<li>Views<ul>
+<li>Move the instantiation of <code>view</code> options above the <code>constructor</code> This allows for view options to be accessed from within the <code>initialize</code> method for a given <code>view</code>
+This is needed since backbone views no longer set the view options in the constructor</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-2-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-2-0-v1-2-1-">v1.2.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.2.0...v1.2.1">view commit logs</a></h3>
+<ul>
+<li>Views<ul>
+<li>fixed a bug so now view options are {} by default and not undefined.</li>
+<li>fixed a bug where the triggers preventDefault and stopPropagation were executing in the wrong context – triggers now prevent default and stop propagation by default once more.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-2-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-1-0-v1-2-0-">v1.2.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.1.0...v1.2.0">view commit logs</a></h3>
+<ul>
+<li><p>Update Backbone to <a href="https://github.com/jashkenas/backbone/compare/1.0.0...1.1.0">1.1.0</a></p>
+</li>
+<li><p>Views</p>
+<ul>
+<li>added the ability to customize the behavior of <code>triggers</code> preventDefault and stopPropagation</li>
+</ul>
+</li>
+<li><p>Collection View / CompositeView</p>
+<ul>
+<li>added the ability to specifiy <code>getEmptyView</code> for dynamic <code>emptyView</code> lookups</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-4-v1-1-0-">v1.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.4...v1.1.0">view commit logs</a></h3>
+<ul>
+<li><p>Marionette.View / All Views</p>
+<ul>
+<li>Fix for <code>ui</code> bindings to not be removed from view prototype, if unrendered view is closed</li>
+<li>Template helpers can now be provided as a constructor function option</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Will properly attach regions if the layout&#39;s <code>close</code> method was called prior to <code>render</code></li>
+<li>Calling <code>.addRegions</code> will correctly modify the layout instance&#39; region list instead of the prototype&#39;s</li>
+<li>Fixed bug that prevented default <code>regionType</code> from being used</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li>The <code>itemViewContainer</code> can be supplied in the constructor function options</li>
+</ul>
+</li>
+<li><p>Application</p>
+<ul>
+<li>Added <code>closeRegions</code> method to close all regions on the app instance</li>
+<li>Added <code>getRegion</code> method to retrieve a region by name</li>
+</ul>
+</li>
+<li><p>AppRouter</p>
+<ul>
+<li>Added <code>appRoute</code> method to create app router handlers at runtime</li>
+<li>Added ability to set <code>appRoutes</code> in constructor function options</li>
+</ul>
+</li>
+<li><p>Marionette.triggerMethod</p>
+<ul>
+<li>Calls to the <code>Marionette.triggerMethod</code> can be made on objects that do not have a <code>trigger</code> method</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-3-v1-0-4-">v1.0.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.3...v1.0.4">view commit logs</a></h3>
+<ul>
+<li><p>ItemView</p>
+<ul>
+<li>Added needed <code>constructor</code> function back - it added lots of things and needed to be there</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li>Added explicit call to CollectionView constructor to allow for inheritance overriding</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Small clarification for consistency on call to ItemView constructor</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-2-v1-0-3-">v1.0.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.2...v1.0.3">view commit logs</a></h3>
+<ul>
+<li><p>ItemView</p>
+<ul>
+<li>Deleted unneeded <code>constructor</code> function - it added nothing and didn&#39;t need to be there</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li>Added <code>index</code> parameter to method signature, to show that it is available</li>
+<li>Deleted unneeded <code>constructor</code> function and removed call to <code>getItemView</code> as it was causing problems and was not needed in the constructor.</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li>Fixed a bug in the entity and collection event bindings, where <code>stopListening</code> would not unbind the event handlers</li>
+</ul>
+</li>
+<li><p>Renderer / All Views</p>
+<ul>
+<li>The <code>Renderer.render</code> method will throw a more meaningful error if the supplied template is falsey</li>
+</ul>
+</li>
+<li><p>Region</p>
+<ul>
+<li>Re-showing a closed view now works by re-rendering and re-inserting the view in to the DOM</li>
+<li>Region will trigger a <code>show</code> event when showing a view (updated the code to work like the docs already said)</li>
+<li>Set the <code>currentView</code> before triggering the <code>show</code> events from the region / view</li>
+</ul>
+</li>
+<li><p>RegionManager</p>
+<ul>
+<li>Fixed a bug to decrement the <code>.length</code> when a region is removed</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-1-v1-0-2-">v1.0.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.1...v1.0.2">view commit logs</a></h3>
+<ul>
+<li><p>UI Elements</p>
+<ul>
+<li>Fix bug to unbind them after the &quot;close&quot; event / <code>onClose</code> method, so the <code>ui</code> elements are available during these</li>
+</ul>
+</li>
+<li><p>AppRouter</p>
+<ul>
+<li>Fix bug that was reversing the order of routes, causing the wrong route to be fired in many cases</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-v1-0-1-">v1.0.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0...v1.0.1">view commit logs</a></h3>
+<ul>
+<li><p>AMD build: Removed <code>require(&#39;jQuery&#39;)</code> as Marionette now pulled <code>Backbone.$</code> as
+  <code>Marionette.$</code>.</p>
+</li>
+<li><p>Fixed RegionManager to allow region types to be specified again, not just
+region instances.</p>
+</li>
+<li><p>NPM: Removed hard dependency on jQuery from the dependency list. This will
+be pulled in by other libs, or should be pulled in manually, to get the
+right version.</p>
+</li>
+</ul>
+<h3 id="v1-0-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc6-v1-0-0-">v1.0.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc6...v1.0.0">view commit logs</a></h3>
+<ul>
+<li><p>RegionManager</p>
+<ul>
+<li>Created new <code>Marionette.RegionManager</code> object to manage a set of regions</li>
+</ul>
+</li>
+<li><p>Region</p>
+<ul>
+<li>Region will call the <code>close</code> method on a view, or the <code>remove</code> method if <code>close</code> is not found, when closing a view</li>
+<li>When calling the <code>show</code> method with the same view instance multiple times, subsequent calls will only re-render the view and not close / re-open it</li>
+</ul>
+</li>
+<li><p>Application</p>
+<ul>
+<li>Now uses <code>Marionette.RegionManager</code> to manage regions</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Now uses <code>Marionette.RegionManager</code> to manage regions</li>
+<li>Now supports dynamic add / remove of regions</li>
+<li>Can specify <code>regions</code> as a function that takes an <code>options</code> argument (the view&#39;s constructor options)</li>
+</ul>
+</li>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li>When specifying <code>itemViewOptions</code> as a function, an item <code>index</code> argument will be passed as the second parameter</li>
+<li>Will call the <code>close</code> or <code>remove</code> method when closing a view, with <code>close</code> method taking precedence</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li>Fixed a bug that caused an error when the collection was <code>reset</code> (loaded) before the view was rendered</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li>Closing a view will properly unbind <code>ui</code> elements</li>
+<li>Closing and then re-rendering a view will re-bind the <code>ui</code> elements</li>
+</ul>
+</li>
+<li><p>Functions</p>
+<ul>
+<li>Removed the <code>Marionette.createObject</code> function - it was never used by Marionette, directly</li>
+</ul>
+</li>
+<li><p>jQuery</p>
+<ul>
+<li>Replaced direct calls to <code>$</code> with new <code>Marionette.$</code>, which is assigned to
+<code>Backbone.$</code> for consistency w/ Backbone.</li>
+</ul>
+</li>
+<li><p>Backbone.Wreqr</p>
+<ul>
+<li>Updated to v0.2.0</li>
+<li>Renamed <code>addHandler</code> method to <code>setHandler</code></li>
+<li>For more information, see the <a href="https://github.com/marionettejs/backbone.wreqr/blob/master/CHANGELOG.md">Wreqr changelog</a></li>
+</ul>
+</li>
+<li><p>Code Cleanup</p>
+<ul>
+<li>Replaced <code>that = this</code> with the <code>context</code> param of several calls to <code>_.each</code> to clean up the code</li>
+<li>Removed an unused method from the CompositeView implementation</li>
+</ul>
+</li>
+<li><p>Build process</p>
+<ul>
+<li>Updated to Grunt v0.4.x</li>
+<li>Added code coverage and other analysis reports</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc6-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc5-v1-0-0-rc6-">v1.0.0-rc6 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc5...v1.0.0-rc6">view commit logs</a></h3>
+<ul>
+<li>CompositeView<ul>
+<li>Corrected the timing of the &quot;before:render&quot; event / <code>onBeforeRender</code> callback, so that it will be called before serializing the data for the model / template</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc5-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc4-v1-0-0-rc5-">v1.0.0-rc5 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc4...v1.0.0-rc5">view commit logs</a></h3>
+<ul>
+<li>CollectionView / ItemView<ul>
+<li>Corrected the timing on the &quot;show&quot; event / <code>onShow</code> callback for itemView instances that are added after the CollectionView is in the DOM</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc3-v1-0-0-rc4-">v1.0.0-rc4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc3...v1.0.0-rc4">view commit logs</a></h3>
+<ul>
+<li><p>EventBinder</p>
+<ul>
+<li><strong>BREAKING:</strong> Removed <code>Marionette.addEventBinder</code> function.</li>
+</ul>
+</li>
+<li><p>EventAggregator</p>
+<ul>
+<li><strong>BREAKING:</strong> Removed <code>Marionette.EventAggregator</code> object. Use <code>Backbone.Wreqr.EventAggregator</code> instead</li>
+</ul>
+</li>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li>Fixed several issues related to resetting the collection, and producing zombie &quot;empty&quot; views</li>
+<li>Fixed a bug that caused multiple emptyView instances when resetting the collection</li>
+<li>Forwarded events from child views are now called with <code>triggerMethod</code>, meaning they trigger the event and call the corresponding &quot;onEventName&quot; method</li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li>Finalizers now run with the module as the <code>this</code> context</li>
+</ul>
+</li>
+<li><p>Marionette.getOption</p>
+<ul>
+<li>Fixed support for &quot;falsey&quot; values in an object&#39;s <code>options</code></li>
+</ul>
+</li>
+<li><p>Build process</p>
+<ul>
+<li>Fixed build process to work on case-sensitive file systems (Linux, for example)</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc2-v1-0-0-rc3-">v1.0.0-rc3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc2...v1.0.0-rc3">view commit logs</a></h3>
+<ul>
+<li><p>Updated Backbone v0.9.10</p>
+</li>
+<li><p>Updated jQuery to v1.9.0</p>
+<ul>
+<li>Fixed a few minor unit test issues w/ jQuery update</li>
+</ul>
+</li>
+<li><p>Read <a href="https://github.com/marionettejs/backbone.marionette/blob/master/upgradeGuide.md">the upgrade guide</a> for upgrading from v1.0.0-rc2 to v1.0.0-rc3</p>
+</li>
+</ul>
+<h3 id="v1-0-0-rc3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc2-v1-0-0-rc3-">v1.0.0-rc3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc2...v1.0.0-rc3">view commit logs</a></h3>
+<ul>
+<li><p><strong>IMPORTANT:</strong> Be sure to read <a href="https://github.com/marionettejs/backbone.marionette/blob/master/upgradeGuide.md">the upgrade guide</a> for upgrading from v1.0.0-rc2 to v1.0.0-rc3</p>
+</li>
+<li><p>Backbone v0.9.9</p>
+<ul>
+<li><strong>BREAKING:</strong> Backbone v0.9.2 is no longer supported</li>
+<li>Backbone v0.9.9 is now supported</li>
+</ul>
+</li>
+<li><p>Marionette.Async</p>
+<ul>
+<li><strong>BREAKING:</strong> Marionette.Async is no longer supported</li>
+</ul>
+</li>
+<li><p>Backbone.EventBinder / Marionette.EventBinder</p>
+<ul>
+<li><strong>BREAKING:</strong> Marionette.EventBinder / Backbone.EventBinder have been removed entirely.</li>
+<li>Backbone.Events supercedes the older objects</li>
+<li>Backbone.Wreqr.EventAggregator also supercedes Marionette.EventBinder</li>
+</ul>
+</li>
+<li><p>EventBinder -&gt; EventAggregator</p>
+<ul>
+<li><strong>BREAKING:</strong> Backbone.Werqr.EventAggregator largely replaces Backbone.EventBinder</li>
+<li><strong>BREAKING:</strong> <code>bindTo</code> has been replaced with <code>listenTo</code></li>
+<li><strong>BREAKING:</strong> <code>unbindAll</code> has been replaced with <code>stopListening</code></li>
+<li><strong>BREAKING:</strong> <code>unbindFrom</code> has been removed and will not be replaced</li>
+</ul>
+</li>
+<li><p>Marionette.addEventBinder</p>
+<ul>
+<li><strong>BREAKING:</strong> This function will mix in Backbone.Events to the target object if it does not exist</li>
+<li><strong>BREAKING:</strong> This function will alter the <code>listenTo</code> method of the target to accept a <code>context</code> parameter as the 4th parameter of the method</li>
+</ul>
+</li>
+<li><p>All Views, Controller, etc</p>
+<ul>
+<li><strong>BREAKING:</strong> Backbone.EventBinder is no longer mixed in</li>
+<li><strong>BREAKING:</strong> See &#39;EventBinder -&gt; EventAggregator&#39; changes regarding method names to use for binding / unbinding events</li>
+</ul>
+</li>
+<li><p>CollectionView</p>
+<ul>
+<li>Added <code>removeChildView</code> to remove a specific view instance</li>
+<li>Fixed event handler leak for child views that have been removed</li>
+<li>Changed the implementation for triggering the &quot;show&quot; event / &quot;onShow&quot; method call, to avoid memory leaks</li>
+<li>Fixed the <code>index</code> parameter for adding a model to the collection, and getting the view in to the right place</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li><strong>BREAKING:</strong> The <code>initialEvents</code> method has been removed. Use the <code>initialize</code> method, the <code>collectionEvents</code> or <code>modelEvents</code> configuration instead.</li>
+<li>Allow <code>modelEvents</code> and <code>collectionEvents</code> to be a function that returns a hash</li>
+<li>Allow <code>ui</code> configuration to be a function that returns a hash</li>
+<li><code>modelEvents</code> and <code>collectionEvents</code> are now delegated / undelegated with Backbone.View&#39;s <code>.delegateEvents</code> and <code>.undelegateEvents</code> method calls</li>
+<li>View <code>triggers</code> now include an <code>args</code> object with <code>args.view</code>, <code>args.model</code> and <code>args.collection</code></li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li>Added alternate syntax for specifying <code>startWithParent</code> option</li>
+<li>Fixed a bug where a module would not be started without an explicit definition for that module (#388 &amp; #400)</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-rc1-v1-0-0-rc2-">v1.0.0-rc2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-rc1...v1.0.0-rc2">view commit logs</a></h3>
+<ul>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li><strong>BREAKING: </strong> Changed the <code>item:added</code> event to <code>before:item:added</code> and <code>after:item:added</code></li>
+<li>Fixed the <code>onShow</code> callbacks, so they can be used in the <code>initialize</code> method</li>
+</ul>
+</li>
+<li><p>AMD build</p>
+<ul>
+<li>Fixed the AMD build by adding Backbone.BabySitter to the AMD dependency list</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li>All views (include Marionette.View) now have a &quot;dom:refresh&quot; and <code>onDomRefresh</code> event / method triggered</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-rc1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta6-v1-0-0-rc1-">v1.0.0-rc1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta6...v1.0.0-rc1">view commit logs</a></h3>
+<ul>
+<li><p>Fixed IE &lt; 9 support w/ calls to <code>.apply</code> when <code>arguments</code> was null or undefined</p>
+</li>
+<li><p>Module</p>
+<ul>
+<li><strong>BREAKING:</strong> Renamed &quot;initialize:before&quot; event to &quot;before:start&quot;, for consistency</li>
+<li><strong>BREAKING:</strong> Renamed &quot;initialize:after&quot; event to &quot;start&quot;, for consistency</li>
+<li>Triggers a &quot;before:stop&quot; event/method before the module is stopped</li>
+<li>Triggers a &quot;stop&quot; event/method after the module has been stopped</li>
+</ul>
+</li>
+<li><p>Marionette.View</p>
+<ul>
+<li><strong>BREAKING</strong>: The <code>bindBackboneEntityTo</code> method has been removed from Marionette.View and replaced with <code>Marionette.bindEntityEvents</code> function.</li>
+</ul>
+</li>
+<li><p>Marionette.bindEntityEvents</p>
+<ul>
+<li>This function has been extracted from Marionette.View, and will bind an events hash to the events from an entity (model or collection), using the supplied EventBinder object (or any object with a bindTo method)</li>
+</ul>
+</li>
+<li><p>Marionette.EventBinder</p>
+<ul>
+<li>The context of the callback method defaults to the object w/ the <code>bindTo</code> method</li>
+</ul>
+</li>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li>The &quot;item:added&quot;/<code>onItemAdded</code> callback method are now fired after an item view has been rendered and added to it&#39;s parent collection view</li>
+<li>The &quot;itemview:&quot; events - events that are forwarded from item views - can now have a custom prefix with the <code>itemViewEventPrefix</code> setting</li>
+</ul>
+</li>
+<li><p>ItemView</p>
+<ul>
+<li>Added a &quot;dom:refresh&quot; event/callback method that fires after a view has been rendered, placed in the DOM with a Marionette.Region, and is re-rendered</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li>The <code>modelEvents</code> and <code>collectionEvents</code> can now have a function configured as the value in the <code>{ &quot;event:name&quot;: &quot;value&quot; }</code> configuration hash</li>
+<li>A view that uses <code>bindTo</code> for its own &quot;close&quot; event will have it&#39;s close handler called correctly</li>
+<li>Returning <code>false</code> from the <code>onBeforeClose</code> method will prevent the view from being closed</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta6-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta5-v1-0-0-beta6-">v1.0.0-beta6 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta5...v1.0.0-beta6">view commit logs</a></h3>
+<ul>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li><strong>BREAKING:</strong> The <code>.children</code> attribute, used to store child views, is no longer an object literal. It is now an instance of <code>Backbone.ChildViewContainer</code> from Backbone.BabySitter</li>
+<li>Updated to use <a href="https://github.com/marionettejs/backbone.babysitter">Backbone.BabySitter</a> to store and manage child views</li>
+</ul>
+</li>
+<li><p>Controller</p>
+<ul>
+<li>Added a default <code>close</code> method to unbind all events on the controller instance and controller event binder</li>
+<li>Trigger a &quot;close&quot;/onClose event/method when closing</li>
+<li>Fixed initialize method so <code>options</code> parameter is always a valid object</li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li>Fixed an issue with grand-child modules being defined with a non-existent direct parent, and starting the top level parent directly</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta5-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta4-v1-0-0-beta5-">v1.0.0-beta5 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta4...v1.0.0-beta5">view commit logs</a></h3>
+<ul>
+<li>Modules<ul>
+<li>Fixed the <code>startWithParent</code> option so that you only have to specify <code>startWithParent: false</code> once, no matter how many files the module definition is split in to</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta3-v1-0-0-beta4-">v1.0.0-beta4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta3...v1.0.0-beta4">view commit logs</a></h3>
+<ul>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li><strong>BREAKING:</strong> Changed when the <code>itemViewOptions</code> gets called, in order to simplify the <code>buildItemView</code> method and make it easier to override</li>
+<li><strong>BREAKING:</strong> The <code>storeChild</code> method now requires an instance of the item being rendered, as well as the view that was rendered for it</li>
+</ul>
+</li>
+<li><p>CompositeView / templateHelpers</p>
+<ul>
+<li><strong>BREAKING:</strong> Fixed the <code>CompositeView</code> so that <code>serializeData</code> is no longer responsible for mixing in the <code>templateHelpers</code></li>
+</ul>
+</li>
+<li><p>Controller</p>
+<ul>
+<li>Added a very basic <code>Marionette.Controller</code> object, and basic documentation for it</li>
+</ul>
+</li>
+<li><p>Marionette.getOption</p>
+<ul>
+<li>Added a convience method to get an object&#39;s options either from the object directly, or from it&#39;s <code>this.options</code>, with <code>this.options</code> taking precedence</li>
+<li>Converted use of <code>this.options</code> to use <code>Marionette.getOption</code> through most of the code</li>
+</ul>
+</li>
+<li><p>Marionette.createObject</p>
+<ul>
+<li>Added a convience method to create an object that inherits from another, as a wrapper / shim around <code>Object.create</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta2-v1-0-0-beta3-">v1.0.0-beta3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta2...v1.0.0-beta3">view commit logs</a></h3>
+<ul>
+<li>Region<ul>
+<li>Fixed &quot;show&quot; method so that it includes the view instance being shown, again</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v1-0-0-beta1-v1-0-0-beta2-">v1.0.0-beta2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v1.0.0-beta1...v1.0.0-beta2">view commit logs</a></h3>
+<ul>
+<li><p>templateHelpers</p>
+<ul>
+<li><strong>BREAKING:</strong> Changed when the templateHelpers is mixed in to the data for a view, so that it is no longer dependent on the <code>serializeData</code> implementation</li>
+</ul>
+</li>
+<li><p>Region</p>
+<ul>
+<li><strong>BREAKING:</strong> Changed &quot;view:show&quot; event to &quot;show&quot;</li>
+<li><strong>BREAKING:</strong> Changed &quot;view:closed&quot; event to &quot;close&quot;</li>
+<li>All region events and events that the triggers from a view are now triggered via Marionette.triggerMethod.</li>
+</ul>
+</li>
+<li><p>Marionette.EventAggregator</p>
+<ul>
+<li><strong>BREAKING:</strong> The <code>bindTo</code> method no longer assumes you are binding to the EventAggregator instance. You must specify the object that is triggering the event: <code>ea.bindto(ea, &quot;event&quot;, callback, context)</code></li>
+<li>Marionette.EventAggregator combines Backbone.Wreqr.EventAggregator with Backbone.EventBinder, allowing the event aggregator to act as it&#39;s own event binder</li>
+</ul>
+</li>
+<li><p>CollectionView</p>
+<ul>
+<li>Fixed bug where adding an item to a collection would not allow the CollectionView to propagate the itemView&#39;s events</li>
+<li>Allow <code>itemViewOptions</code> to be specified in CollectionView constructor options</li>
+</ul>
+</li>
+<li><p>Application</p>
+<ul>
+<li>The events triggered from the Application object instance are now triggered with corresponding &quot;on{EventName}&quot; method calls</li>
+</ul>
+</li>
+<li><p>Backbone.EventBinder</p>
+<ul>
+<li>Updated to v0.1.0 of Backbone.EventBinder, allowing for jQuery/DOM events to be handled within the EventBinder instances / <code>bindTo</code> methods</li>
+</ul>
+</li>
+<li><p>AMD Wrapper</p>
+<ul>
+<li>The &quot;core&quot; AMD wrapper specifies Backbone.Wreqr and Backbone.EventBinder</li>
+<li>The &quot;standard&quot; AMD wrapper does not specify Backbone.Wreqr / EventBinder, as these are built in</li>
+</ul>
+</li>
+<li><p>Build / downloads</p>
+<ul>
+<li>The standard and AMD versions of <code>backbone.marionette.js</code> and <code>backbone.marionette.min.js</code> include all dependencies (EventBinder, Wreqr)</li>
+<li>The &quot;core&quot; versions of <code>backbone.marionette.js</code> and <code>backbone.marionette.min.js</code> do not include any dependencies (EventBinder, Wreqr)</li>
+</ul>
+</li>
+</ul>
+<h3 id="v1-0-0-beta1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-10-2-v1-0-0-beta1-">v1.0.0-beta1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.10.2...v1.0.0-beta1">view commit logs</a></h3>
+<ul>
+<li><p>Backbone.EventBinder</p>
+<ul>
+<li><strong>BREAKING:</strong> Marionette&#39;s EventBinder has been extracted to the Backbone.EventBinder repository and plugin. You must include this file in your app, available at <a href="https://github.com/marionettejs/backbone.eventbinder">https://github.com/marionettejs/backbone.eventbinder</a></li>
+</ul>
+</li>
+<li><p>Backbone.Wreqr</p>
+<ul>
+<li><strong>BREAKING:</strong> Marionette&#39;s EventAggregator has been extracted to the Backbone.Wreqr repository and plugin. You must include this file in your app, available at <a href="https://github.com/marionettejs/backbone.wreqr">https://github.com/marionettejs/backbone.wreqr</a></li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li><strong>BREAKING:</strong> <code>beforeRender</code> method is now <code>onBeforeRender</code></li>
+<li><strong>BREAKING:</strong> <code>beforeClose</code> method is now <code>onBeforeClose</code></li>
+<li><strong>BREAKING:</strong> The <code>render</code> method for all Marionette views is bound to the view instance</li>
+<li>All view events are now triggered with <code>triggerMethod</code>, calling their corresponding method on the view if it exists</li>
+<li>All views now have an <code>isClosed</code> attribute on them, which is set to <code>true</code> when calling the <code>close()</code> method and reset to <code>false</code> when calling the <code>render()</code> method</li>
+<li>EventBinder is now attached to the views with the <code>Marionette.addEventBinder</code> method call</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li><strong>BREAKING:</strong> CompositeView will only render a model in to it&#39;s template, instead of a model or collection. It will still render the collection as itemView instances.</li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li><strong>BREAKING:</strong> Split module definitions can now receive custom args per module definition, instead of sharing / replacing them across all definitions</li>
+</ul>
+</li>
+<li><p>CollectionView / CompositeView</p>
+<ul>
+<li>Cleaned up the <code>getItemViewContainer</code> code, and improved the error that is thrown when the specified container element is not found</li>
+<li>Can attach existing view instance w/ existing DOM element as child of collection view / composite view, in parent&#39;s <code>initialize</code> function</li>
+<li>Fixed a bug where an undefined <code>this.options</code> would prevent child views from being rendered, trying to find the index of the view</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Allow a Layout to be defined without <code>regions</code>, using Underscore v1.4.x</li>
+</ul>
+</li>
+<li><p>View / ItemView / CompositeView</p>
+<ul>
+<li>Removed the <code>serializeData</code> method and added directly to <code>ItemView</code> and <code>CompositeView</code> as needed</li>
+</ul>
+</li>
+<li><p>Application</p>
+<ul>
+<li>Application regions can now be specified as a jQuery selector string, a region type, or an object literal with a selector and type: <code>{selector: &quot;#foo&quot;, regionType: MyCustomRegion}</code></li>
+<li>added <code>.commands</code> as instance of Backbone.Wreqr.Commands, to facilitate command execution</li>
+<li>added <code>.execute</code> method for direct command execution</li>
+<li>added <code>.reqres</code> as instance of Backbone.Wreqr.RequestResponse, to facilitate request/response execution</li>
+<li>added <code>.request</code> method for direct requesting of a response</li>
+</ul>
+</li>
+<li><p>Marionette.triggerMethod</p>
+<ul>
+<li>Added <code>Marionette.triggerMethod</code> method to trigger an event and call the corresponding method. For example, <code>view.triggetMethod(&quot;before:render&quot;)</code> will trigger the &quot;before:render&quot; event and call the <code>onBeforeRender</code> method.</li>
+</ul>
+</li>
+<li><p>Marionette.addEventBinder</p>
+<ul>
+<li>Added <code>Marionette.addEventBinder</code> method to add all of the Backbone.Wreqr.EventBinder methods to a specified target object</li>
+</ul>
+</li>
+<li><p>Misc</p>
+<ul>
+<li>Added <code>Marionette.extend</code> as alias to Backbone&#39;s <code>extend</code> method for more consistent use</li>
+<li>jQuery ($) support now works from global <code>$</code> or <code>window.jQuery</code></li>
+<li>Updated to Underscore.js v1.4.1</li>
+<li>Updated to jQuery v1.8.2</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-10-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-10-1-v0-10-2-">v0.10.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.10.1...v0.10.2">view commit logs</a></h3>
+<ul>
+<li><p>Callbacks</p>
+<ul>
+<li>Fixed a bug that caused callbacks to fire multiple times after calling <code>reset</code></li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Fixed a bug that prevented the regions from being re-initialized correctly, when using <code>render</code> as a callback method for an event</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-10-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-10-0-v0-10-1-">v0.10.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.10.0...v0.10.1">view commit logs</a></h3>
+<ul>
+<li>Modules<ul>
+<li>Fixed a bug when defining modules in reverse order, that prevented <code>startWithParent</code> from working correctly</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-10-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-13-v0-10-0-">v0.10.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.13...v0.10.0">view commit logs</a></h3>
+<ul>
+<li><p>Modules</p>
+<ul>
+<li><strong>BREAKING:</strong> Module definition functions are executed immediately and only once, not every time you call <code>start</code></li>
+<li><strong>BREAKING:</strong> Renamed <code>startWithApp</code> to <code>startWithParent</code> in module definitions</li>
+<li><strong>BREAKING:</strong> Sub-modules rely on the parent module to start them, by default, but can be started manually</li>
+<li><strong>BREAKING:</strong> Sub-modules default to starting with their parent module start</li>
+<li><strong>BREAKING:</strong> Specifying <code>startWithParent: false</code> for a sub-module will prevent the module from being started when the parent starts</li>
+<li><strong>BREAKING:</strong> Specifying <code>startWithParent: false</code> for a top-level module will prevent the module from being started when the parent <code>Application</code> starts</li>
+<li><strong>BREAKING:</strong> When starting a module, sub-modules will be started / initialized before parent modules (depth-first hierarchy traversal)</li>
+<li><strong>BREAKING:</strong> When stopping a module, sub-modules will be stopped / finalized before parent modules (depth-first hierarchy traversal)</li>
+<li>Fixed: retrieving a module by name (<code>var foo = MyApp.module(&quot;Foo&quot;);</code>) will not change the module&#39;s definition or <code>startWithParent</code> setting</li>
+</ul>
+</li>
+<li><p>CollectionView</p>
+<ul>
+<li>Allow <code>itemViewOptions</code> to be a function, which recieves the <code>item</code> as an argument</li>
+</ul>
+</li>
+<li><p>Callbacks</p>
+<ul>
+<li>Added <code>reset</code> method to reset the list of callbacks and allow them to be run again, when needed</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-13-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-12-v0-9-13-">v0.9.13 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.12...v0.9.13">view commit logs</a></h3>
+<ul>
+<li><p>CollectionView</p>
+<ul>
+<li>Fixed bug that prevented &quot;collection:closed&quot; event from being triggered</li>
+<li>Allow different item view to be rendered for each item in collection by overriding <code>getItemView</code> method</li>
+</ul>
+</li>
+<li><p>CompositeView</p>
+<ul>
+<li>Allow different item view to be rendered for each item in collection by overriding <code>getItemView</code> method</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Regions are initialized before prototype constructor, or <code>initialize</code> function are called</li>
+</ul>
+</li>
+<li><p>All Views</p>
+<ul>
+<li>Adds declarative event binding for models and collections. See <a href="https://github.com/marionettejs/backbone.marionette/blob/master/docs/marionette.view.md">Marionette.View documentation</a> for more information.</li>
+</ul>
+</li>
+<li><p>Build and test</p>
+<ul>
+<li>Removed all dependencies on Ruby, in favor of NodeJS and Grunt</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-12-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-11-v0-9-12-">v0.9.12 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.11...v0.9.12">view commit logs</a></h3>
+<ul>
+<li>Moved <a href="https://github.com/marionettejs/backbone.marionette.async">Marionette.Async</a> to it&#39;s own repository</li>
+<li>De-linted source code</li>
+<li>Corrected throwing an &quot;Exception&quot; to throwing an &quot;Error&quot;</li>
+</ul>
+<h3 id="v0-9-11-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-10-v0-9-11-">v0.9.11 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.10...v0.9.11">view commit logs</a></h3>
+<ul>
+<li><p>JamJS Support</p>
+<ul>
+<li>Updated the <code>package.json</code> file with more detail and support for <a href="http://jamjs.org/">JamJS</a>.</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>Fixed a global variable leak</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-10-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-9-v0-9-10-">v0.9.10 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.9...v0.9.10">view commit logs</a></h3>
+<ul>
+<li>ItemView and Layout<ul>
+<li><strong>BREAKING:</strong> Removed the default implementation of <code>initialEvents</code>, so that a collection &quot;reset&quot; event won&#39;t cause the ItemView or Layout to re-render</li>
+</ul>
+</li>
+<li>Build Process<ul>
+<li>Changed from Anvil.js to Grunt.js for the build process</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-9-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-8-v0-9-9-">v0.9.9 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.8...v0.9.9">view commit logs</a></h3>
+<ul>
+<li>Regions<ul>
+<li>Added a <code>reset</code> method to regions, which closes the open view and deletes the region&#39;s cached <code>el</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-8-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-7-v0-9-8-">v0.9.8 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.7...v0.9.8">view commit logs</a></h3>
+<ul>
+<li>Modules<ul>
+<li>Fixed a bug that ensures modules will start and stop the correct number of times, instead of always stopping immediately after they have been stopped once</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-7-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-6-v0-9-7-">v0.9.7 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.6...v0.9.7">view commit logs</a></h3>
+<ul>
+<li><p>Modules</p>
+<ul>
+<li>Fixed a bug to ensure modules are only started once, no matter how many definitions the module is split in to</li>
+</ul>
+</li>
+<li><p>View Templates</p>
+<ul>
+<li>Better support for pre-compiled templates - can specify a function as the <code>template</code> setting for a view, and the function will be run as the template, directly.</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-6-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-5-v0-9-6-">v0.9.6 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.5...v0.9.6">view commit logs</a></h3>
+<ul>
+<li>All Marionette Views<ul>
+<li>Fixed bug that prevented <code>bindTo</code> function and other <code>EventBinder</code> functions from being available in <code>initialize</code> method of views</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-5-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-4-v0-9-5-">v0.9.5 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.4...v0.9.5">view commit logs</a></h3>
+<ul>
+<li>Layout<ul>
+<li>Fixed a typo / bug in default Region type used for layouts</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-3-v0-9-5-">v0.9.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.3...v0.9.5">view commit logs</a></h3>
+<ul>
+<li><p>BindTo -&gt; EventBindings</p>
+<ul>
+<li><strong>BREAKING:</strong> Renamed <code>Marionette.BindTo</code> to <code>Marionette.EventBindings</code> and made it a constructor function instead of an object literal</li>
+</ul>
+</li>
+<li><p>Modules</p>
+<ul>
+<li><strong>BREAKING:</strong> Changed the API of <code>Module.create</code> to be more clear and explicit about <code>app</code> parameter</li>
+<li><strong>BREAKING:</strong> Defer module definition until module is started</li>
+<li>Modules now have <code>addInitializer</code> method to add initializers</li>
+<li>Modules can be started (run the initializers) with <code>start</code> method</li>
+<li>Modules are automatically started when Marionette.Application <code>start</code> method is called</li>
+<li>App.start sends options to module initializers</li>
+<li>Modules that are defined (or loaded from external source) afer app is started will auto-start by default</li>
+<li>Can specify a module is not started with the app, to prevent the module from being started when app.start is called</li>
+<li>Calling <code>start</code> on a module will start all of the sub-modules for that module</li>
+</ul>
+</li>
+<li><p>CollectionView/CompositeView</p>
+<ul>
+<li>Correctly handles non-existent collection and removing child item views that were added manually</li>
+<li>Corrected showing empty view and closing empty view when resetting collection and adding items</li>
+<li>Fixed bug to prevent showing the empty view more than once when rendering the collection view</li>
+</ul>
+</li>
+<li><p>Application</p>
+<ul>
+<li>Added a <code>removeRegion</code> method to close / remove regions, as a counter-function to the <code>addRegions</code> method</li>
+</ul>
+</li>
+<li><p>Marionette.View (all views / base view)</p>
+<ul>
+<li>Can specify a set of <code>ui</code> elements that are cached jQuery selectors</li>
+</ul>
+</li>
+<li><p>Layout</p>
+<ul>
+<li>An already closed layout can be re-rendered, and the regions will regenerate</li>
+<li>Allow a custom region type to be specified for all regions, as well as per-region instance</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-9-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-2-v0-9-3-">v0.9.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.2...v0.9.3">view commit logs</a></h3>
+<ul>
+<li><p>CompositeView</p>
+<ul>
+<li>Cleaned up the method to get / cache the <code>itemViewContainer</code></li>
+<li>Allow <code>itemViewContainer</code> to be a function that return a jQuery selector string</li>
+</ul>
+</li>
+<li><p>View <code>render</code> methods all return <code>this</code> in the standard Marionette views (the async views still return a deferred object).</p>
+</li>
+</ul>
+<h3 id="v0-9-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-1-v0-9-2-">v0.9.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.1...v0.9.2">view commit logs</a></h3>
+<ul>
+<li><p>CompositeView</p>
+<ul>
+<li>Added <code>itemViewContainer</code> to specify which element children / itemView instances should be appended to</li>
+</ul>
+</li>
+<li><p>CollectionView</p>
+<ul>
+<li>Now triggers &quot;before:render&quot; and &quot;render&quot; events</li>
+</ul>
+</li>
+<li><p>Region</p>
+<ul>
+<li>Returns a deferred/promise from the <code>show</code> method, with Marionette.Async</li>
+</ul>
+</li>
+<li><p>Fixed bug in template cache for Marionette.Async</p>
+</li>
+<li><p>Marionette can now be installed with <a href="https://github.com/volojs/volo">Volo</a></p>
+</li>
+</ul>
+<h3 id="v0-9-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-9-0-v0-9-1-">v0.9.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.9.0...v0.9.1">view commit logs</a></h3>
+<ul>
+<li>CollectionView and CompositeView properly close their <code>emptyView</code> instance when an item is added to the view&#39;s collection</li>
+<li>CollectionView and CompositeView will show their <code>emptyView</code> after the last item has been removed from the collection</li>
+</ul>
+<h3 id="v0-9-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-8-4-v0-9-0-">v0.9.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.8.4...v0.9.0">view commit logs</a></h3>
+<ul>
+<li><p><strong>BREAKING</strong> Async Support Removed From Core Marionette</p>
+<ul>
+<li>Marionette no longer supports asynchronous / deferred rendering in any view, by default</li>
+<li>Async / deferred rendering are now provided via <code>backbone.marionette.async.js</code> add-on</li>
+</ul>
+</li>
+<li><p>Split the single src/backbone.marionette.js file into multiple files for easier maintenance</p>
+</li>
+<li><p>Marionette.Async:</p>
+<ul>
+<li>Added <code>Marionette.Async</code> add-on which provides support for rendering and retrieving templates asynchronously</li>
+</ul>
+</li>
+<li><p>Marionette.View:</p>
+<ul>
+<li><strong>BREAKING</strong> Renamed the <code>getTemplateSelector</code> method to <code>getTemplate</code></li>
+<li>Call <code>unbindAll</code> to unbind all bound events, later in the close process, so the <code>close</code> event can be listened to</li>
+</ul>
+</li>
+<li><p>ItemView:</p>
+<ul>
+<li><strong>BREAKING</strong> The <code>template</code> attribute no longer allows you to specify a function that returns a jQuery selector. Override <code>getTemplate</code> to do this.</li>
+<li><strong>BREAKING</strong> The <code>renderHtml</code> method has been removed from the ItemView</li>
+<li><strong>BREAKING</strong> Async support removed</li>
+</ul>
+</li>
+<li><p>CollectionView:</p>
+<ul>
+<li><strong>BREAKING</strong> Async support removed</li>
+<li>Now supports optional <code>emptyView</code> attribute, to specify what view to render when no items exist in the collection</li>
+<li>Fixed a memory leak for closed item views</li>
+<li>ItemView is now guaranteed to have it&#39;s &quot;onRender&quot; and &quot;onShow&quot; methods called, when rendering the collection and when adding a new item to the collection / rendering the new item view</li>
+<li>Calls an <code>onItemAdded</code> method when adding an item/item view, just prior to rendering the item view</li>
+<li>Can now specify an <code>itemViewOptions</code> object literal on your collection view definition, and the data will be passed to each itemView instance as part of the itemView&#39;s options</li>
+<li>The <code>appendHtml</code> method receives a third argument of the itemView&#39;s &quot;index&quot; for sorted collections</li>
+</ul>
+</li>
+<li><p>CompositeView:</p>
+<ul>
+<li><strong>BREAKING</strong> When a CompositeView&#39;s collection is reset, only the collection will be re-rendered. It will no longe re-render the composite&#39;s template/model, just the collection.</li>
+<li><strong>BREAKING</strong> Async support removed</li>
+<li>(see change list for <code>CollectionView</code>)</li>
+</ul>
+</li>
+<li><p>Layout:</p>
+<ul>
+<li><strong>BREAKING</strong> Regions specified within a layout are now available immediately after creating a layout instance</li>
+<li><strong>BREAKING</strong> Re-rendering a layout will close all regions and reset them to the new DOM elements that were rendered</li>
+<li><strong>BREAKING</strong> Layouts no longer have a <code>.vent</code> event aggregator hanging off them</li>
+<li><strong>BREAKING</strong> Async support removed</li>
+</ul>
+</li>
+<li><p>Region:</p>
+<ul>
+<li><strong>BREAKING</strong> Removed the ability to send a second parameter to a regions&#39; &quot;show&quot; method</li>
+<li><strong>BREAKING</strong> Changed the implementation of <code>Region</code> to allow easier overriding of how the new view is added to the DOM</li>
+<li><strong>BREAKING</strong> Async support removed</li>
+</ul>
+</li>
+<li><p>TemplateCache:</p>
+<ul>
+<li><strong>BREAKING</strong> Moved TemplateCache to object instances instead of single object literal</li>
+<li><strong>BREAKING</strong> Moved the <code>loadTemplate</code> and <code>compileTemplate</code> to <code>TemplateCache.prototype</code></li>
+<li><strong>BREAKING</strong> <code>TemplateCache.get</code> no longer accepts a callback method. It always returns jQuery promise</li>
+</ul>
+</li>
+<li><p>Renderer:</p>
+<ul>
+<li><strong>BREAKING</strong> Removed the <code>renderHtml</code> method</li>
+<li>Rendering a pre-compiled template function is now much easier - just override the <code>Renderer.render</code> method.</li>
+</ul>
+</li>
+<li><p>Modules:</p>
+<ul>
+<li><strong>BREAKING</strong> Modules must be defined on an instance of a Marionette.Application, and cannot be defined from another module directly</li>
+<li><strong>BREAKING</strong> Modules no longer allow you to return a custom module object from the module definition function</li>
+<li><strong>BREAKING</strong> Modules no longer allow you to add initializers to them</li>
+<li><strong>BREAKING</strong> Modules no longer have a <code>.vent</code> event aggregator hanging off them</li>
+<li>Extracted <code>Marionette.Module</code> in to it&#39;s own constructor function to be used as modules, instead of Marionette.Application</li>
+<li>Modules allow you to pass in any arbirary arguments, after the module definition function, and they will be supplied to the module definition function</li>
+<li>The <code>this</code> argument in a module definition function is now the module itself</li>
+</ul>
+</li>
+<li><p>Callbacks:</p>
+<ul>
+<li><strong>BREAKING</strong> Switched the order of parameters for the <code>run</code> method to <code>args, context</code></li>
+</ul>
+</li>
+<li><p>BindTo:</p>
+<ul>
+<li>The unbinding of an event now considers the <code>context</code> parameter when unbinding, allowing multiple handers to be bound to the same event from the same object, and unbinding only one of them</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-8-4-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-8-3-v0-8-4-">v0.8.4 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.8.3...v0.8.4">view commit logs</a></h3>
+<ul>
+<li>Fixed: A call to <code>.module</code> will correctly pass the <code>Application</code> instance from which <code>.module</code> was called, as the second parameter of the module definition function</li>
+</ul>
+<h3 id="v0-8-3-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-8-2-v0-8-3-">v0.8.3 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.8.2...v0.8.3">view commit logs</a></h3>
+<ul>
+<li>Module definitions can be split across multiple files and/or multiple calls to define the module</li>
+</ul>
+<h3 id="v0-8-2-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-8-1-v0-8-2-">v0.8.2 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.8.1...v0.8.2">view commit logs</a></h3>
+<ul>
+<li>Views now have the ability to define <code>triggers</code> which will convert a DOM event in to a <code>view.trigger</code> event</li>
+</ul>
+<h3 id="v0-8-1-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-8-0-v0-8-1-">v0.8.1 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.8.0...v0.8.1">view commit logs</a></h3>
+<ul>
+<li>Module definition functions will only be applied to the last module in the . chain</li>
+</ul>
+<h3 id="v0-8-0-view-commit-logs-https-github-com-marionettejs-backbone-marionette-compare-v0-7-6-v0-8-0-">v0.8.0 <a href="https://github.com/marionettejs/backbone.marionette/compare/v0.7.6...v0.8.0">view commit logs</a></h3>
+<ul>
+<li>Added modules and sub-modules through the Application object</li>
+</ul>
+<h3 id="v0-7-6">v0.7.6</h3>
+<ul>
+<li>An <code>itemView</code> instance as part of a Collection View or Composite View, will have it&#39;s events bubbled up through the parent view, prepended with &quot;itemview:&quot; as the event name</li>
+</ul>
+<h3 id="v0-7-5">v0.7.5</h3>
+<ul>
+<li>The <code>onBefore</code> method of ItemView can now return a deferred object</li>
+<li>Code cleanup for rendering methods</li>
+</ul>
+<h3 id="v0-7-4">v0.7.4</h3>
+<ul>
+<li>Fixed issue with <code>unbindAll</code> in BindTo, that was skipping some items</li>
+</ul>
+<h3 id="v0-7-3">v0.7.3</h3>
+<ul>
+<li>The <code>bindTo</code> method on the <code>EventAggregator</code> now returns a binding configuration object</li>
+<li>Automatic mixing in of <code>templateMethods</code> as template / view helper methods, in views that use the <code>serializeData</code> function</li>
+<li>A friendlier error message will be thrown from an appRouter if a route is configured with a method that does not exist on the controller</li>
+</ul>
+<h3 id="v0-7-2">v0.7.2</h3>
+<ul>
+<li>Extracted <code>compileTemplate</code> method in TemplateCache for clarity and easier modification</li>
+<li>ItemView will wait until <code>onRender</code> has completed before triggering other rendered events</li>
+<li>Region now supports an <code>onShow</code> method, when defining a custom region</li>
+<li>Moved the default <code>serializeData</code> method to the base Marionette.View</li>
+<li>CompositeView now calls the <code>serializeData</code> method to get the model&#39;s data for the view</li>
+<li><code>BindTo</code> changes:<ul>
+<li>The <code>bindTo</code> method returns a &quot;binding&quot; object so that it can be unbound easily</li>
+<li>Now has an <code>unbindFrom</code> method that will unbind a binding object</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-7-1">v0.7.1</h3>
+<ul>
+<li>ItemView now has a <code>renderHtml</code> method that can be overriden to render the item view&#39;s data</li>
+<li>Region now supports an <code>initialize</code> function when extending a region to your own object type</li>
+<li>CollectionView correctly defers until all children are rendered</li>
+<li>Underscore templates are cached as pre-compiled templates, instead of re-compiling them on every render</li>
+<li>Updating AMD support to also work with CommonJS / NodeJS</li>
+<li>Correctiong build to include header / license info for all output files</li>
+<li>Pass JSLint with no warnings (run w/ Anvil.js build process)</li>
+<li>Removed GZip release files, as they were broken anyways</li>
+</ul>
+<h3 id="v0-7-0">v0.7.0</h3>
+<ul>
+<li><strong>BREAKING</strong>: The <code>renderTemplate</code> method has moved from the <code>ItemView</code> prototype on to the <code>Renderer</code> object</li>
+<li><strong>BREAKING</strong>: The <code>appendHtml</code> method of the <code>CollectionView</code> now takes <code>collectionView, itemView</code> as the arguments, instead of <code>el, html</code></li>
+<li>Added <code>Marionette.View</code> object, to contain a few basic parts of every Marionette view</li>
+<li>Added <code>Marionette.Renderer</code> object, to handle template rendering</li>
+<li>Views correctly trigger the &quot;close&quot; events before unbinding event subscribers</li>
+<li>Additional <code>CollectionView</code> changes:<ul>
+<li>Extracted <code>getItemView</code> method to retrieve the <code>itemView</code> type, either from <code>this.itemView</code> or <code>this.options.itemView</code></li>
+<li>Extracted <code>buildItemView</code> method to build each item&#39;s view</li>
+<li>Renamed <code>removeChildView</code> to <code>removeItemView</code> to make the language consistent</li>
+<li>Triggers &quot;item:added&quot; event after each item has been added</li>
+<li>Triggers &quot;item:removed&quot; event after an item has been removed</li>
+</ul>
+</li>
+<li><code>CompositeView</code> changes:<ul>
+<li>No longer takes a <code>modelView</code>. Now directly renders the <code>template</code> specified</li>
+<li>Defaults to a recurive structure, where <code>itemView</code> is the current composite view type</li>
+</ul>
+</li>
+<li>A <code>Region</code> will trigger a <code>show</code> event from any view that it shows</li>
+<li>Added common &quot;render&quot; event to all the view types</li>
+<li>Updated to Backbone v0.9.2</li>
+<li>Updated to jQuery v1.7.2</li>
+<li>AMD / RequireJS compliant version is provided</li>
+<li>Now using <a href="https://github.com/arobson/anvil.js">Anvil.js</a> for builds</li>
+</ul>
+<h4 id="v0-6-4">v0.6.4</h4>
+<ul>
+<li>CollectionView and CompositeView can render without a collection</li>
+</ul>
+<h4 id="v0-6-3">v0.6.3</h4>
+<ul>
+<li><code>ItemView</code> changes<ul>
+<li>Calls a <code>beforeRender</code> and <code>beforeClose</code> method on the view, if it exists</li>
+<li>Triggers a <code>item:before:render</code> event, just prior to rendering</li>
+<li>Triggers a <code>item:before:close</code> and <code>item:closed</code> events, around the view&#39;s <code>close</code> method</li>
+</ul>
+</li>
+<li><code>CollectionView</code> changes<ul>
+<li>Calls a <code>beforeRender</code> and <code>beforeClose</code> method on the view, if it exists</li>
+<li>Triggers a <code>collection:before:render</code> event before rendering</li>
+<li>Triggers a <code>collection:before:close</code> and <code>collection:closed</code> event, surrounding closing of the view</li>
+</ul>
+</li>
+<li>The <code>CollectionView</code> and <code>CompositeView</code> now close child views before closing itself</li>
+</ul>
+<h4 id="v0-6-2">v0.6.2</h4>
+<ul>
+<li><strong>BREAKING:</strong> The <code>CollectionView</code> no longer has a <code>reRender</code> method. Call <code>render</code> instead</li>
+<li><strong>BREAKING:</strong> The <code>TemplateCache.get</code> method now returns a plain string instead of a jQuery selector object</li>
+<li>Fixed a bug with closing and then re-using a Layout with defined regions</li>
+<li>Fixed a potential race condition for loading / caching templates where a template would be loaded multiple times instead of just once</li>
+</ul>
+<h4 id="v0-6-1">v0.6.1</h4>
+<ul>
+<li>Fixed the composite view so that it renders the collection correctly when the collection is &quot;reset&quot;</li>
+<li>Fixed the composite view so that it re-renders correctly</li>
+<li>Fixed various deferred usages to only return promises, instead of the full deferred object</li>
+</ul>
+<h4 id="v0-6-0">v0.6.0</h4>
+<ul>
+<li><strong>BREAKING:</strong> Renamed <code>LayoutManager</code> to <code>Layout</code></li>
+<li><strong>BREAKING:</strong> Renamed <code>RegionManager</code> to <code>Region</code></li>
+<li><p><strong>BREAKING:</strong> Renamed <code>TemplateManager</code> to <code>TemplateCache</code></p>
+</li>
+<li><p><strong>Layout</strong></p>
+<ul>
+<li><strong>BREAKING:</strong> <code>Layout.render</code> no longer returns the view itself, now returns a jQuery deferred object</li>
+<li>The <code>.vent</code> attribute is now available in the <code>initializer</code> method</li>
+<li>Ensures that regions select the <code>$el</code> within the Layout&#39;s <code>$el</code> instead of globally on the page</li>
+<li>Initialize the regions before the layout, allowing access to the regions in the <code>onRender</code> method of the layout</li>
+<li>Close the Layout&#39;s regions before closing the layout itself</li>
+</ul>
+</li>
+<li><p><strong>CompositeView</strong></p>
+<ul>
+<li><strong>BREAKING:</strong> <code>CompositeView.render</code> no longer returns the view itself, now returns a jQuery deffered object</li>
+<li>Will only render the collection once. You can call <code>renderCollection</code> explicitly to re-render the entire collection</li>
+<li>Will only render the model view once. You can call <code>renderModel</code> explicitly to re-render the model</li>
+<li>Correctly close and dispose of the model view</li>
+<li>Triggers various events during rendering of model view and collection view</li>
+<li>Calls &#39;onRender&#39; method of composite view, if it exists</li>
+</ul>
+</li>
+<li><p><strong>ItemView</strong></p>
+<ul>
+<li><strong>BREAKING:</strong> <code>ItemView.render</code> no longer returns the view itself, now returns a jQuery deferred object</li>
+<li>Optimization to only call <code>.toJSON</code> on either model or collection, not both</li>
+<li>Trigger &quot;item:rendered&quot; method after rendering (in addition to calling onRender method of the view)</li>
+</ul>
+</li>
+<li><p><strong>CollectionView</strong></p>
+<ul>
+<li><strong>BREAKING:</strong> <code>CollectionView.render</code> no longer returns the view itself, now returns a jQuery deferred object</li>
+<li>Trigger &quot;collection:rendered&quot; method after rendering (in addition to calling onRender method)</li>
+</ul>
+</li>
+<li><p>Large updates to the readme/documentation</p>
+</li>
+<li>Heavy use of <code>jQuery.Deferred()</code> and <code>jQuery.when/then</code> to better support asynchronous templates and rendering</li>
+</ul>
+<h4 id="v0-5-2">v0.5.2</h4>
+<ul>
+<li><strong>BREAKING:</strong> Renamed <code>CompositeRegion</code> to <code>LayoutManager</code></li>
+<li>Aliased CompsiteRegion to LayoutManager for backwards compatibility</li>
+<li>Bug fix for correctly initializing LayoutManager with specified options in constructor</li>
+</ul>
+<h4 id="v0-5-1">v0.5.1</h4>
+<ul>
+<li>Controller methods fired from an <code>AppRouter</code> are now called with <code>this</code> set to the controller, instead of the router</li>
+<li>Fixed a bug in the CompositeView where the list wouldn&#39;t render when passing in a populated collection</li>
+</ul>
+<h4 id="v0-5-0">v0.5.0</h4>
+<ul>
+<li><strong>BREAKING:</strong> Extraced <code>CompositeView</code> out of the collection view</li>
+<li>Added <code>CompositeView</code> for managing leaf-branch/composite model structures</li>
+<li>Added <code>CompositeRegion</code> for managing nested views and nested region managers</li>
+<li>Added <code>attachView</code> method to <code>RegionManager</code> to attach existing view without rendering / replacing</li>
+<li>Specify how to attach HTML to DOM in region manager&#39;s <code>show</code> method</li>
+</ul>
+<h4 id="v0-4-8">v0.4.8</h4>
+<ul>
+<li>Don&#39;t re-render an ItemView when the view&#39;s model &quot;change&quot; event is triggered</li>
+</ul>
+<h4 id="v0-4-7">v0.4.7</h4>
+<ul>
+<li>Allow <code>RegionManager</code> to be instantiated with an <code>el</code> specified in the options</li>
+<li>Change how RegionManagers are added to an Application instance, to reduce memory usage from extraneous types</li>
+</ul>
+<h4 id="v0-4-6">v0.4.6</h4>
+<ul>
+<li>AppRouter can have it&#39;s <code>controller</code> specified directly in the router definition or in the construction function call</li>
+<li>Extracted <code>Marionette.EventAggregator</code> out in to it&#39;s own explicit object</li>
+</ul>
+<h4 id="v0-4-5">v0.4.5</h4>
+<ul>
+<li>CollectionView closes existing child views before re-rendering itself, when &quot;reset&quot;
+event of collection is triggered</li>
+<li>CollectionView now has &quot;initialEvents&quot; method which configures it&#39;s initial events</li>
+<li>ItemView now has &quot;initialEvents&quot; method which configures it&#39;s initial events</li>
+</ul>
+<h4 id="v0-4-4">v0.4.4</h4>
+<ul>
+<li>CollectionView renders itself when the view&#39;s collection &quot;reset&quot; event is fired</li>
+<li>ItemView renders itself when the view&#39;s model &quot;change&quot; event is fired</li>
+<li>ItemView renders itself when the view&#39;s collection &quot;reset&quot; event is fired</li>
+</ul>
+<h4 id="v0-4-3">v0.4.3</h4>
+<ul>
+<li>Fixed bug with RegionManagers trying to select element before DOM is ready, to lazy-select the element on first use of <code>show</code></li>
+</ul>
+<h4 id="v0-4-2">v0.4.2</h4>
+<ul>
+<li><strong>BREAKING:</strong> Removed the <code>setOptions</code> method from the <code>Callbacks</code> object</li>
+<li>Refactored <code>Callbacks</code> object to use a jQuery Deferred instead of my own code</li>
+<li>Fixed template manager&#39;s <code>clear</code> so it properly clears a single template, when only one is specified</li>
+<li>Refactored the <code>RegionManager</code> code to support several new features<ul>
+<li>now support returning a jQuery deferred object from a view&#39;s <code>render</code> method</li>
+<li>now have a <code>close</code> method that you can call to close the current view</li>
+<li>now trigger a &quot;view:show&quot; and &quot;view:close&quot; event</li>
+<li>correctly remove reference to previous views, allowing garbage collection of the view</li>
+<li>now support the <code>bindTo</code> and <code>unbindAll</code> methods, for binding/unbinding region manager events</li>
+</ul>
+</li>
+</ul>
+<h4 id="v0-4-1">v0.4.1</h4>
+<ul>
+<li>Minor fix to context of template manager callback, to fix issue w/ async template loading</li>
+</ul>
+<h4 id="v0-4-0">v0.4.0</h4>
+<ul>
+<li><strong>BREAKING:</strong> Rewrote the template manager to be async-template loading friendly</li>
+<li><strong>BREAKING:</strong> Dropping support for Backbone v0.5.3 and below</li>
+<li>Added <code>Marionette.Callbacks</code> to manage a collection of callbacks in an async-friendly way</li>
+<li>Guarantee the execution of app initializer functions, even if they are added after the app
+has been started.</li>
+<li>App triggers &quot;start&quot; event after initializers and initializer events</li>
+<li>Updated to Backbone v0.9.1</li>
+</ul>
+<h4 id="v0-3-1">v0.3.1</h4>
+<ul>
+<li>Make region managers initialize immediately when calling <code>app.addRegions</code></li>
+</ul>
+<h4 id="v0-3-0">v0.3.0</h4>
+<ul>
+<li><strong>BREAKING:</strong> <code>view.el</code> for <code>ItemView</code> and <code>CollectionView</code> is no longer a jQuery selector object. Use <code>view.$el</code> instead</li>
+<li><strong>BREAKING:</strong> <code>regionManger.el</code> is no longer a jQuery selector object. Use <code>regionManager.$el</code> instead</li>
+<li>Updated to use Backbone v0.9.0</li>
+<li>Updated to use Underscore v1.3.1</li>
+<li>Removed default <code>itemView</code> from the <code>CollectionView</code> definition</li>
+<li><code>CollectionView</code> now explicitly checks for an <code>itemView</code> defined on it, and throws an error if it&#39;s not found</li>
+</ul>
+<h4 id="v0-2-6">v0.2.6</h4>
+<ul>
+<li>Bind the context (<code>this</code>) of application initializer functions to the application object</li>
+</ul>
+<h4 id="v0-2-5">v0.2.5</h4>
+<ul>
+<li>Added <code>AppRouter</code>, to reduce boilerplate routers down to simple configuration</li>
+<li><code>CollectionView</code> can be treated as a composite view, rendering an <code>model</code> and a <code>collection</code> of models</li>
+<li>Now works with either jQuery, Zepto, or enter.js</li>
+<li><code>ItemView</code> will throw an error is no template is specified</li>
+</ul>
+<h4 id="v0-2-4">v0.2.4</h4>
+<ul>
+<li>Return <code>this</code> (the view itself) from <code>ItemView</code> and <code>CollectionView</code> <code>render</code> method</li>
+<li>Call <code>onRender</code> after the <code>CollectionView</code> has rendered itself</li>
+</ul>
+<h4 id="v0-2-3">v0.2.3</h4>
+<ul>
+<li>Fixed global variable leaks</li>
+<li>Removed declared, but unused variables</li>
+</ul>
+<h4 id="v0-2-2">v0.2.2</h4>
+<ul>
+<li>Fixed binding events in the collection view to use <code>bindTo</code> (#6)</li>
+<li>Updated specs for collection view</li>
+<li>Documentation fixes (#7)</li>
+</ul>
+<h4 id="v0-2-1">v0.2.1</h4>
+<ul>
+<li>Added <code>TemplateManager</code> to cache templates</li>
+<li>CollectionView binds to add/remove and updates rendering appropriately</li>
+<li>ItemView uses <code>TemplateManager</code> for template retrieval</li>
+<li>ItemView and CollectionView set <code>this.el = $(this.el)</code> in constructor</li>
+</ul>
+<h4 id="v0-2-0">v0.2.0</h4>
+<ul>
+<li>Added <code>ItemView</code></li>
+<li>Added <code>CollectionView</code></li>
+<li>Added <code>BindTo</code></li>
+<li>Simplified the way <code>extend</code> is pulled from Backbone</li>
+</ul>
+<h4 id="v0-1-0">v0.1.0</h4>
+<ul>
+<li>Initial release</li>
+<li>Created documentation</li>
+<li>Generated annotated source code</li>
+</ul>

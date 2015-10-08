@@ -1,0 +1,14 @@
+p.block
+  .graph-headline beaker base install
+  p.block-half The base install comes with support for Groovy, JavaScript, HTML, Markdown, and LaTeX.
+  a.btn.base-install(onClick="_gaq.push(['_trackEvent', 'download', 'clicked', 'binaries'])") Download Base Installation
+
+p.block
+  | By clicking Download Base Installation, you are indicating that you have read and agree to the
+  a.ui-link(href="privacy") &nbsp;Privacy Policy,
+  a.ui-link(href="tou") &nbsp;Terms of Use, and the
+  a.ui-link(href="license") &nbsp;Apache 2.0 License
+p.block.
+  Please note that in its default configuration, Beaker is not secure
+  for use on computers where untrusted people can log in.  In that situation,
+  use the --public-server option to require a password.

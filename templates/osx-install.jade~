@@ -1,0 +1,113 @@
+!= templates["install-top"]()
+p.block
+  .graph-headline starting beaker
+  p.block-half
+    | After the DMG file downloads, open it by double-clicking.  Then copy Beaker into your Applications folder (or elsewhere if you prefer).  Eject the DMG, then run it out of your Applications folder.
+p.block
+  .graph-headline optional components
+  a(name="IPython")
+  p.block-half
+    | The following are additional, optional components you can install to get support for more languages.
+
+ul.block.components
+  li
+    .left
+      .language.python
+        .lang-block Py
+    .left.language-details
+      a(name="Python3")
+      b.language-headline Python Installation
+      p Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p If you have a preexisting Python you want to connect to, then see&nbsp;
+        a.ui-link(href="https://github.com/twosigma/beaker-notebook/wiki/Using-a-Preexisting-Python") our wiki
+    .cl
+  li
+    .left
+      .language.python
+        .lang-block Py
+    .left.language-details
+      a(name="R")
+      b.language-headline Python3 Installation
+      p 1. Install Python as above
+      p 2. Install&nbsp;
+        a.ui-link(href="http://continuum.io/blog/anaconda-python-3") Python3
+        span .  Generally you can just say
+      pre.code.
+        conda create -n py3k python=3 anaconda
+      p 
+        | 3. Edit your <a class="ui-link" href="https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences">beaker.pref.json</a> file so Beaker knows where to find it.
+    .cl
+  li
+    .left
+      .language.r
+        .lang-block R
+    .left.language-details
+      b.language-headline R Installation
+      p 1. Install&nbsp;
+        a.ui-link(href="http://cran.r-project.org/bin/macosx/") R
+      p 2. Install&nbsp;
+        a.ui-link(href="http://xquartz.macosforge.org/landing/") XQuartz
+      p.block-half Then open R and run these commands:
+      a(name="Julia")
+      pre.code.
+        install.packages('Rserve')
+        install.packages('ggplot2')
+        install.packages('devtools')
+        install.packages('RCurl')
+        install.packages('RJSONIO')
+    .cl
+  li
+    .left
+      .language.julia
+        .lang-block Jl
+    .left.language-details
+      b.language-headline Julia Installation
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p 2. Install&nbsp;
+        a.ui-link(href="http://julialang.org/downloads/") Julia
+
+      a(name="Node")
+      p.block-half Then open Julia and run these commands:
+      pre.code.
+        Pkg.add("IJulia")
+        Pkg.add("Gadfly")
+    .cl
+  li
+    .left
+      .language.node
+        .lang-block N
+    .left.language-details
+      a(name="Ruby")
+      b.language-headline Node Installation
+      p 1. Install&nbsp;
+        a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js
+    .cl
+  li
+    .left
+      .language.ruby
+        .lang-block Rb
+    .left.language-details
+      b.language-headline Ruby Installation
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
+      p 2. Then install IRuby by running the following in a terminal:
+      pre.code.
+        sudo gem install iruby
+        conda install pyzmq
+        brew install zeromq
+      p 3. Note IRuby is not yet compatible with IPython3.
+    .cl
+  li
+    .left
+      .language.kdb
+        .lang-block K
+    .left.language-details
+      b.language-headline Kdb Installation
+      p 1. Install the free version of&nbsp;
+        a.ui-link(href="http://kx.com/software-download.php") Kdb
+      p 2. Then set QHOME in your .bash_profile like:
+      pre.code.
+        export QHOME="/Applications/q"
+    .cl

@@ -1,0 +1,84 @@
+<h1 id="change-log">Change log</h1>
+<h3 id="v1-3-2">v1.3.2</h3>
+<ul>
+<li>Increase underscore range</li>
+<li>Minor underscore refactors</li>
+</ul>
+<h3 id="v1-3-1">v1.3.1</h3>
+<ul>
+<li>Fix UMD setup and build process</li>
+</ul>
+<h3 id="v1-3-0">v1.3.0</h3>
+<ul>
+<li>Add Wreqr.noConflict()</li>
+<li>Add Wreqr.VERSION</li>
+<li>Fixed a bug where reqres would not return a value using the &#39;top-level&#39; Channel API.</li>
+</ul>
+<h3 id="v1-2-1">v1.2.1</h3>
+<ul>
+<li>Remove AMD builds and add a single UMD style build.</li>
+</ul>
+<h3 id="v1-2-0">v1.2.0</h3>
+<ul>
+<li>Adds Radio, allowing you to create explicit namespaces called Channels. A Channel is made up of
+an instance of each of the three messaging systems.</li>
+</ul>
+<h3 id="v1-1-0">v1.1.0</h3>
+<ul>
+<li>Removes the Error on unhandled commands/requests</li>
+</ul>
+<h3 id="v1-0-1">v1.0.1</h3>
+<ul>
+<li>update dependencies</li>
+</ul>
+<h3 id="v1-0-0">v1.0.0</h3>
+<ul>
+<li>major version release</li>
+<li>minor fixes</li>
+</ul>
+<h3 id="v0-2-0">v0.2.0</h3>
+<ul>
+<li><p>Handlers (Commands/RequestResponse)</p>
+<ul>
+<li><strong>BREAKING:</strong> renamed <code>addHandler</code> to <code>setHandler</code> to clarify the point of single handlers per named item</li>
+<li>Allow an <code>initialize</code> function when extending from the base type</li>
+<li>Added a <code>setHandlers</code> function that takes an object literal as the parameter, to configure multiple handlers in a single call</li>
+</ul>
+</li>
+<li><p>Commands</p>
+<ul>
+<li>Introduced Wreqr.CommandStorage to store commands for later execution</li>
+<li>When a command has no handler, it will be stored for later execution</li>
+<li>When a handler for a stored command is added, the stored command will be
+executed</li>
+</ul>
+</li>
+<li><p>Updated build process to use Grunt v0.4</p>
+</li>
+</ul>
+<h3 id="v0-1-1">v0.1.1</h3>
+<ul>
+<li>Fixed &quot;option strict&quot; to be &quot;use strict&quot; ... #facepalm :P</li>
+<li>Added jam package config</li>
+</ul>
+<h3 id="v0-1-0">v0.1.0</h3>
+<ul>
+<li>Fix calls to <code>.apply</code> to account for IE &lt; 9 throwing an error when <code>arguments</code> is null or undefined</li>
+</ul>
+<h3 id="v0-0-1">v0.0.1</h3>
+<ul>
+<li><p>Commands</p>
+<ul>
+<li>Can specify multiple arguments for <code>execute</code> method</li>
+</ul>
+</li>
+<li><p>RequestResponse</p>
+<ul>
+<li>Can speicfy multiple arguments for <code>request</code> method</li>
+</ul>
+</li>
+</ul>
+<h3 id="v0-0-0">v0.0.0</h3>
+<ul>
+<li>Initial release</li>
+</ul>

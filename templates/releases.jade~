@@ -1,0 +1,184 @@
+.releases.markdown
+  :markdown
+    ####  Current Version - 1.4.0 - 2015.10.01
+
+    * Support [C++](https://pub.beakernotebook.com/#/publications/560b4ea6-5a57-4298-84e3-a3057c1ee4b4?fullscreen=true) and [SQL](https://pub.beakernotebook.com/#/publications/560b4a2f-546b-4929-acd7-0d47365b896e?fullscreen=true).
+    * Support [Scala Spark](https://pub.beakernotebook.com/#/publications/560cb7e9-68b4-4659-9863-ce5d6ce93dd4?fullscreen=true).
+    * Support [IPython widgets](https://pub.beakernotebook.com/#/publications/560d93db-8940-42aa-aeb0-b0fd1af81b3b?fullscreen=true).
+    * Support [ggvis](https://pub.beakernotebook.com/#/publications/560ca254-071b-4647-8073-c4f941ca02e8?fullscreen=true) and [bokeh](https://pub.beakernotebook.com/#/publications/560ca17d-b941-4607-8f8e-dd2d5820a131?fullscreen=true).
+    * New [publication server](http://pub.beakernotebook.com).
+    * Add [EasyForm API](https://pub.beakernotebook.com/#/publications/560ca655-12df-43b9-9ecd-5714766b8fc4?fullscreen=true).
+    * Many improvements to the native [time-series plotting API](https://github.com/twosigma/beaker-notebook/issues/1458).
+    * New experimental native [Electron builds](https://github.com/twosigma/beaker-notebook/wiki/Electron-Beaker).
+    * Supports IPython 4.0 protocol (except we have a regression of [4.0 and Docker](https://github.com/twosigma/beaker-notebook/issues/2591), so watch for 1.4.1).
+    * Consistent use the [Roboto Mono typeface](https://www.google.com/fonts/specimen/Roboto+Mono) for code.
+    * [Template expansion](https://pub.beakernotebook.com/#/publications/560b54da-3c14-4890-8b64-b204bc798320?fullscreen=true) in text cells.
+    * Improved UI for [inserting cells](https://github.com/twosigma/beaker-notebook/issues/1799#issuecomment-145197219).
+    * Improved UI for [hierarchy view](https://github.com/twosigma/beaker-notebook/issues/470#issuecomment-128892348).
+    * New key command to evaluate code line-by-line, or evaluate any selected snippet of code [#2181](https://github.com/twosigma/beaker-notebook/issues/2181).
+    * Support for displaying [docstrings](https://github.com/twosigma/beaker-notebook/issues/1501#issuecomment-145198624) in Python.
+    * For a complete list of the 341 resolved issues, see [github](https://github.com/twosigma/beaker-notebook/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aclosed+closed%3A2015-07-01..2015-10-01).
+
+    ####  1.3.4 - 2015.08.07
+
+    * Fix compatibility with IPython 3.2.1 [#2003](https://github.com/twosigma/beaker-notebook/issues/2003).
+    * Fix R outputing graphics and value at the same time [#2020](https://github.com/twosigma/beaker-notebook/issues/2020).
+    * Update Ruby to work with latest version [#1990](https://github.com/twosigma/beaker-notebook/issues/1990).
+    * Allow iframes in HTML [#1925](https://github.com/twosigma/beaker-notebook/issues/1925).
+
+    ####  1.3.3 - 2015.07.24
+
+    * Fix IPython in Safari [#1952](https://github.com/twosigma/beaker-notebook/issues/1952).
+
+    ####  1.3.2 - 2015.07.11
+
+    * Fix R in the Docker Container [#1918](https://github.com/twosigma/beaker-notebook/issues/1918).
+    
+    ####  1.3.1 - 2015.06.26
+
+    * Documentation improvements, especially the dashboard tutorial.
+    * Fix tab at beginning of line [#1862](https://github.com/twosigma/beaker-notebook/issues/1862).
+    * Fix Scala class loader concurrency bug [#1855](https://github.com/twosigma/beaker-notebook/issues/1855).
+
+    ####  1.3 - 2015.06.26
+
+    * Support PySpark and SparkR [#1521](https://github.com/twosigma/beaker-notebook/issues/1521).
+    * Support Clojure and Kdb.
+    * Autotranslation improvements such as autodecting date/times, dataframes, images, etc [#522](https://github.com/twosigma/beaker-notebook/issues/522), [#1412](https://github.com/twosigma/beaker-notebook/issues/1412), [#1522](https://github.com/twosigma/beaker-notebook/issues/1522), [#1525](https://github.com/twosigma/beaker-notebook/issues/1525), [#1664](https://github.com/twosigma/beaker-notebook/issues/1664).
+    * New directory for generating files you can access from HTML. [#708](https://github.com/twosigma/beaker-notebook/issues/708), [#1371](https://github.com/twosigma/beaker-notebook/issues/1371).
+    * New editor for text cells and section headers, adding inline math, and fixing bugs with special characters and supporting vim mode [#125](https://github.com/twosigma/beaker-notebook/issues/125), [#555](https://github.com/twosigma/beaker-notebook/issues/555), [#704](https://github.com/twosigma/beaker-notebook/issues/704), [#1315](https://github.com/twosigma/beaker-notebook/issues/1315), [#1345](https://github.com/twosigma/beaker-notebook/issues/1345), [1362](https://github.com/twosigma/beaker-notebook/issues/1362), [#1407](https://github.com/twosigma/beaker-notebook/issues/1407).
+    * New data frame interface, including column formatting options [#818](https://github.com/twosigma/beaker-notebook/issues/818), [#1270](https://github.com/twosigma/beaker-notebook/issues/1270), [#1279](https://github.com/twosigma/beaker-notebook/issues/1279), [#1437](https://github.com/twosigma/beaker-notebook/issues/1437), [#1599](https://github.com/twosigma/beaker-notebook/issues/1599), [#1668](https://github.com/twosigma/beaker-notebook/issues/1668), [#1715](https://github.com/twosigma/beaker-notebook/issues/1715).
+    * New insert cell button in advanced mode [#1241](https://github.com/twosigma/beaker-notebook/issues/1241).
+    * Restore IRuby [#1129](https://github.com/twosigma/beaker-notebook/issues/1129).
+    * IPython handle laptops going to sleep. [#1576](https://github.com/twosigma/beaker-notebook/issues/1576).
+    * Allow editing default imports of Python [#1188](https://github.com/twosigma/beaker-notebook/issues/1188).
+    * Improved JavaScript stack traces [#889](https://github.com/twosigma/beaker-notebook/issues/889), [#1357](https://github.com/twosigma/beaker-notebook/issues/1357).
+    * Add printing to cell output from JavaScript [#333](https://github.com/twosigma/beaker-notebook/issues/333).
+    * Improved key-bindings, autoindent, and autocomplete [#1365](https://github.com/twosigma/beaker-notebook/issues/1365), [#1467](https://github.com/twosigma/beaker-notebook/issues/1467), [#1468](https://github.com/twosigma/beaker-notebook/issues/1468), [#1505](https://github.com/twosigma/beaker-notebook/issues/1505), [#1649](https://github.com/twosigma/beaker-notebook/issues/1649), [#1661](https://github.com/twosigma/beaker-notebook/issues/1661), [#1670](https://github.com/twosigma/beaker-notebook/issues/1670), [#1773](https://github.com/twosigma/beaker-notebook/issues/1773).
+    * Much faster math (TeX) rendering via KaTeX [#698](https://github.com/twosigma/beaker-notebook/issues/698).
+    * Handle very large charts from R [#1540](https://github.com/twosigma/beaker-notebook/issues/1540).
+    * Better handling of output from R [#1612](https://github.com/twosigma/beaker-notebook/issues/1612), [#1622](https://github.com/twosigma/beaker-notebook/issues/1622).
+    * Improved vertical density, especially of advanced mode [#578](https://github.com/twosigma/beaker-notebook/issues/578), [#1360](https://github.com/twosigma/beaker-notebook/issues/1360), [#1483](https://github.com/twosigma/beaker-notebook/issues/1483), [#1565](https://github.com/twosigma/beaker-notebook/issues/1565), [#1566](https://github.com/twosigma/beaker-notebook/issues/1566).
+    * Increase and improve the included tutorial documentation, and the website [#1400](https://github.com/twosigma/beaker-notebook/issues/1400), [#1528](https://github.com/twosigma/beaker-notebook/issues/1528), [#1604](https://github.com/twosigma/beaker-notebook/issues/1604), [#1642](https://github.com/twosigma/beaker-notebook/issues/1642), [#1775](https://github.com/twosigma/beaker-notebook/issues/1775), [#1784](https://github.com/twosigma/beaker-notebook/issues/1784), [#1785](https://github.com/twosigma/beaker-notebook/issues/1785), [#1833](https://github.com/twosigma/beaker-notebook/issues/1833).
+    * Misc UI and layout [#455](https://github.com/twosigma/beaker-notebook/issues/455), [#569](https://github.com/twosigma/beaker-notebook/issues/569), [#577](https://github.com/twosigma/beaker-notebook/issues/577), [#676](https://github.com/twosigma/beaker-notebook/issues/676), [#1200](https://github.com/twosigma/beaker-notebook/issues/1200) [#1363](https://github.com/twosigma/beaker-notebook/issues/1363), [#1382](https://github.com/twosigma/beaker-notebook/issues/1382), [#1403](https://github.com/twosigma/beaker-notebook/issues/1408), [#1420](https://github.com/twosigma/beaker-notebook/issues/1420), [#1421](https://github.com/twosigma/beaker-notebook/issues/1421), [#1422](https://github.com/twosigma/beaker-notebook/issues/1422), [#1423](https://github.com/twosigma/beaker-notebook/issues/1423), [#1430](https://github.com/twosigma/beaker-notebook/issues/1430), [#1493](https://github.com/twosigma/beaker-notebook/issues/1493), [#1494](https://github.com/twosigma/beaker-notebook/issues/1494), [#1568](https://github.com/twosigma/beaker-notebook/issues/1568), [#1571](https://github.com/twosigma/beaker-notebook/issues/1571), [#1574](https://github.com/twosigma/beaker-notebook/issues/1574), [#1608](https://github.com/twosigma/beaker-notebook/issues/1608), [#1627](https://github.com/twosigma/beaker-notebook/issues/1627), [#1631](https://github.com/twosigma/beaker-notebook/issues/1631), [#1646](https://github.com/twosigma/beaker-notebook/issues/1646), [#1675](https://github.com/twosigma/beaker-notebook/issues/1675), [#1737](https://github.com/twosigma/beaker-notebook/issues/1737), [#1774](https://github.com/twosigma/beaker-notebook/issues/1774), [#1807](https://github.com/twosigma/beaker-notebook/issues/1807).
+    * Fixed cookies leak that caused IPython to stop working after extended use [#750](https://github.com/twosigma/beaker-notebook/issues/750).
+    * Add attribution page as required by some licenses [#1733](https://github.com/twosigma/beaker-notebook/issues/1733).
+    * Infrastructure improvements like concatenating the JS into fewer files, and upgrading from Java 7 to 8 [#409](https://github.com/twosigma/beaker-notebook/issues/409), [#897](https://github.com/twosigma/beaker-notebook/issues/897), [#1229](https://github.com/twosigma/beaker-notebook/issues/1229), [#1384](https://github.com/twosigma/beaker-notebook/issues/1384), [#1388](https://github.com/twosigma/beaker-notebook/issues/1388), [#1445](https://github.com/twosigma/beaker-notebook/issues/1445), [#1463](https://github.com/twosigma/beaker-notebook/issues/1463), [#1600](https://github.com/twosigma/beaker-notebook/issues/1600), [#1619](https://github.com/twosigma/beaker-notebook/issues/1619), [#1703](https://github.com/twosigma/beaker-notebook/issues/1703), [#1734](https://github.com/twosigma/beaker-notebook/issues/1734).
+    * JQuery creates circular notebook and crashes [#891](https://github.com/twosigma/beaker-notebook/issues/891), [#1409](https://github.com/twosigma/beaker-notebook/issues/1409).
+    * Fix proxy confusion, limit authentication headers [#1366](https://github.com/twosigma/beaker-notebook/issues/1366).
+    * Other fixes: [#1438](https://github.com/twosigma/beaker-notebook/issues/1438), [#1484](https://github.com/twosigma/beaker-notebook/issues/1484), [#1485](https://github.com/twosigma/beaker-notebook/issues/1485), [#1503](https://github.com/twosigma/beaker-notebook/issues/1503), [#1678](https://github.com/twosigma/beaker-notebook/issues/1678), [#1691](https://github.com/twosigma/beaker-notebook/issues/1691), [#1711](https://github.com/twosigma/beaker-notebook/issues/1711).
+
+    ####  1.2.1 - 2015.03.29
+
+    * Fix Autocompletion when using IPython3 [#1351](https://github.com/twosigma/beaker-notebook/issues/1351).
+ 
+    ####  1.2 - 2015.03.27
+
+    * Support Scala and Java, including sharing classes with Groovy.
+    * Support running Python2 and Python3 at the same time, even with different versions of IPython [#776](https://github.com/twosigma/beaker-notebook/issues/776).
+    * Allow user to select location of language backend from their beaker.prefs.json file, as well as the options passed to it [#1166](https://github.com/twosigma/beaker-notebook/issues/1166).
+    * Works with IPython3 (in addtion to 1 and 2) [#1222](https://github.com/twosigma/beaker-notebook/issues/1222).
+    * Works with Mac OS 10.6 and 10.7 [#408](https://github.com/twosigma/beaker-notebook/issues/408).
+    * Works on Macs with old chipsets [#398](https://github.com/twosigma/beaker-notebook/issues/398), [#982](https://github.com/twosigma/beaker-notebook/issues/982).
+    * Better error reporting from missing backend [#1180](https://github.com/twosigma/beaker-notebook/issues/1180), [#880](https://github.com/twosigma/beaker-notebook/issues/880), 
+    * New API for progress reporting during cell evaluation [#910](https://github.com/twosigma/beaker-notebook/issues/910).
+    * New API for fullscreen dashboards [#1025](https://github.com/twosigma/beaker-notebook/issues/1025).
+    * New API for reflection (access to other cells source code and results) and control (cell evaluation can trigger evaluation of other cells).
+    * Standard output and error output now appear below the cell that produced them instead of in a unified panel [#667](https://github.com/twosigma/beaker-notebook/issues/667), [#937](https://github.com/twosigma/beaker-notebook/issues/937).
+    * Add tutorial for loading external JavaScript libraries, in particular p5.js [#1176](https://github.com/twosigma/beaker-notebook/issues/1176).
+    * Allow sharing and saving `<canvas>` elements [#1075](https://github.com/twosigma/beaker-notebook/issues/1075).
+    * Handle installation and user paths with spaces [#931](https://github.com/twosigma/beaker-notebook/issues/931).
+    * Fix JavaScript injection problem on shared notebooks [#862](https://github.com/twosigma/beaker-notebook/issues/862).
+    * New View menu item "close all sections" [#872](https://github.com/twosigma/beaker-notebook/issues/872).
+    * Upload notebooks with native file dialog or drag-and-drop [#830](https://github.com/twosigma/beaker-notebook/issues/830), [#857](https://github.com/twosigma/beaker-notebook/issues/857), [#1116](https://github.com/twosigma/beaker-notebook/issues/1116).
+    * Improved Language Manager UI.
+    * Use scss to improve modularity of styles [#1071](https://github.com/twosigma/beaker-notebook/issues/1071).
+    * Support ipynb section headings during import [#1015](https://github.com/twosigma/beaker-notebook/issues/1015).
+    * Subsections numbered from 1 instead of 0 [#629](https://github.com/twosigma/beaker-notebook/issues/629).
+    * Groovy evaluation is interruptible [#560](https://github.com/twosigma/beaker-notebook/issues/560).
+    * Add progress indicator to sharing [#383](https://github.com/twosigma/beaker-notebook/issues/383).
+    * UI for tagging cells [#403](https://github.com/twosigma/beaker-notebook/issues/403).
+    * R plots made with ggplot2 work on Firefox [#987](https://github.com/twosigma/beaker-notebook/issues/987)
+    * On Windows find R via the registry instead of the PATH [#1178](https://github.com/twosigma/beaker-notebook/issues/1178).
+    * Improved file open and save dialogs [#904](https://github.com/twosigma/beaker-notebook/issues/904), [#1016](https://github.com/twosigma/beaker-notebook/issues/1016), [#1017](https://github.com/twosigma/beaker-notebook/issues/1017), [#1061](https://github.com/twosigma/beaker-notebook/issues/1061), [#1158](https://github.com/twosigma/beaker-notebook/issues/1158), [#1159](https://github.com/twosigma/beaker-notebook/issues/1159), [#1161](https://github.com/twosigma/beaker-notebook/issues/1161).
+    * Massive UI polish [#672](https://github.com/twosigma/beaker-notebook/issues/672), [#673](https://github.com/twosigma/beaker-notebook/issues/673), [#747](https://github.com/twosigma/beaker-notebook/issues/747), [#772](https://github.com/twosigma/beaker-notebook/issues/772), [#819](https://github.com/twosigma/beaker-notebook/issues/819), [#854](https://github.com/twosigma/beaker-notebook/issues/854), [#856](https://github.com/twosigma/beaker-notebook/issues/856), [#874](https://github.com/twosigma/beaker-notebook/issues/874), [#902](https://github.com/twosigma/beaker-notebook/issues/902), [#906](https://github.com/twosigma/beaker-notebook/issues/906), [#968](https://github.com/twosigma/beaker-notebook/issues/968), [#970](https://github.com/twosigma/beaker-notebook/issues/970), [#972](https://github.com/twosigma/beaker-notebook/issues/972), [#990](https://github.com/twosigma/beaker-notebook/issues/990), [#1027](https://github.com/twosigma/beaker-notebook/issues/1027), [#1045](https://github.com/twosigma/beaker-notebook/issues/1045), [#1047](https://github.com/twosigma/beaker-notebook/issues/1047), [#1053](https://github.com/twosigma/beaker-notebook/issues/1053), [#1062](https://github.com/twosigma/beaker-notebook/issues/1062), [#1070](https://github.com/twosigma/beaker-notebook/issues/1070), [#1119](https://github.com/twosigma/beaker-notebook/issues/1119), [#1130](https://github.com/twosigma/beaker-notebook/issues/1130), [#1139](https://github.com/twosigma/beaker-notebook/issues/1139).
+
+    ####  1.1.2 - 2014.11.5
+
+    * Fix problem where a missing backend prevents the whole notebook from loading [#836](https://github.com/twosigma/beaker-notebook/issues/836), [#845](https://github.com/twosigma/beaker-notebook/issues/845)
+    * And on 2014.11.11 made a new build of windows, still version 1.1.2 but packaged correctly to fix [#853](https://github.com/twosigma/beaker-notebook/issues/853)
+    * And on 2015.01.16 made a new build of mac, still version 1.1.2 but with a hotfix for [#824](https://github.com/twosigma/beaker-notebook/issues/824)
+
+    ####  1.1.1 - 2014.10.31
+
+    * Fix problem with defining functions in R [#827](https://github.com/twosigma/beaker-notebook/issues/827)
+
+    ####  1.1 - 2014.10.30
+
+    * New table (dataframe) display [#716](https://github.com/twosigma/beaker-notebook/issues/716), [#717](https://github.com/twosigma/beaker-notebook/issues/717), [#735](https://github.com/twosigma/beaker-notebook/issues/735), [#432](https://github.com/twosigma/beaker-notebook/issues/432), [#270](https://github.com/twosigma/beaker-notebook/issues/270), [#760](https://github.com/twosigma/beaker-notebook/issues/760), [#777](https://github.com/twosigma/beaker-notebook/issues/777)
+    * Able to open larger notebooks without freezing by loading plugins before rendering the notebook (however the downside of this is you can't see the notebook while the plugins load) [#751](https://github.com/twosigma/beaker-notebook/pull/751)
+    * Most keyboard commands (especially command-enter to run the current cell) can now be accessed with command key, not just control (for Mac users) [#220](https://github.com/twosigma/beaker-notebook/issues/220), [#778](https://github.com/twosigma/beaker-notebook/issues/778)
+    * Python3 support [#695](https://github.com/twosigma/beaker-notebook/issues/695), [#740](https://github.com/twosigma/beaker-notebook/issues/740)
+    * Direct access to autotranslation in python without a function call (`beaker.x` instead of `beaker.get("x")`) [#675](https://github.com/twosigma/beaker-notebook/issues/675)
+    * Add the ability to control the size of R plots [#707](https://github.com/twosigma/beaker-notebook/issues/707)
+    * Correctly suppress invisible results from R [#232](https://github.com/twosigma/beaker-notebook/issues/232)
+    * Add the ability to share d3 plots [#691](https://github.com/twosigma/beaker-notebook/issues/691)
+    * Replace the d3 tutorial, various tutorial polish [#685](https://github.com/twosigma/beaker-notebook/issues/685), [#729](https://github.com/twosigma/beaker-notebook/issues/729), [#730](https://github.com/twosigma/beaker-notebook/issues/730), [#732](https://github.com/twosigma/beaker-notebook/issues/732), [#754](https://github.com/twosigma/beaker-notebook/issues/754), [#790](https://github.com/twosigma/beaker-notebook/issues/790)
+    * Do not hide "falsey" evaluation results [#444](https://github.com/twosigma/beaker-notebook/issues/444)
+    * Fixed Docker container port remapping and Python plugin [#702](https://github.com/twosigma/beaker-notebook/issues/702)
+    * Sharing server now supports levels of detail and section toggling
+    * Sharing server URL location is configurable [#769](https://github.com/twosigma/beaker-notebook/issues/769)
+    * Fixed display of dataframes in python mangled by pandas groupby operation [#694](https://github.com/twosigma/beaker-notebook/issues/694)
+    * Interaction state of plots and tables saved in the notebook and shareable [#413](https://github.com/twosigma/beaker-notebook/issues/413)
+    * Remove deprecated --pylab option from IPython [#165](https://github.com/twosigma/beaker-notebook/issues/165)
+    * When loading a plugin from a cross-origin URL, show a dialog warning the user that it could be unsafe [#144](https://github.com/twosigma/beaker-notebook/issues/144)
+    * Better cache busting method (so you should not have to clear the cache when you upgrade Beaker) [#742](https://github.com/twosigma/beaker-notebook/issues/742)
+    * Changed short name of Groovy from Gr to Gv [#687](https://github.com/twosigma/beaker-notebook/issues/687)
+    * Avoid Java icon in dock [#688](https://github.com/twosigma/beaker-notebook/issues/688)
+    * Improve plot handling of NaNs [#697](https://github.com/twosigma/beaker-notebook/issues/697)
+    * New icon, favicon, and branding [#755](https://github.com/twosigma/beaker-notebook/issues/755)
+    * Update JRE from 7u60 to 7u71
+    
+    ####  1.0 - 2014.09.24
+
+    * Redesigned UI that is beautiful and easier to use.
+    * Autotranslation of data between languages.
+    * Interactive charting, including with levels-of-detail.
+    * Docker container for easy deployment.
+    * Detect when connection to server is lost and give extra chance to
+      save the notebook.
+    * Plugin manager allows removing languages from a notebook.
+    * Security fix for Julia on multiuser systems.
+    * Removed Ruby from plugin manager because it is insecure on
+      multiuser systems (but it can still be added by entering its URL).
+    * Rewrite tutorials.
+    * Numerous bug fixes.
+    * Groovy supports classpath to access JARS, and default imports.
+    * R supports interrupting evaluations.
+
+
+    ####  0.55 - 2014.07.17
+    
+    * Major upgrade of the security model: backends are now protected even on multi-user systems.
+    * Add public server option so that you can access Beaker over the internet, not just locally. Includes HTTPS encryption.
+    * Refactor the JavaScript to conform to Angular guidelines.
+    * Improve file load/save dialogs to be easier to use and handle errors.
+    * Shared notebooks can be downloaded from the resulting share page, and the sharing viewer can open a notebook file hosted anywhere.
+    * On Mac, add a native application to wrap and launch the web app. The native app includes the JRE, eliminating an external dependency for users.
+    * On Windows, include the JRE, nginx, and python in our distribution.
+    * On Ubuntu, include a script to install all dependencies and language plugins.
+
+
+    #### 0.52.4 - 2014.05.03
+
+    * Security fix: close ports to external access.
+
+
+    #### 0.52.1 - 2014.05.02
+
+    * Fix loading nginx dynamic libraries on Mac.
+
+
+    #### 0.52 - 2014.04.29
+
+    * First public release.

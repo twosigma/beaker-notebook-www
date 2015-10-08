@@ -1,0 +1,106 @@
+<h1 id="-headroom-js-http-wicky-nillia-ms-headroom-js-"><a href="http://wicky.nillia.ms/headroom.js">Headroom.js</a></h1>
+<p><strong>Give your pages some headroom. Hide your header until you need it.</strong></p>
+<h2 id="what-s-it-all-about-">What&#39;s it all about?</h2>
+<p>Headroom.js is a lightweight, high-performance JS widget (with no dependencies!) that allows you to react to the user&#39;s scroll. The header on <a href="http://wicky.nillia.ms/headroom.js">this site</a> is a living example, it slides out of view when scrolling down and slides back in when scrolling up.</p>
+<h3 id="why-use-it-">Why use it?</h3>
+<p>Fixed headers are a popular approach for keeping the primary navigation in close proximity to the user. This can reduce the effort required for a user to quickly navigate a site, but they are not without problems…</p>
+<p>Large screens are usually landscape-oriented, meaning less vertical than horizontal space. A fixed header can therefore occupy a significant portion of the content area. Small screens are typically used in a portrait orientation. Whilst this results in more vertical space, because of the overall height of the screen a meaningfully-sized header can still be quite imposing.</p>
+<p>Headroom.js allows you to bring elements into view when appropriate, and give focus to your content the rest of the time.</p>
+<h3 id="how-does-it-work-">How does it work?</h3>
+<p>At it&#39;s most basic headroom.js simply adds and removes CSS classes from an element in response to a scroll event. This means <strong>you must supply your own CSS styles separately</strong>. The classes that are used in headroom.js that are added and removed are:</p>
+<pre><code class="lang-html">&lt;!-- initially --&gt;
+&lt;header class=&quot;headroom&quot;&gt;
+
+&lt;!-- scrolling down --&gt;
+&lt;header class=&quot;headroom headroom--unpinned&quot;&gt;
+
+&lt;!-- scrolling up --&gt;
+&lt;header class=&quot;headroom headroom--pinned&quot;&gt;
+</code></pre>
+<p>Relying on CSS classes affords headroom.js incredible flexibility. The choice of what to do when scrolling up or down is now entirely yours - anything you can do with CSS you can do in response to the user&#39;s scroll.</p>
+<h2 id="usage">Usage</h2>
+<p>Using headroom.js is really simple. It has a pure JS API, plus an optional jQuery/Zepto plugin and AngularJS directive.</p>
+<h3 id="using-headroom-js-with-a-cdn">Using Headroom.js with a CDN</h3>
+<p>CDN provided by <a href="http://www.jsdelivr.com/#!headroomjs">jsDelivr CDN</a></p>
+<pre><code>&lt;script src=&quot;//cdn.jsdelivr.net/headroomjs/0.5.0/headroom.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//cdn.jsdelivr.net/headroomjs/0.5.0/angular.headroom.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;//cdn.jsdelivr.net/headroomjs/0.5.0/jQuery.headroom.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h3 id="with-pure-js">With pure JS</h3>
+<p>Include the <code>headroom.js</code> script in your page, and then:</p>
+<pre><code class="lang-js">// grab an element
+var myElement = document.querySelector(&quot;header&quot;);
+// construct an instance of Headroom, passing the element
+var headroom  = new Headroom(myElement);
+// initialise
+headroom.init();
+</code></pre>
+<h3 id="with-jquery-zepto">With jQuery/Zepto</h3>
+<p>Include the <code>headroom.js</code> and <code>jQuery.headroom.js</code> scripts in your page, and then:</p>
+<pre><code class="lang-js">// simple as this!
+// NOTE: init() is implicitly called with the plugin
+$(&quot;header&quot;).headroom();
+</code></pre>
+<p>The plugin also offers a data-* API if you prefer a declarative approach.</p>
+<pre><code class="lang-html">&lt;!-- selects $(&quot;[data-headroom]&quot;) --&gt;
+&lt;header data-headroom&gt;
+</code></pre>
+<p>Note: Zepto&#39;s additional <a href="https://github.com/madrobby/zepto#zepto-modules">data module</a> is required for compatibility.</p>
+<h3 id="with-angularjs">With AngularJS</h3>
+<p>Include the <code>headroom.js</code> and <code>angular.headroom.js</code> scripts in your page, and then:</p>
+<pre><code class="lang-html">&lt;header headroom&gt;&lt;/header&gt;
+&lt;!-- or --&gt;
+&lt;headroom&gt;&lt;/headroom&gt;
+&lt;!-- or with options --&gt;
+&lt;headroom tolerance=&#39;0&#39; offset=&#39;0&#39; scroller=&quot;.app-view&quot; classes=&quot;{pinned:&#39;headroom--pinned&#39;,unpinned:&#39;headroom--unpinned&#39;,initial:&#39;headroom&#39;}&quot;&gt;&lt;/headroom&gt;
+</code></pre>
+<p>Note: in AngularJS, you connot pass a DOM element as a directive attribute. Instead, you have to provide a selector that can be passed to <a href="http://docs.angularjs.org/api/ng/function/angular.element">angular.element</a>. If you use default AngularJS jQLite selector engine, <a href="https://code.google.com/p/jqlite/wiki/UsingJQLite">here are the compliant selectors</a>. </p>
+<h2 id="options">Options</h2>
+<p>Headroom.js can also accept an options object to alter the way it behaves. You can see the default options by inspecting <code>Headroom.options</code>. The structure of an options object is as follows:</p>
+<pre><code class="lang-js">{
+    // vertical offset in px before element is first unpinned
+    offset : 0,
+    // scroll tolerance in px before state changes
+    tolerance : 0,
+    // or scroll tolerance per direction
+    tolerance : {
+        down : 0,
+        up : 0
+    },
+    // css classes to apply
+    classes : {
+        // when element is initialised
+        initial : &quot;headroom&quot;,
+        // when scrolling up
+        pinned : &quot;headroom--pinned&quot;,
+        // when scrolling down
+        unpinned : &quot;headroom--unpinned&quot;,
+        // when above offset
+        top : &quot;headroom--top&quot;,
+        // when below offset
+        notTop : &quot;headroom--not-top&quot;
+    },
+    // callback when pinned, `this` is headroom object
+    onPin : function() {},
+    // callback when unpinned, `this` is headroom object
+    onUnpin : function() {},
+    // callback when above offset, `this` is headroom object
+    onTop : function() {},
+    // callback when below offset, `this` is headroom object
+    onNotTop : function() {}
+}
+</code></pre>
+<h2 id="examples">Examples</h2>
+<p>Head over to the <a href="http://wicky.nillia.ms/headroom.js/playroom/">headroom.js playroom</a> if you want see some example usages. There you can tweak all of headroom&#39;s options and apply different CSS effects in an interactive demo.</p>
+<h2 id="browser-support">Browser support</h2>
+<p>Headroom.js is dependent on the following browser APIs:</p>
+<ul>
+<li><a href="http://caniuse.com/#feat=requestanimationframe">requestAnimationFrame</a></li>
+<li><a href="http://caniuse.com/#feat=classlist">classList</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind#Browser_compatibility">Function.prototype.bind</a></li>
+</ul>
+<p>All of these APIs are capable of being polyfilled, so headroom.js can work with less-capable browsers if desired. Check the linked resources above to determine if you must polyfill to achieve your desired level of browser support.</p>
+<h2 id="contributions-issues">Contributions &amp; Issues</h2>
+<p>Contributions are welcome. Please clearly explain the purpose of the PR and follow the current style.</p>
+<p>Issues can be resolved quickest if they are descriptive and include both a reduced test case and a set of steps to reproduce.</p>
+<h2 id="license">License</h2>
+<p>Licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.</p>

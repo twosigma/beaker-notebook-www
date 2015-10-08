@@ -1,0 +1,77 @@
+extends layout
+
+block header-meta
+  meta(property="og:url", content="http://beakernotebook.com/tou")
+  meta(property="og:title", content="Beaker Notebook Downloads Archive")
+
+block header
+  +linkList('')
+
+block content
+  .downloads.markdown
+    :markdown
+      ## Downloads Archive
+      Here is a list of all versions of Beaker that have been released with simple download links, starting with the current release:
+
+      [beaker-notebook-1.4-0-gbb3ca3d-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-mac.dmg)  
+      [beaker-notebook-1.4-0-gbb3ca3d-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-ubuntu.zip)  
+      [beaker-notebook-1.4-0-gbb3ca3d-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-windows.zip)  
+      [beaker-notebook-1.4-0-gbb3ca3d-src.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-src.zip)  
+
+      Experimental Electron Native Version:
+
+      [beaker-notebook-1.4-0-gbb3ca3d-electron-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-electron-mac.dmg)  
+      [beaker-notebook-1.4-0-gbb3ca3d-electron-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4-0-gbb3ca3d-electron-ubuntu.zip)  
+      [beaker-notebook-1.4.1pre1-0-g76ca55b-electron-windows.exe](http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.4.1pre1-0-g76ca55b-electron-windows.exe)  
+
+      Previous Releases:
+
+      [beaker-notebook-v1.3.4-4-g37d7759-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.4-4-g37d7759-mac.dmg)  
+      [beaker-notebook-v1.3.4-0-g37d7759-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.4-0-g37d7759-ubuntu.zip)  
+      [beaker-notebook-v1.3.4-0-g37d7759-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.4-0-g37d7759-windows.zip)  
+
+      [beaker-notebook-v1.3.3-0-g770609a-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.3-0-g770609a-mac.dmg)  
+
+      [beaker-notebook-v1.3.1-1-g3072e5e-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.1-1-g3072e5e-mac.dmg)  
+      [beaker-notebook-v1.3.1-0-g3072e5e-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.1-0-g3072e5e-ubuntu.zip)  
+      [beaker-notebook-v1.3.1-0-g3072e5e-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3.1-0-g3072e5e-windows.zip)  
+
+      [beaker-notebook-v1.3-0-g7f23794-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3-0-g7f23794-mac.dmg)  
+      [beaker-notebook-v1.3-0-g7f23794-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3-0-g7f23794-ubuntu.zip)  
+      [beaker-notebook-v1.3-0-g7f23794-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.3-0-g7f23794-windows.zip)  
+
+      [beaker-notebook-v1.2.1-0-g7dc8ced-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2.1-0-g7dc8ced-mac.dmg)  
+      [beaker-notebook-v1.2.1-0-g7dc8ced-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2.1-0-g7dc8ced-ubuntu.zip)  
+      [beaker-notebook-v1.2.1-0-g7dc8ced-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2.1-0-g7dc8ced-windows.zip)  
+
+      [beaker-notebook-v1.2-0-gbc54ec4-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2-0-gbc54ec4-mac.dmg)  
+      [beaker-notebook-v1.2-0-gbc54ec4-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2-0-gbc54ec4-ubuntu.zip)  
+      [beaker-notebook-v1.2-0-gbc54ec4-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.2-0-gbc54ec4-windows.zip)  
+
+      [beaker-notebook-v1.1.2-1-g9161b57-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-1-g9161b57-mac.dmg)  
+      [beaker-notebook-v1.1.2-2-gb1a7d5f-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-1-gb1a7d5f-windows.zip)  
+      
+      [beaker-notebook-v1.1.2-0-gb1a7d5f-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-mac.dmg)  
+      [beaker-notebook-v1.1.2-0-gb1a7d5f-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-ubuntu.zip)  
+      [beaker-notebook-v1.1.2-0-gb1a7d5f-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.2-0-gb1a7d5f-windows.zip)  
+
+      [beaker-notebook-v1.1.1-2-g58f018d-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.1-2-g58f018d-mac.dmg)  
+
+      [beaker-notebook-v1.1.1-0-g58f018d-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.1-0-g58f018d-mac.dmg)  
+      [beaker-notebook-v1.1.1-0-g58f018d-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.1-0-g58f018d-ubuntu.zip)  
+      [beaker-notebook-v1.1.1-0-g58f018d-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1.1-0-g58f018d-windows.zip)  
+
+      [beaker-notebook-v1.1-0-g22ec655-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1-0-g22ec655-mac.dmg)  
+      [beaker-notebook-v1.1-0-g22ec655-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1-0-g22ec655-ubuntu.zip)  
+      [beaker-notebook-v1.1-0-g22ec655-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.1-0-g22ec655-windows.zip)  
+
+      [beaker-notebook-v1.0-1-g5644b78-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-1-g5644b78-ubuntu.zip)  
+
+      [beaker-notebook-v1.0-0-g5644b78-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-mac.dmg)  
+      [beaker-notebook-v1.0-0-g5644b78-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-ubuntu.zip)  
+      [beaker-notebook-v1.0-0-g5644b78-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v1.0-0-g5644b78-windows.zip)  
+
+      [beaker-notebook-v0.55-0-gee418f9-mac.dmg](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v0.55-0-gee418f9-mac.dmg)  
+      [beaker-notebook-v0.55-0-gef764d9-ubuntu.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v0.55-0-gef764d9-ubuntu.zip)  
+      [beaker-notebook-v0.55-0-gef764d9-windows.zip](http://d299yghl10frh5.cloudfront.net/beaker-notebook-v0.55-0-gef764d9-windows.zip)  
+

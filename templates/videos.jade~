@@ -1,0 +1,9 @@
+h2.block Overview and Demo
+
+.block(style="text-align: center")
+  iframe(width="560" height="315" src="//www.youtube.com/embed/wu65cYffMSg" frameborder="0" allowfullscreen)
+
+h2.block SparkR Demo at Spark Summit
+
+.block(style="text-align: center")
+  iframe(width="560" height="315" src="//www.youtube.com/embed/e5KerO_xg1w?t=627" frameborder="0" allowfullscreen)

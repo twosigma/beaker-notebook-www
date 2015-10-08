@@ -1,0 +1,204 @@
+.faq.markdown
+  :markdown
+    ## General
+
+    **Can I customize my default notebook?**
+
+    Yes, create a notebook you like and save it to
+    `~/.beaker/v1/config/default.bkr`. This will be loaded when you
+    click the 'New Default Notebook' button, or use the
+    Control-Shift-N keyboard equivalent.
+
+    The default notebook that comes with Beaker has Python and R cells
+    as well as some tips for beginners.  It would be normal for
+    advanced users to customize the included languages (for example,
+    adding a standard JAR to their Groovy classpath), remove the tips,
+    and add a signature cell with their contact information.
+
+    **How do I add a language to a notebook?**
+
+    Use the Notebook menu to open the Language Manager.  There are
+    buttons for each possible language. Each button has a status
+    indicator: gray means inactive, green means active, and yellow
+    means it is in progress of starting up. Click on the language you
+    want to add (one that is gray). It should turn yellow, and after a
+    while, depending on how fast your computer is, it should go
+    green. Close the manager, and then when you open the language menu
+    on any cell, you can set it to the new language and run it.
+
+    **Why doesn't language X work?**
+
+    Most of the languages require a backend that must be installed
+    separately.  On the "Getting Started" tab of this web site,
+    beneath the download button are the instructions for how to
+    install them so they work well with Beaker.  You may need to add
+    the location of the implementation of the language to your
+    [`beaker.pref.json`](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences).
+
+    **IRuby fails to load?**
+
+    [Ruby does not work with IPython3](https://github.com/SciRuby/iruby/issues/1).
+    Try backing up to version 2.x.
+
+    **How do I remove a language from a notebook?**
+
+    Start with the Notebook menu, and open the Language Manager and
+    click the button for the language you want to remove.  The
+    indicator would be green before you click it.  The buttons are
+    actually toggles.  Make sure you have first removed all cells from
+    the notebook that use that language.  When the language is
+    successfully removed, the indicator will go gray.
+
+    **Are there any 3rd party plugins available?**
+
+    Yes, Bayard Rock has written an [F#
+    plugin](https://github.com/BayardRock/FsBeaker) that not only
+    allows you to program in a modern functional language but also
+    gives access to the whole .NET world.  We are working on making
+    the installation and distribution experience better.
+
+    **What other customization or init files are there?**
+
+    `~/.beaker/v1/config/beaker.pref.json` is read at startup and can
+    modify the UI in many ways.  See its
+    [documentation](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences), including how to
+    [manipulate the menus](https://github.com/twosigma/beaker-notebook/wiki/Configuration-and-Preference).
+
+    **If something crashes or I get disconnected, can I recover my work?**
+
+    Yes, Beaker saves your notebooks as you edit them automatically
+    every 60 seconds.  Look in `~/.beaker/v1/var/sessionBackups` to find
+    your work.
+
+    Also, if the client becomes disconnected from the server, it tries
+    for 5 seconds to reconnect, but if it cannot, Beaker gives you a
+    chance to save a copy of your notebook locally.
+
+    **Why are you asking for my email address?**
+
+    So that we can notify you of future releases, including in case of
+    an important security update.
+
+    You can unsubscribe from our email list at any time and continue
+    using Beaker.  We use MailChimp to manage the list so you can
+    trust the controls will work.
+
+    **How does Beaker relate to the IPython Notebook?**
+
+    Beaker uses an [IPython](http://ipython.org) kernel for the backend of its Python
+    plugins.  Many thanks to the IPython team for their great
+    architecture, and for making their work available to all.
+
+    Because the backend is shared, and Beaker can open IPython
+    notebooks and convert them to its own format, you may find Beaker
+    is mostly compatible with IPython (widgets are not supported).
+
+    **How do I report a bug?**
+
+    Please use
+    [Github](https://github.com/twosigma/beaker-notebook/issues/new)
+    to report bugs.  Look in the [Javascript
+    console](http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers)
+    of your web browser for any errors and include them in the report.
+    On Windows and Linux, look in the terminal or shell where you
+    started Beaker for any errors or stack traces, and include them
+    too.  On Mac, use the Console application (in the
+    Applications/Utilities folder) and search for "Beaker" to find
+    any errors and stack traces.  Finally, please describe your hardware,
+    operating system, and web browser, and include their versions as
+    well.  Thank you for your feedback.
+
+    **Where can I put an image or other static file so that my HTML can find it?**
+
+    Inside the Beaker application itself is a folder accessible to the
+    web server that's part of Beaker.  On the Mac, if you install
+    Beaker in the usual location, that would be `/Applications/Beaker.app/Contents/Resources/dist/src/main/web/`. 
+
+    ## Installing and launching Beaker
+
+    **Can I change the heap size for Groovy?**
+
+    Yes. To customize the heap size, launch Beaker like this:
+
+    `beaker.command  --plugin-option Groovy:-Xmx8g`
+
+    Or you can edit your [beaker.pref.json](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences) file, and get that configuration every time you run Beaker.
+
+    **Can I make the server accessible across the net?**
+
+    Yes.  Start it like this:
+
+    `beaker.command --public-server`
+
+    The server will generate a password for you, and print it on the
+    console.  Connect to the printed URL (note that it will be HTTPS,
+    meaning encryption is used to prevent snooping) and enter the
+    password.
+
+    You should also use this option if you run Beaker on a computer
+    where untrusted people can log in.
+
+    **How do I give command-line options on the Mac?**
+
+    Using the terminal, the contents of the app are visible.  Assuming
+    you have it installed in the normal location you can run it like
+    this:
+
+    `/Applications/Beaker.app/Contents/Resources/dist/beaker.command --help`
+
+    **Where do the server logs and error messages show up on Mac?**
+ 
+    Run the Console application to see the debug output from the
+    Beaker server.  The Console application should be in the Applications/Utilities folder.
+
+    **On the Mac, IPython fails to start, or runs the wrong version of python.**
+
+    Edit the [language
+    preferences](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences)
+    to tell Beaker where to find the right `ipython` binary.
+
+    Sometimes this problem happens because Beaker finds IPython via
+    the PATH.  Anaconda sets up the PATH in your .bash_profile.
+    However, the Mac GUI does not read the .bash_profile when an
+    application is started.  To solve this, Beaker creates a login
+    shell for itself when it starts, and this process reads the
+    .bash_profile.  That's all fine unless you have a special setup
+    that doesn't use .bash_profile (eg you use a different shell), or
+    you use a terminal to change your PATH (eg using 'source activate'
+    to switch to python3) and then you start Beaker from that same
+    terminal.  In these cases Beaker will not find python, or find the
+    wrong one.  Until we solve this problem (see 
+    [Issue #703](https://github.com/twosigma/beaker-notebook/issues/703)),
+    you can workaround it the the language preferences.
+
+    **IPython still doesn't work.  Help!**
+
+    Make sure your underlying IPyton install is working. Try running
+    `ipython notebook` in a terminal, and see if it starts correctly
+    and is version 1.0 or later.  If it's good then check its
+    location with `which ipython` and enter that in your prefs.
+
+    In particular, on Linux, look out for installing IPython with
+    apt-get, as that gets you really old versions.  Instead, use
+    pip, as recommended by the [install-dependencies.sh](https://github.com/twosigma/beaker-notebook/blob/master/launcher/ubuntu/install-dependencies.sh) script.
+
+    **What's the difference between IPython and Python3?**
+
+    We apologize for the confusing names.  IPython in Beaker runs the
+    Python2 language, and Python3 runs Python3.  Both use IPython
+    backends of any recent version (1.x, 2.x, or 3.x).  Eventually we
+    will rename IPython to Python2, or just Python.
+
+    **After upgrading to Yosemite (Mac OS X 10.10), R fails**
+
+    If you get an error about "cairo.so", just reinstall XQuartz.
+
+    **How do I load more Javascript libraries?**
+
+    This is unfortunately more difficult than it should be.  A new
+    UI should be available soon, but in the meantime follow the
+    instructions and example in [Issue #421](https://github.com/twosigma/beaker-notebook/issues/421).
+
+    **Is there a more recent version available?**
+
+    See the [prerelease Docker container](https://registry.hub.docker.com/u/beakernotebook/beaker-prerelease/).

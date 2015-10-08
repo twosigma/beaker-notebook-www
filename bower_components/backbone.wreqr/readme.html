@@ -1,0 +1,146 @@
+<p><h1 align="center">Backbone.Wreqr</h1></p>
+<p align="center">
+  <a title='Build Status' href="https://travis-ci.org/marionettejs/backbone.wreqr">
+    <img src='https://travis-ci.org/marionettejs/backbone.wreqr.svg' />
+  </a>
+</p>
+
+<p>A simple infrastructure based on <a href="http://www.eaipatterns.com/">messaging patterns</a>
+and service bus implementations for decoupling <a href="http://backbonejs.org">Backbone</a>
+and <a href="http://marionettejs.com">Backbone.Marionette</a> applications.</p>
+<p><strong>Notice:</strong> In the next major release of Marionette, v3, Wreqr will be swapped for an updated library,
+<a href="https://github.com/jmeas/backbone.radio">Radio</a>. If you&#39;ve already begun using Wreqr, don&#39;t worry. This change
+isn&#39;t for quite some time: a few months, at the earliest. Also, we will support easily swapping the two libraries, 
+so you won&#39;t run into any problems if you decide to continue using Wreqr.</p>
+<p>For an introduction to Radio, check out
+<a href="http://marionettejs.github.io/2014/07/11/introducing-backbone-radio/index.html">our blog post</a>. As of Marionette v2.1, you can easily
+swap in Radio for Wreqr with <a href="https://gist.github.com/jmeas/7992474cdb1c5672d88b">this shim</a>. We think you&#39;ll really like the changes!</p>
+<h2 id="downloads-and-source">Downloads And Source</h2>
+<p>Grab the source from the <code>src</code> folder above. Grab the most recent builds
+from the links below.</p>
+<h3 id="standard-builds">Standard Builds</h3>
+<ul>
+<li><p>Development: <a href="https://raw.github.com/marionettejs/backbone.wreqr/master/lib/backbone.wreqr.js">backbone.wreqr.js</a></p>
+</li>
+<li><p>Production: <a href="https://raw.github.com/marionettejs/backbone.wreqr/master/lib/backbone.wreqr.min.js">backbone.wreqr.min.js</a></p>
+</li>
+</ul>
+<h2 id="basic-use">Basic Use</h2>
+<h3 id="event-aggregator">Event Aggregator</h3>
+<p>An event aggregator implementation. It extends from <code>Backbone.Events</code> to
+provide the core event handling code in an object that can itself be
+extended and instantiated as needed.</p>
+<pre><code class="lang-js">var vent = new Backbone.Wreqr.EventAggregator();
+
+vent.on(&quot;foo&quot;, function(){
+  console.log(&quot;foo event&quot;);
+});
+
+vent.trigger(&quot;foo&quot;);
+</code></pre>
+<h3 id="commands-and-request-response">Commands And Request / Response</h3>
+<p>Wreqr can be used by instantiating a <code>Backbone.Wreqr.Commands</code>
+or <code>Backbone.Wreqr.RequestResponse</code> object. These objects provide a
+<code>setHandler</code> method to add a handler for a named request or command.
+Commands can then be executed with the <code>execute</code> method, and
+request/response can be done through the <code>request</code> method.</p>
+<h3 id="commands">Commands</h3>
+<pre><code class="lang-js">var commands = new Backbone.Wreqr.Commands();
+
+commands.setHandler(&quot;foo&quot;, function(){
+  console.log(&quot;the foo command was executed&quot;);
+});
+
+commands.execute(&quot;foo&quot;);
+</code></pre>
+<h3 id="request-response">Request/Response</h3>
+<pre><code class="lang-js">var reqres = new Backbone.Wreqr.RequestResponse();
+
+reqres.setHandler(&quot;foo&quot;, function(){
+  return &quot;foo requested. this is the response&quot;;
+});
+
+var result = reqres.request(&quot;foo&quot;);
+console.log(result);
+</code></pre>
+<h3 id="radio">Radio</h3>
+<p>Radio is a convenient way for emitting events through channels. Radio can be used to either retrieve a channel, or talk through a channel with either command, reqres, or vent.</p>
+<pre><code class="lang-js">// channels
+var globalChannel = Backbone.Wreqr.radio.channel(&#39;global&#39;);
+var userChannel = Backbone.Wreqr.radio.channel(&#39;user&#39;);
+
+// Wreqr events
+Backbone.Wreqr.radio.commands.execute( &#39;global&#39;, &#39;shutdown&#39; );
+Backbone.Wreqr.radio.reqres.request(  &#39;global&#39;, &#39;current-user&#39; );
+Backbone.Wreqr.radio.vent.trigger(  &#39;global&#39;, &#39;game-over&#39;);
+</code></pre>
+<h3 id="channel">Channel</h3>
+<p>Channel is an object that wraps EventAggregator, Commands, and Reqres. Channels provide a convenient way for the objects in your system to talk to one another without the global channel becoming too noisy.</p>
+<pre><code class="lang-js">// global channel
+var globalChannel = Backbone.Wreqr.radio.channel(&#39;global&#39;);
+globalChannel.commands.execute(&#39;shutdown&#39; );
+globalChannel.reqres.request(&#39;current-user&#39; );
+globalChannel.vent.trigger(&#39;game-over&#39;);
+
+// user channel
+var userChannel = Backbone.Wreqr.radio.channel(&#39;user&#39;);
+userChannel.commands.execute(&#39;punnish&#39;);
+userChannel.reqres.request(&#39;user-avatar&#39;);
+userChannel.vent.trigger(&#39;win&#39;, {
+  level: 2,
+  stars: 3
+});
+</code></pre>
+<h3 id="adding-multiple-handlers">Adding Multiple Handlers</h3>
+<p>Multiple handlers can be set on the Commands and RequestResponse
+objects in a single call, using the <code>setHandlers</code> method and supplying
+a <code>{&quot;name&quot;: configuration}</code> hash where the <code>configuration</code> is an
+object literal or a function.</p>
+<pre><code class="lang-js">var reqres = new Backbone.Wreqr.RequestResponse();
+
+reqres.setHandlers({
+  &quot;foo&quot;: function(){ /* ... */ },
+  &quot;bar&quot;: {
+    callback: function(){ /* ... */ },
+    context: someObject
+  }
+});
+
+var result = reqres.request(&quot;foo&quot;);
+</code></pre>
+<p>The &quot;foo&quot; handler is assigned directly to a function, while the
+&quot;bar&quot; handler is assigned to a function with a specific context
+to execute the function within.</p>
+<p>This works for all <code>Handlers</code>, <code>Commands</code> and <code>RequestResponse</code>
+objects.</p>
+<h3 id="removing-handlers">Removing Handlers</h3>
+<p>Removing handlers for commands or requests is done the
+same way, with the <code>removeHandler</code> or <code>removeAllHandlers</code>
+functions.</p>
+<pre><code class="lang-js">reqres.removeHandler(&quot;foo&quot;);
+
+commands.removeAllHandlers();
+</code></pre>
+<h3 id="extending-wreqr-objects">Extending Wreqr Objects</h3>
+<p>The EventAggregator, Commands and RequestResponse objects can all be
+extended using Backbone&#39;s standard <code>extend</code> method.</p>
+<pre><code class="lang-js">var MyEventAgg = Backbone.Wreqr.EventAggregator.extend({
+  foo: function(){...}
+});
+
+var MyCommands = Backbone.Wreqr.Commands.extend({
+  foo: function(){...}
+});
+
+var MyReqRes = Backbone.Wreqr.RequestResponse.extend({
+  foo: function(){...}
+});
+</code></pre>
+<h2 id="license">License</h2>
+<p>MIT - see <a href="https://raw.github.com/marionettejs/backbone.wreqr/master/LICENSE.md">LICENSE.md</a></p>
+<h2 id="dev">Dev</h2>
+<ul>
+<li><code>npm install</code></li>
+<li><code>npm install -g grunt-cli</code></li>
+<li><code>grunt</code></li>
+</ul>
