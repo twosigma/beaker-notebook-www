@@ -36,12 +36,38 @@
   margin-top: 200px
 
 .main-logo
-  max-width: 414px
-  width: 100%
-  transform: translateX(-15.9%)
-  transition: all 300ms
+  left: -74px
+  transition: left 250ms ease
+  position: relative
   @media (max-width: 1050px)
-    transform: translateX(0%)
+    left: 0
+
+  h1
+    display: inline-block
+    font-family: 'pt_sansbold', Helvetica, sans-serif
+    font-size: 72px
+    margin-left: 15px
+    margin-top: 14px
+    text-transform: uppercase
+    vertical-align: top
+
+  span
+    font-size: 7px
+    margin-left: 4px
+    position: relative
+    top: -7px
+
+  h2
+    color: white
+    display: inline-block
+    font-family: 'pt_sansbold', Helvetica, sans-serif
+    font-size: 22px
+    left: 74px
+    position: relative
+    text-transform: uppercase
+    @media (max-width: 800px)
+      display: block
+      left: 0
 
 .cta
   text-align: right
