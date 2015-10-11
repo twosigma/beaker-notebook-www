@@ -2,6 +2,8 @@ npm run compile
 cd public
 git init
 rm -f ship.conf
+find . -type f -name '#*#' -delete
+find . -type f -name '*~' -delete
 git add .
 git commit -m "deploy"
 git remote add origin https://github.com/twosigma/beaker-notebook-www.git
