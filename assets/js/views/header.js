@@ -17,5 +17,5 @@
 
       return false;
     }
-  })
+  });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);

@@ -15,47 +15,47 @@
 
     overview: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Overview())
+      .show(new BK.Views.Overview());
     },
 
     features: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Features())
+      .show(new BK.Views.Features());
     },
 
     "getting-started": function() {
       BK.regions.get("content")
-      .show(new BK.Views.GettingStarted())
+      .show(new BK.Views.GettingStarted());
     },
 
     community: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Community())
+      .show(new BK.Views.Community());
     },
 
     videos: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Videos())
+      .show(new BK.Views.Videos());
     },
 
     examples: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Examples())
+      .show(new BK.Views.Examples());
     },
 
     faq: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Faq())
+      .show(new BK.Views.Faq());
     },
 
     releases: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Releases())
+      .show(new BK.Views.Releases());
     },
 
     careers: function() {
       BK.regions.get("content")
-      .show(new BK.Views.Careers())
+      .show(new BK.Views.Careers());
     }
 
   });
