@@ -8,7 +8,7 @@
     BK.regions = new Mn.RegionManager();
 
     BK.regions.addRegions({
-      "content": ".primary-content .contain"
+      'content': '.primary-content .contain'
     });
 
     Backbone.history.start({

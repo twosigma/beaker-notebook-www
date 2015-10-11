@@ -4,7 +4,7 @@
   BK.Views.Header = Mn.ItemView.extend({
     template: false,
     events: {
-      "click .header-content a": "navTo",
+      'click .header-content a': 'navTo',
     },
 
     navTo: function(e) {

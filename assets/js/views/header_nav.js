@@ -4,7 +4,7 @@
   BK.Views.HeaderNav = Mn.ItemView.extend({
     template: false,
     events: {
-      "click li": "navTo"
+      'click li': 'navTo'
     },
 
     initialize: function() {
@@ -12,7 +12,7 @@
     },
 
     updateActive: function(router, route) {
-      this.$(".active").removeClass('active');
+      this.$('.active').removeClass('active');
 
       var $match = this.$('[href="'+route+'"]');
 
