@@ -9,6 +9,35 @@
 
     initialize: function() {
       this.listenTo(Backbone.history, 'route', this.updateActive);
+
+      $(document).on('keydown', function(e) {
+        switch (e.which) {
+          case 37: // left
+            this.previousTab();
+            break;
+          case 39: // right
+            this.nextTab();
+            break;
+          default: return;
+        }
+        e.preventDefault();
+      }.bind(this));
+    },
+
+    nextTab: function() {
+      var nextTab = this.$el.find('li.active').next();
+      if (!nextTab.length) {
+        return;
+      }
+      nextTab.trigger('click');
+    },
+
+    previousTab: function() {
+      var previousTab = this.$el.find('li.active').prev();
+      if (!previousTab.length) {
+        return;
+      }
+      previousTab.trigger('click');
     },
 
     updateActive: function(router, route) {
