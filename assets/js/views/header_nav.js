@@ -14,7 +14,7 @@
     updateActive: function(router, route) {
       this.$('.active').removeClass('active');
 
-      var $match = this.$('[href="'+route+'"]');
+      var $match = this.$('[href="' + route + '"]');
 
       if (!$match.length) {
         $match = this.$('a').eq(0);
@@ -27,7 +27,7 @@
 
     onShow: function() {
       this.$el.headroom({
-        offset : 527
+        offset: 527
       });
     },
 
