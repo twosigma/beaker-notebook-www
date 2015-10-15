@@ -4,17 +4,46 @@
   BK.Views.HeaderNav = Mn.ItemView.extend({
     template: false,
     events: {
-      "click li": "navTo"
+      'click li': 'navTo'
     },
 
     initialize: function() {
       this.listenTo(Backbone.history, 'route', this.updateActive);
+
+      $(document).on('keydown', function(e) {
+        switch (e.which) {
+          case 37: // left
+            this.previousTab();
+            break;
+          case 39: // right
+            this.nextTab();
+            break;
+          default: return;
+        }
+        e.preventDefault();
+      }.bind(this));
+    },
+
+    nextTab: function() {
+      var nextTab = this.$el.find('li.active').next();
+      if (!nextTab.length) {
+        return;
+      }
+      nextTab.trigger('click');
+    },
+
+    previousTab: function() {
+      var previousTab = this.$el.find('li.active').prev();
+      if (!previousTab.length) {
+        return;
+      }
+      previousTab.trigger('click');
     },
 
     updateActive: function(router, route) {
-      this.$(".active").removeClass('active');
+      this.$('.active').removeClass('active');
 
-      var $match = this.$('[href="'+route+'"]');
+      var $match = this.$('[href="' + route + '"]');
 
       if (!$match.length) {
         $match = this.$('a').eq(0);
@@ -27,7 +56,7 @@
 
     onShow: function() {
       this.$el.headroom({
-        offset : 527
+        offset: 527
       });
     },
 
@@ -43,5 +72,5 @@
 
       return false;
     }
-  })
+  });
 })(window.BK = window.BK || {}, Backbone, Backbone.Marionette);
