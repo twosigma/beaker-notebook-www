@@ -35,17 +35,6 @@
     the location of the implementation of the language to your
     [`beaker.pref.json`](https://github.com/twosigma/beaker-notebook/wiki/Language-Preferences).
 
-    **IRuby fails to load?**
-
-    [Ruby does not work with IPython3](https://github.com/SciRuby/iruby/issues/1).
-    Try backing up to version 2.x.
-
-    **Julia fails to load on Windows?**
-
-    Unfortunately Julia on Windows reports a different kernel name than other platforms.
-    You can [work around this](https://github.com/twosigma/beaker-notebook/issues/1602)
-    until we fix it.
-
     **How do I remove a language from a notebook?**
 
     Start with the Notebook menu, and open the Language Manager and
@@ -60,8 +49,12 @@
     Yes, Bayard Rock has written an [F#
     plugin](https://github.com/BayardRock/FsBeaker) that not only
     allows you to program in a modern functional language but also
-    gives access to the whole .NET world.  We are working on making
-    the installation and distribution experience better.
+    gives access to the whole .NET world.
+
+    There is also one for [Symja](https://bitbucket.org/axelclk/beaker-plugin/src/7888156f19dd25607c0fa914f7791de50e96d868/symja/?at=master), a language for symbolic mathematics.
+
+    We are working on making the installation and distribution
+    experience better, see [Issue #1658](https://github.com/twosigma/beaker-notebook/issues/1658).
 
     **What other customization or init files are there?**
 
@@ -97,7 +90,7 @@
 
     Because the backend is shared, and Beaker can open IPython
     notebooks and convert them to its own format, you may find Beaker
-    is mostly compatible with IPython (widgets are not supported).
+    is mostly compatible with IPython.
 
     **How do I report a bug?**
 
@@ -116,18 +109,25 @@
 
     **Where can I put an image or other static file so that my HTML can find it?**
 
-    Inside the Beaker application itself is a folder accessible to the
-    web server that's part of Beaker.  On the Mac, if you install
-    Beaker in the usual location, that would be
-    `/Applications/Beaker.app/Contents/Resources/dist/src/main/web`.
-    Create a folder in there called "images", copy your files to it,
-    and then in an HTML cell you can refer to `<img src="images/foo.jpg">`.  
-    On Windows and Linux, `src/main/web` is located in the same folder
-    as the `beaker.command` script.
+    Put them in `~/.beaker/v1/web`, and then from your HTML and JS you can
+    refer to it with `/user`.  For example if you have an image at
+    `~/.beaker/v1/web/foo.jpg` you can use it with `<img
+    src="/user/foo.jpg">`. See the [tutorial](https://pub.beakernotebook.com/#/publications/560c55c5-1ef7-41fa-ab8c-71b0b3aa68c3?fullscreen=true).
 
     Note that if you do this, the images will not work if you share
     the notebook with someone else.  We are planning on a better solution
     for this, see [Issue #430](https://github.com/twosigma/beaker-notebook/issues/430).
+
+    **How do I load more Javascript libraries?**
+
+    This is unfortunately more difficult than it should be.  A new
+    UI should be available soon, but in the meantime follow the
+    instructions and example in [Issue #421](https://github.com/twosigma/beaker-notebook/issues/421).
+
+    **How do I get SQL to talk to an Oracle (or other vendor) database?**
+
+    Get the JDBC driver JAR from the vendor, and add a path to it to
+    the class path in the settings for SQL in the Language manager.
 
     ## Installing and launching Beaker
 
@@ -219,14 +219,3 @@
     **After upgrading to Yosemite (Mac OS X 10.10), R fails**
 
     If you get an error about "cairo.so", just reinstall XQuartz.
-
-    **How do I load more Javascript libraries?**
-
-    This is unfortunately more difficult than it should be.  A new
-    UI should be available soon, but in the meantime follow the
-    instructions and example in [Issue #421](https://github.com/twosigma/beaker-notebook/issues/421).
-
-    **Is there a more recent version available?**
-
-    Yes, we have a prerelease of v1.4 available, including native electron builds.
-    See the [Downloads Archive](/downloads), and the [prerelease Docker container](https://registry.hub.docker.com/u/beakernotebook/beaker-prerelease/).
