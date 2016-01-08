@@ -69,12 +69,14 @@ ul.block.components
       p 1. Install the free version of&nbsp;
         a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
       p 2. Install&nbsp;
-        a.ui-link(href="http://julialang.org/downloads/") Julia
+        a.ui-link(href="http://julialang.org/downloads/") Julia 
+        span (v0.4 or better).
 
       a(name="Node")
-      p.block-half Then open Julia and run these commands:
+      p.block-half Then start the Julia application and run these commands:
       pre.code.
         Pkg.add("IJulia")
+        Pkg.add("Requests")
         Pkg.add("Gadfly")
     .cl
   li
