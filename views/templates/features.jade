@@ -11,7 +11,8 @@ mixin section(klass, headline, graph)
 p.block.
   Great languages breed great ideas. This is why Beaker is architected
   to support multiple languages that can be plugged into its
-  platform. Currently supported languages include Python, Python3, R, JavaScript, SQL, C++, Scala, Java, Julia, 
+  platform. Currently supported languages include Python, Python3, R, JavaScript, SQL,
+  C++, Scala/Spark, Lua/Torch, Java, Julia, 
   Groovy, Node, Ruby, HTML, and Clojure. We
   encourage and welcome the addition of new language plugins. If
   you’re interested, please see our <a
@@ -61,8 +62,14 @@ p.block.
   resamples the data based on the zoom level and window size, to keep
   the frame rate high. Further support for <a href="https://pub.beakernotebook.com/#/publications/560c9f9b-14e6-4d95-8e78-cc0a60bf4e5a?fullscreen=true">D3</a> permits the
   visualization-savvy developer (perhaps not unlike yourself) to view
-  data in unlimited ways.  Beaker also works with <a href="https://pub.beakernotebook.com/#/publications/560ca047-eccd-4585-9b96-0d0708c49781?fullscreen=true">p5.js</a>, <a href="https://pub.beakernotebook.com/#/publications/560ca254-071b-4647-8073-c4f941ca02e8?fullscreen=true">ggvis</a>, <a href="https://pub.beakernotebook.com/#/publications/560ca17d-b941-4607-8f8e-dd2d5820a131?fullscreen=true">Bokeh</a>,
-  <a href="https://pub.beakernotebook.com/#/publications/560b47df-6c8a-493a-bf7c-1152723221cd?fullscreen=true">matplotlib</a>, <a href="https://pub.beakernotebook.com/#/publications/560b487c-3f3e-4ce3-a987-12667f0e313c?fullscreen=true">ggplot</a>, and many more.
+  data in unlimited ways.  Beaker also works with
+  <a href="https://pub.beakernotebook.com/#/publications/560ca047-eccd-4585-9b96-0d0708c49781?fullscreen=true">p5.js</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/560ca254-071b-4647-8073-c4f941ca02e8?fullscreen=true">ggvis</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/56675e19-d844-47a1-ac03-100aef8a68c1?fullscreen=false">plotly</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/560ca17d-b941-4607-8f8e-dd2d5820a131?fullscreen=true">Bokeh</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/560b47df-6c8a-493a-bf7c-1152723221cd?fullscreen=true">matplotlib</a>,
+  <a href="https://pub.beakernotebook.com/#/publications/560b487c-3f3e-4ce3-a987-12667f0e313c?fullscreen=true">ggplot</a>,
+  and many more.
 
 img.rich-viz-image(src="img/rich_viz@2x.png")
 
@@ -113,7 +120,7 @@ p.block.
 p.block.
   The ability to add descriptive text and other informative markup to
   code is of particular importance to researchers and data scientists
-  alike. With Beaker you can use LaTeX for typeset mathematics,
+  alike. With Beaker you can use TeX for typeset mathematics,
   Markdown for easy formatting, and HTML for complete control.  You
   can even mix all of these formats in the <a href="https://pub.beakernotebook.com/#/publications/560b54da-3c14-4890-8b64-b204bc798320?fullscreen=true">same paragraph</a>.
 
@@ -121,7 +128,10 @@ p.block.
   With this capability researchers can, for example, add inline
   notes and images describing their methodology, complex equations to
   help explain functionality, and rich formatting in the service of
-  making their work more intelligible. Furthermore, Beaker provides
-  the ability to organize a notebook into hierarchical sections, each
-  of which can be viewed, shared or evaluated individually or as a
-  whole. All in all, a very presentable package.
+  making their work more intelligible.
+
+p.block.
+  Furthermore, Beaker provides the ability to organize a notebook into
+  hierarchical sections, each of which can be viewed, hidden, shared, or
+  evaluated individually or as a whole. All in all, a very presentable
+  package.
