@@ -17,7 +17,7 @@ ul.block.components
     .left.language-details
       a(name="Python3")
       b.language-headline Python Installation
-      p Install the free version of&nbsp;
+      p Install the free 2.7 version of&nbsp;
         a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
       p If you have a preexisting Python you want to connect to, then see&nbsp;
         a.ui-link(href="https://github.com/twosigma/beaker-notebook/wiki/Using-a-Preexisting-Python") our wiki
@@ -69,12 +69,14 @@ ul.block.components
       p 1. Install the free version of&nbsp;
         a.ui-link(href="https://store.continuum.io/cshop/anaconda/") Anaconda
       p 2. Install&nbsp;
-        a.ui-link(href="http://julialang.org/downloads/") Julia
+        a.ui-link(href="http://julialang.org/downloads/") Julia 
+        span (v0.4 or better).
 
       a(name="Node")
-      p.block-half Then open Julia and run these commands:
+      p.block-half Then start the Julia application and run these commands:
       pre.code.
         Pkg.add("IJulia")
+        Pkg.add("Requests")
         Pkg.add("Gadfly")
     .cl
   li
@@ -85,7 +87,7 @@ ul.block.components
       a(name="Ruby")
       b.language-headline Node Installation
       p 1. Install&nbsp;
-        a.ui-link(href="http://howtonode.org/how-to-install-nodejs") Node.js
+        a.ui-link(href="https://nodejs.org") Node.js
     .cl
   li
     .left
@@ -124,7 +126,22 @@ ul.block.components
       p 1. Install Xcode from the&nbsp;
         a.ui-link(href="https://itunes.apple.com/us/app/xcode/id497799835") App Store
       p 2. Install the command-line tools by running
+      a(name="Torch")
       pre.code.
-        xcode-select --install .
+        xcode-select --install
+    .cl
+  li
+    .left
+      .language.lua
+        .lang-block Lu
+    .left.language-details
+      b.language-headline Lua/Torch Installation
+      p 1. Follow the instructions&nbsp;
+        a.ui-link(href="http://torch.ch/docs/getting-started.html") for Torch
+      p 2. Follow the instructions&nbsp;
+        a.ui-link(href="https://github.com/facebook/iTorch") for iTorch
+      p 3. Then run
+      pre.code.
+        luarocks install json
       a(name="Releases")
     .cl
