@@ -4,6 +4,6 @@ mixin linkList(active, listClass)
   ul(class=listClass || "")
     each link in links
       li(class= active == link.name ? "active" : "")
-        a(href=link.path, class= active == link.name ? "active" : "")= link.name
+        a(href=link.path, class= link.name == "examples" ? "examples" : active == link.name ? "active" : "")= link.name
 
     block

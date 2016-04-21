@@ -8,9 +8,7 @@
     },
 
     navTo: function(e) {
-      console.log(e);
       if ($(e.target).hasClass('noroute')) {
-        console.log("noroute");
         return true;
       }
       e.preventDefault();
