@@ -2,11 +2,11 @@
   BK.getDownloadLink = function(platform) {
     switch (platform || BK.getPlatform()) {
       case 'windows':
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.5.2-0-g34d512f-windows.zip"; 
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.6-0-gb7c81a9-windows.zip"; 
       case 'osx':
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.5.2-0-g34d512f-mac.dmg";
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.6-0-g5c1e80e-mac.dmg";
       default:
-        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.5.2-0-g34d512f-ubuntu.zip";
+        return "http://d299yghl10frh5.cloudfront.net/beaker-notebook-1.6-0-gb7c81a9-ubuntu.zip";
     }
   }
 
