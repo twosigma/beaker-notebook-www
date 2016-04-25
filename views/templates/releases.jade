@@ -2,11 +2,23 @@
   :markdown
     ####  Current Version - 1.6 - 2016.04.22
 
-    * New table UI
-    * Improved autocomplete including documentation and arguments
-    * New landing page
-    * JavaScript supports ECMAScript 2015
-    * *more notes forthcoming*
+    * New table UI including filtering, searching, bar charts, heat maps, tighter spacing in advanced mode, drag to resize columns, quick switching from pagination to scrolling, and menus for each column. [#2836](https://github.com/twosigma/beaker-notebook/issues/2836), [#3591](https://github.com/twosigma/beaker-notebook/issues/3591), [#3777](https://github.com/twosigma/beaker-notebook/issues/3777).
+    * Improved autocomplete including documentation and arguments [#2831](https://github.com/twosigma/beaker-notebook/issues/2831).
+    * New landing page [#3567](https://github.com/twosigma/beaker-notebook/issues/3567), [#3602](https://github.com/twosigma/beaker-notebook/issues/3602).
+    * Improved handling of 64-bit integers and bignums in tables and autotranslation [#3332](https://github.com/twosigma/beaker-notebook/issues/3332), [#3511](https://github.com/twosigma/beaker-notebook/issues/3511).
+    * New plot interaction APIs to get callbacks and trigger running cells when the user clicks on a plot [#2888](https://github.com/twosigma/beaker-notebook/issues/2888).
+    * JavaScript supports ECMAScript 2015 [#1625](https://github.com/twosigma/beaker-notebook/issues/1625).
+    * Added JavaDoc for interal plotting, output containers, and layout manager APIs [#2632](https://github.com/twosigma/beaker-notebook/issues/2632), [#3525](https://github.com/twosigma/beaker-notebook/issues/3525).
+    * Can select lines with line numbers [#3233](https://github.com/twosigma/beaker-notebook/issues/3233).
+    * Flattened menus for faster access [#907](https://github.com/twosigma/beaker-notebook/issues/907).
+    * Updated KaTeX to version 0.5 [#3113](https://github.com/twosigma/beaker-notebook/issues/3113).
+    * Dynamic loader moved to parent-first, fixing a number of class loader issues like access to Grape and Lucene [#2658](https://github.com/twosigma/beaker-notebook/issues/2658), [#3612](https://github.com/twosigma/beaker-notebook/issues/3612), [#2276](https://github.com/twosigma/beaker-notebook/issues/2276).
+    * Added command to reset all backends and run all init cells (control-R), run all cells (F5), and other keyboard shortcuts [#3784](https://github.com/twosigma/beaker-notebook/issues/3784), [#3800](https://github.com/twosigma/beaker-notebook/issues/3800), [#3545](https://github.com/twosigma/beaker-notebook/issues/3545).
+    * R backend can now be reset, does not loose focus on startup on Mac [#3828](https://github.com/twosigma/beaker-notebook/issues/3828), [#3355](https://github.com/twosigma/beaker-notebook/issues/3355).
+    * Java no longer confused by comments, errors not mangled, interfaces and static imports supported [#3768](https://github.com/twosigma/beaker-notebook/issues/3768), [#3760](https://github.com/twosigma/beaker-notebook/issues/3760), [#3762](https://github.com/twosigma/beaker-notebook/issues/3762), [#3761](https://github.com/twosigma/beaker-notebook/issues/3761).
+    * Language manager improvements: warn about closing without saving, tooltips with documentation, progress feedback during changes, API access to language settings [#2982](https://github.com/twosigma/beaker-notebook/issues/2982), [#3677](https://github.com/twosigma/beaker-notebook/issues/3677), [#2613](https://github.com/twosigma/beaker-notebook/issues/2613), [#3727](https://github.com/twosigma/beaker-notebook/issues/3727), [#3562](https://github.com/twosigma/beaker-notebook/issues/3562), [#3479](https://github.com/twosigma/beaker-notebook/issues/3479), [#2972](https://github.com/twosigma/beaker-notebook/issues/2972).
+    * HTML cells now handle `<textarea>` elements [#3436](https://github.com/twosigma/beaker-notebook/issues/3436).
+    * Code editing changed to word-wrap by default (but you can still set any cell back to scroll with the menu) [#3423](https://github.com/twosigma/beaker-notebook/issues/3423), [#3704](https://github.com/twosigma/beaker-notebook/issues/3704).
     * For a complete list of the 286 resolved issues, see [github](https://github.com/twosigma/beaker-notebook/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aclosed+closed%3A2016-01-22..2016-04-22).
 
     ####  1.5.2 - 2016.03.07 (1.5.3 for Electron versions)
