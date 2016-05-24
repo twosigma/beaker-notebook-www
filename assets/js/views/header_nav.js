@@ -62,7 +62,7 @@
 
     navTo: function(e) {
       if ($(e.target).hasClass('examples')) {
-        window.open("https://pub.beakernotebook.com/#/publications/featured");
+        window.open("https://pub.beakernotebook.com/publications/featured");
         return true;
       }
       e.preventDefault();
