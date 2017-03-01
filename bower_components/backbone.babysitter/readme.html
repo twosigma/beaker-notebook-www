@@ -1,0 +1,188 @@
+<h1 id="backbone-babysitter">Backbone.BabySitter</h1>
+<p><a href="https://travis-ci.org/marionettejs/backbone.babysitter"><img src="https://travis-ci.org/marionettejs/backbone.babysitter.svg?branch=master" alt="Build Status"></a></p>
+<p>Manage child views in a Backbone.View.</p>
+<h2 id="about-backbone-babysitter">About Backbone.BabySitter</h2>
+<p>Backbone provides a lot of functionality in its views, but does not directly
+provide a way to manage child views or nested views. This is not terribly
+difficult to do on your own, but it gets tedious to write the same code
+over and over again.</p>
+<p>Backbone.BabySitter provides a simple way to manage an unknown number of
+child views within a Backbone.View, or other object that needs to track a
+list of views.</p>
+<h2 id="downloads-and-source">Downloads And Source</h2>
+<p>Grab the source from the <code>src</code> folder above. Grab the most recent builds
+from the links below.</p>
+<ul>
+<li><p>Development: <a href="https://raw.github.com/marionettejs/backbone.babysitter/master/lib/backbone.babysitter.js">backbone.babysitter.js</a></p>
+</li>
+<li><p>Production: <a href="https://raw.github.com/marionettejs/backbone.babysitter/master/lib/backbone.babysitter.min.js">backbone.babysitter.min.js</a></p>
+</li>
+</ul>
+<h2 id="documentation">Documentation</h2>
+<p>Backbone.BabySitter exposes one constructor function: <code>Backbone.ChildViewContainer</code>.
+This constructor function contains all of the necessary code for managing a list of
+views.</p>
+<h3 id="storing-views">Storing Views</h3>
+<p>Views can be added to a container by calling the <code>add</code> method:</p>
+<pre><code class="lang-js">var container = new Backbone.ChildViewContainer();
+
+container.add(someView);
+container.add(anotherView);
+</code></pre>
+<p>Views will be stored once and indexed in several ways:</p>
+<ul>
+<li>by <code>view.cid</code></li>
+<li>by <code>view.model.cid</code> if the view has a model</li>
+<li>by a custom index key</li>
+</ul>
+<p>When adding a view, you can optionally specify a custom index key
+by which you can later retrieve the view.</p>
+<pre><code class="lang-js">container.add(aView, &quot;an indexer&quot;);
+</code></pre>
+<p>Note that the custom indexer should be unique within the container. If you
+add two different views with the same custom indexer, the last one in will
+be the only one stored by that index key.</p>
+<h3 id="constructing-with-views">Constructing With Views</h3>
+<p>An initial list of views can be added to the container through the
+constructor function call. This list must be an array of view instances:</p>
+<pre><code class="lang-js">var views = [someView, anotherView];
+var container = new Backbone.ChildViewContainer(views);
+</code></pre>
+<h3 id="retrieving-views">Retrieving Views</h3>
+<p>You can retrieve a view by any of the index:</p>
+<pre><code class="lang-js">var container = new Backbone.ChildViewContainer();
+
+container.add(someView);
+container.add(anotherView);
+container.add(collectionView);
+container.add(aView, &quot;an indexer&quot;);
+
+// find by view cid
+var s = container.findByCid(someView.cid);
+
+// find by model
+var av = container.findByModel(anotherView.model);
+
+// find by model cid
+var av2 = container.findByModelCid(anotherView.model.cid);
+
+// find by custom key
+var custv = container.findByCustom(&quot;an indexer&quot;);
+
+// find by numeric index (unstable)
+var custv = container.findByIndex(0);
+</code></pre>
+<p>If the <code>findBy*</code> method cannot find the view, it will return undefined.</p>
+<h3 id="removing-a-view">Removing A View</h3>
+<p>You can remove a view directly and it will be removed from all available
+indexes.</p>
+<pre><code class="lang-js">var container = new Backbone.ChildViewContainer();
+
+container.add(view);
+
+// some time later
+container.remove(view);
+</code></pre>
+<p>To remove a view by an index, find it by that index and then remove
+the resulting view.</p>
+<h3 id="executing-methods-on-all-views">Executing Methods On All Views</h3>
+<p>You can execute any arbitrary method with any arbitrary parameters on all of
+the views within the container. There are two ways to do this: <code>container.call</code>
+and <code>container.apply</code>. These methods work similarly to <code>function.call</code> and
+<code>function.apply</code> in how parameters are passed through. However, they do not
+allow the context to be specified. The view on which a method is being called
+will always be the context of the call.</p>
+<pre><code class="lang-js">var View = Backbone.View.extend({
+  doStuff: function(a, b){
+  },
+
+  moreStuff: function(a, b){
+  }
+});
+
+var v1 = new View();
+var v2 = new View();
+
+var container = new Backbone.ChildViewContainer();
+container.add(v1);
+container.add(v2);
+
+// call the doStuff function
+container.call(&quot;doStuff&quot;, 1, 2);
+
+// apply the doStuff function
+container.apply(&quot;doStuff&quot;, [1, 2]);
+</code></pre>
+<p>If any given view within the container does not have the method specified, it
+will not be called on that view. No errors will be thrown in this situation.</p>
+<h3 id="get-the-number-of-stored-views">Get The Number Of Stored Views</h3>
+<p>To get the number of stored views, call the <code>container.length</code>
+attribute. This attribute is updated any time a view is added or
+removed.</p>
+<pre><code class="lang-js">var container = new Backbone.ChildViewContainer();
+
+container.add(view);
+container.add(v2);
+container.add(v3);
+
+console.log(container.length); //=&gt; 3
+
+container.remove(v2);
+
+console.log(container.length); //=&gt; 2
+</code></pre>
+<h3 id="iterators-and-collection-functions">Iterators And Collection Functions</h3>
+<p>The container object borrows several functions from Underscore.js, to
+provide iterators and other collection functions, including:</p>
+<ul>
+<li>forEach</li>
+<li>each</li>
+<li>map</li>
+<li>find</li>
+<li>detect</li>
+<li>filter</li>
+<li>select</li>
+<li>reject</li>
+<li>every</li>
+<li>all</li>
+<li>some</li>
+<li>any</li>
+<li>include</li>
+<li>contains</li>
+<li>invoke</li>
+<li>toArray</li>
+<li>first</li>
+<li>initial</li>
+<li>rest</li>
+<li>last</li>
+<li>without</li>
+<li>isEmpty</li>
+<li>pluck</li>
+</ul>
+<p>These methods can be called directly on the container, to iterate and
+process the views held by the container.</p>
+<pre><code class="lang-js">var container = new Backbone.ChildViewContainer();
+
+container.add(v1);
+container.add(v2);
+container.add(v3);
+
+// iterate over all of the views
+container.each(function(view){
+
+  // process each view individually, here
+
+});
+</code></pre>
+<p>For more information about these methods, see the <a href="http://underscorejs.org">Underscore.js documentation</a>.</p>
+<h2 id="changelog">ChangeLog</h2>
+<p>For a complete change log, see the <a href="https://github.com/marionettejs/backbone.babysitter/blob/master/CHANGELOG.md">CHANGELOG.md</a>
+file.</p>
+<h2 id="license">License</h2>
+<p>MIT - see <a href="https://github.com/marionettejs/backbone.babysitter/blob/master/LICENSE.md">LICENSE.md</a></p>
+<h2 id="dev">Dev</h2>
+<ul>
+<li><code>npm install</code></li>
+<li><code>npm install -g grunt-cli</code></li>
+<li><code>grunt</code></li>
+</ul>

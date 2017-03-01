@@ -1,0 +1,94 @@
+<p><h1 align="center">Backbone.Marionette</h1></p>
+<p align="center">
+  <img title="backbone marionette" src='https://cdn.mediacru.sh/6sNqngKFuqft.svg' />
+</p>
+<p align="center">The Backbone framework</p>
+<p align="center">
+  <a title='Build Status' href="https://travis-ci.org/marionettejs/backbone.marionette">
+    <img src='https://secure.travis-ci.org/marionettejs/backbone.marionette.svg?branch=master' />
+  </a>
+  <a href='https://coveralls.io/r/marionettejs/backbone.marionette'>
+    <img src='https://img.shields.io/coveralls/marionettejs/backbone.marionette.svg' alt='Coverage Status' />
+  </a>
+</p>
+
+<h2 id="about-marionette">About Marionette</h2>
+<p>Backbone.Marionette is a composite application library for Backbone.js that
+aims to simplify the construction of large scale JavaScript applications.
+It is a collection of common design and implementation patterns found in
+applications.</p>
+<h2 id="documentation">Documentation</h2>
+<p>All of the documentation for Marionette can be found at</p>
+<h5 id="-marionettejs-com-docs-current-http-marionettejs-com-docs-current-"><a href="http://marionettejs.com/docs/current">marionettejs.com/docs/current</a></h5>
+<h3 id="app-architecture-on-backbone-s-building-blocks">App Architecture On Backbone&#39;s Building Blocks</h3>
+<p>Backbone provides a great set of building blocks for our JavaScript
+applications. It gives us the core constructs that are needed to build
+small apps, organize jQuery DOM events, or create single page apps that
+support mobile devices and large scale enterprise needs. But Backbone is
+not a complete framework. It&#39;s a set of building blocks. It leaves
+much of the application design, architecture and scalability to the
+developer, including memory management, view management, and more.</p>
+<p>Marionette brings an application architecture to Backbone, along with
+built in view management and memory management. It&#39;s designed to be a
+lightweight and flexible library of tools that sits on top of Backbone,
+providing the framework for building a scalable application.</p>
+<p>Like Backbone itself, you&#39;re not required to use all of Marionette just
+because you want to use some of it. You can pick and choose which features
+you want to use. This allows you to work with other Backbone
+frameworks and plugins easily. It also means that you are not required
+to engage in an all-or-nothing migration to begin using Marionette.</p>
+<h3 id="chat-with-us">Chat with us</h3>
+<p>Find us <a href="https://gitter.im/marionettejs/backbone.marionette">on gitter</a> or on IRC in the FreeNode.net <a href="http://freenode.net">#marionette channel</a>.</p>
+<p>We&#39;re happy to discuss design patterns and learn how you&#39;re using Marionette.</p>
+<h3 id="key-benefits">Key Benefits</h3>
+<ul>
+<li>Scalable: applications are built in modules, and with event-driven architecture</li>
+<li>Sensible defaults: Underscore templates are used for view rendering</li>
+<li>Easily modifiable: make it work with your application&#39;s specific needs</li>
+<li>Reduce boilerplate for views, with specialized view types</li>
+<li>Build on a modular architecture with an <code>Application</code> and modules that attach to it</li>
+<li>Compose your application&#39;s visuals at runtime, with the <code>Region</code> and <code>LayoutView</code> objects</li>
+<li>Nested views and layouts within visual regions</li>
+<li>Built-in memory management and zombie-killing in views, regions and layoutViews</li>
+<li>Event-driven architecture with <code>Backbone.Wreqr.EventAggregator</code></li>
+<li>Flexible, &quot;as-needed&quot; architecture allowing you to pick and choose what you need</li>
+<li>And much, much more</li>
+</ul>
+<h2 id="source-code-and-downloads">Source Code and Downloads</h2>
+<p>You can download the latest builds directly from the &quot;lib&quot; folder above.
+For more information about the files in this folder, or to obtain an archive
+containing all Marionette dependencies (including Underscore, Backbone, etc.),
+please visit <a href="http://marionettejs.com#download">the downloads section on the website</a>.</p>
+<h4 id="-marionettejs-com-http-marionettejs-com-download-"><a href="http://marionettejs.com#download">MarionetteJS.com</a></h4>
+<h3 id="available-packages">Available Packages</h3>
+<p>Marionette is available via bower, npm, and component.io. There are other channels that are maintained by the community.</p>
+<h2 id="release-notes-and-upgrade-guide">Release Notes And Upgrade Guide</h2>
+<p><strong>Changelog</strong>: For change logs and release notes, see the
+<a href="changelog.md">changelog</a> file.</p>
+<p><strong>Upgrade Guide</strong>: Be sure to read <a href="upgradeGuide.md">the upgrade guide</a>
+for information on upgrading to the latest version of Marionette.</p>
+<h3 id="annotated-source-code">Annotated Source Code</h3>
+<p>The source code for Marionette is heavily documented.
+You can read the annotations for all the details of how Marionette works, and advice on which methods to override.</p>
+<h5 id="-view-the-annotated-source-code-http-marionettejs-com-annotated-src-backbone-marionette-"><a href="http://marionettejs.com/annotated-src/backbone.marionette">View the annotated source code</a></h5>
+<h2 id="compatibility-and-requirements">Compatibility and Requirements</h2>
+<p>MarionetteJS currently works with the following libraries:</p>
+<ul>
+<li><a href="http://jquery.com">jQuery</a> v1.8+</li>
+<li><a href="http://underscorejs.org">Underscore</a> v1.4.4 - 1.6.0</li>
+<li><a href="http://backbonejs.org">Backbone</a> v1.0.0 - 1.1.2 are preferred.</li>
+<li><a href="https://github.com/marionettejs/backbone.wreqr">Backbone.Wreqr</a> Comes automatically with the bundled build.</li>
+<li><a href="https://github.com/marionettejs/backbone.babysitter">Backbone.BabySitter</a> Comes automatically with the bundled build.</li>
+</ul>
+<p>Marionette has not been tested against any other versions of these
+libraries. You may or may not have success if you use a version other
+than what is listed here.</p>
+<h2 id="how-to-contribute">How to Contribute</h2>
+<p>If you would like to contribute to Marionette&#39;s source code, please read
+the <a href="CONTRIBUTING.md">guidelines for pull requests and contributions</a>.
+Following these guidelines will help make your contributions easier to
+bring into the next release.</p>
+<h3 id="-github-issues-github-com-marionettejs-backbone-marionette-issues-"><a href="//github.com/marionettejs/backbone.marionette/issues">Github Issues</a></h3>
+<p>Report issues with Marionette, submit pull requests to fix problems, or to
+create summarized and documented feature requests (preferably with pull
+requests that implement the feature).</p>
